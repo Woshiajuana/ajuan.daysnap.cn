@@ -7,6 +7,7 @@ import router from './router'
 import store from './store/index.js'
 import './assets/lib/flexible.js'
 import 'element-ui/lib/theme-default/index.css'
+import './assets/css/animate.css'
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;

@@ -1,0 +1,13 @@
+<template>
+    <div class="container-view">
+        <h1>目录页</h1>
+    </div>
+</template>
+<script>
+    export default {
+        name: 'directory'
+    }
+</script>
+<style lang="scss">
+    @import "../../assets/scss/define";
+</style>

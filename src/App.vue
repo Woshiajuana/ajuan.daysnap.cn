@@ -6,7 +6,10 @@
         <!--/头部-->
 
         <!--主体内容视图-->
-        <!--<transition :name="animateName">-->
+        <!--<transition-->
+            <!--name="custom-classes-transition"-->
+                    <!--enter-active-class="animated fadeIn"-->
+                    <!--leave-active-class="animated fadeOut">-->
             <!--<keep-alive>-->
             <router-view></router-view>
             <!--</keep-alive>-->

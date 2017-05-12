@@ -1,1 +1,17 @@
 @import "./define";
+html{
+    overflow-y: scroll;
+}
+.container-view{
+    @extend %ma;
+    @extend %pa;
+    padding-top: 60px;
+}
+@media only screen and (min-width:1000px) {
+    .container-view{
+        width: 1000px;
+        left: 50%;
+        margin-left: -500px;
+        padding-top: 120px;
+    }
+}
