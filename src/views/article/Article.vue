@@ -45,14 +45,7 @@
 </template>
 <script>
     export default {
-        name: 'article',
-        created () {
-            console.log(this.$route.meta.view);
-            this.$emit('addView',1)
-        },
-        methods: {
-
-        }
+        name: 'article'
     }
 </script>
 <style lang="scss">

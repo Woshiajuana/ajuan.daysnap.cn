@@ -6,6 +6,7 @@ import Article from '../views/article/Article.vue'
 import Directory from '../views/directory/Directory.vue'
 import Other from '../views/other/Other.vue'
 import Comment from '../views/comment/Comment.vue'
+import Result from '../views/search/children/Result.vue'
 
 Vue.use(Router);
 
@@ -45,7 +46,17 @@ export default new Router({
         {
             path: '/search',
             name: 'search',
-            component: Search
+            component: Search,
+            children: [
+                {
+                    path: ':id',
+                    name: 'result',
+                    component: Result,
+                    children: [
+
+                    ]
+                }
+            ]
         },
         /**文章页*/
         {

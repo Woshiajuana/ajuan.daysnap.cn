@@ -1,11 +1,11 @@
 <template>
     <div class="search-box">
         <input type="text" placeholder="请输入检索关键词" class="search-input">
-        <i class="search-btn">
+        <a href="#/search/id" class="search-btn">
             <svg slot="icon" class="search-btn-icon">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-btn-icon"></use>
             </svg>
-        </i>
+        </a>
     </div>
 </template>
 <script>

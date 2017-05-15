@@ -1,6 +1,6 @@
 <template>
     <div @click="close()" class="close-wrap">
-         <svg slot="icon" class="nav-item-icon">
+         <svg class="close-icon">
              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use>
          </svg>
     </div>
@@ -25,7 +25,7 @@
         top: 20px;
         right: 20px;
     }
-    .nav-item-icon{
+    .close-icon{
         @extend %w100;
         @extend %h100;
         transition: fill .5s;

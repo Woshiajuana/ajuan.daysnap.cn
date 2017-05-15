@@ -1,6 +1,8 @@
 <template>
     <div class="view-wrap">
-        <list :article_list_arr="article_list_arr"></list>
+        <list
+            :article_href="'#/index/article/'"
+            :article_list_arr="article_list_arr"></list>
         <router-view></router-view>
     </div>
 </template>
@@ -16,85 +18,85 @@
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '1'
+                        article_id: '1'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '2'
+                        article_id: '2'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '3'
+                        article_id: '3'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '4'
+                        article_id: '4'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '5'
+                        article_id: '5'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '6'
+                        article_id: '6'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '7'
+                        article_id: '7'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '8'
+                        article_id: '8'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '9'
+                        article_id: '9'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '10'
+                        article_id: '10'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '11'
+                        article_id: '11'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '12'
+                        article_id: '12'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '13'
+                        article_id: '13'
                     },
                     {
                         article_type: 'html',
                         article_time: '2017-05-12 14:36',
                         article_title: '如何有效的学习html',
-                        article_href: '14'
+                        article_id: '14'
                     }
                 ],
                 page_total: 10,

@@ -5,7 +5,7 @@
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="'#/index/article/' + article_list_item.article_href"
+            :article_href="article_href + article_list_item.article_href"
         ></article-list-item>
         <!--分页组件-->
         <div class="pagination-wrap">
@@ -31,7 +31,7 @@
             ArticleListItem,
             Pagination
         },
-        props: ['article_list_arr'],
+        props: ['article_list_arr','article_href'],
         methods: {
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
