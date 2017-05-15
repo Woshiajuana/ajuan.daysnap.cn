@@ -1,29 +1,30 @@
 <template>
-    <div class="container-view">
-        <search-box></search-box>
-        <div class="result-wrap">
-            <p class="result-prompt">搜索结果：</p>
-            <article-list-item
-                v-for="(article_list_item,article_list_index) in article_list_arr"
-                :article_type="article_list_item.article_type"
-                :article_time="article_list_item.article_time"
-                :article_title="article_list_item.article_title"
-                :article_href="article_list_item.article_href"
-            ></article-list-item>
-            <!--分页组件-->
-            <div class="pagination-wrap">
-                <el-pagination
-                    @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange"
-                    :current-page="1"
-                    :page-sizes="[100, 200, 300, 400]"
-                    :page-size="100"
-                    layout="total, prev, pager, next, jumper"
-                    :total="1000">
-                </el-pagination>
+    <div class="view-wrap">
+        <div class="view-part view-1 search-wrap">
+            <search-box></search-box>
+            <div class="key-words-wrap">
+                <a href="#/">v建环境</a>
+                <a href="#/">vue如建环境</a>
+                <a href="#/">vue如何搭建环境</a>
+                <a href="#/">vue建环境</a>
+                <a href="#/">html</a>
+                <a href="#/">vue如何搭建环境</a>
+                <a href="#/">vue如环境</a>
+                <a href="#/">csss</a>
+                <a href="#/">vue如搭建环境</a>
+                <a href="#/">vu建环境</a>
+                <a href="#/">xx</a>
+                <a href="#/">xxxasxsax</a>
+                <a href="#/">xxxxas</a>
+                <a href="#/">xx</a>
+                <a href="#/">xsxasxasxasxaasxsaxx</a>
             </div>
-            <!--/分页组件-->
         </div>
+
+        <router-view></router-view>
+        <!--<div class="container-view">-->
+        <!--<h2>文章</h2>-->
+        <!--</div>-->
     </div>
 </template>
 <script>
@@ -129,6 +130,9 @@
             Pagination,
             SearchBox
         },
+        mounted () {
+            this.$top(0);
+        },
         methods: {
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
@@ -141,6 +145,35 @@
 </script>
 <style lang="scss">
     @import "../../assets/scss/define";
+    .key-words-wrap{
+        @extend %ma;
+        @extend %tac;
+        padding: 10px;
+        width: 60%;
+        max-width: 560px;
+        a{
+            @extend %dib;
+            @extend %f12;
+            @extend %c9;
+            @extend %oh;
+            padding: 0 20px;
+            line-height: 24px;
+            height: 24px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            margin: 5px 5px;
+            transition: all .5s;
+            background-color: #fff;
+            &:hover{
+                @extend %cfff;
+                background-color: #333;
+            }
+        }
+    }
+    .search-wrap{
+        @extend %oya;
+        padding-top: 150px;
+    }
     .result-wrap{
         margin-top: 30px;
     }

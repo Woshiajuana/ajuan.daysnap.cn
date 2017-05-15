@@ -1,5 +1,5 @@
 <template>
-    <div class="search-wrap">
+    <div class="search-box">
         <input type="text" placeholder="请输入检索关键词" class="search-input">
         <i class="search-btn">
             <svg slot="icon" class="search-btn-icon">
@@ -15,13 +15,14 @@
 </script>
 <style lang="scss">
     @import "../assets/scss/define";
-    .search-wrap{
+    .search-box{
         @extend %pr;
         @extend %df;
         @extend %f14;
-        margin-left: 20px;
-        width: 360px;
+        @extend %ma;
+        width: 85%;
         height: 45px;
+        max-width: 600px;
         line-height: 45px;
         padding-left: 15px;
         border-bottom: 1px solid #ccc;

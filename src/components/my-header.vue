@@ -1,43 +1,30 @@
 <template>
     <header class="header-wrap">
-        <div class="header-content">
-            <nav-bar></nav-bar>
-        </div>
+        <nav-bar></nav-bar>
     </header>
 </template>
 <script>
     import NavBar from './nav-bar.vue'
+    import SearchBox from './search-box.vue'
     export default {
         name: 'my-header',
         components: {
-            NavBar
+            NavBar,
+            SearchBox
         }
     }
 </script>
 <style lang="scss">
     @import "../assets/scss/define";
     .header-wrap{
-        @extend %pf;
-        @extend %w100;
+        @extend %pa;
         @extend %l0;
+        @extend %bsb;
         @extend %t0;
-        @extend %oh;
-        z-index: 1;
-        height: 60px;
-        background-color: #fff;
-    }
-    .header-content{
-        @extend %ma;
-        @extend %clearfix;
-        margin-top: 20px;
-    }
-    @media only screen and (min-width:1000px) {
-        .header-wrap{
-            height: 120px;
-        }
-        .header-content{
-            width: 1000px;
-            margin-top: 60px;
-        }
+        @extend %b0;
+        width: 50px;
+        background-color: #FFD000;
+        background-color: #F9FAFC;
+        border-right: 1px solid #ddd;
     }
 </style>

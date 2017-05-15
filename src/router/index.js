@@ -5,16 +5,41 @@ import Search from '../views/search/Search.vue'
 import Article from '../views/article/Article.vue'
 import Directory from '../views/directory/Directory.vue'
 import Other from '../views/other/Other.vue'
+import Comment from '../views/comment/Comment.vue'
 
 Vue.use(Router);
 
 export default new Router({
     routes: [
-        /**首页*/
+        /**首页(重定向)*/
         {
             path: '/',
+            redirect: { name: 'home' }
+        },
+        /**首页*/
+        {
+            path: '/index',
             name: 'home',
-            component: Home
+            component: Home,
+            children: [
+                /**文章内容页*/
+                {
+                    path: 'article/:id',
+                    name: 'article',
+                    component: Article,
+                    meta: {
+                        view: 2
+                    },
+                    /**文章评论页*/
+                    children: [
+                        {
+                            path: 'comment',
+                            name: 'comment',
+                            component: Comment
+                        }
+                    ]
+                }
+            ]
         },
         /**搜索页*/
         {

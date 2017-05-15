@@ -1,17 +1,50 @@
 @import "./define";
-html{
-    overflow-y: scroll;
+@import "./animate";
+html,body{
+    @extend %w100;
+    @extend %h100;
+    @extend %oh;
 }
-.container-view{
-    @extend %ma;
+#app{
     @extend %pa;
-    padding-top: 60px;
+    @extend %t0;
+    @extend %l0;
+    @extend %b0;
+    @extend %r0;
 }
-@media only screen and (min-width:1000px) {
-    .container-view{
-        width: 1000px;
-        left: 50%;
-        margin-left: -500px;
-        padding-top: 120px;
+.view-wrap{
+    @extend %pa;
+    @extend %df;
+    @extend %t0;
+    @extend %r0;
+    @extend %b0;
+    left: 50px;
+}
+.view-part{
+    @extend %pr;
+    @extend .animated;
+    @extend .fadeIn;
+    transition: all .5s;
+    &.df{
+        @extend %df;
+        @extend %pa;
+        @extend %t0;
+        @extend %r0;
+        @extend %l0;
+        @extend %b0;
+    }
+    &.view-0{
+        @extend %df0;
+    }
+    &.view-1{
+        @extend %df1;
+    }
+    &.view-2{
+        @extend %df2;
+    }
+    &.view-3{
+        @extend %df3;
     }
 }
+
+

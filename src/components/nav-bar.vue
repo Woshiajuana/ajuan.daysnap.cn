@@ -1,11 +1,10 @@
 <template>
     <nav class="nav-wrap">
-        <router-link class="nav-item" to="/" exact>
+        <router-link class="nav-item" to="/index">
             <span class="nav-item-con">
                 <svg slot="icon" class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#home-icon"></use>
                 </svg>
-                <span class="nav-text">首页</span>
             </span>
         </router-link>
         <router-link class="nav-item" to="/search">
@@ -13,7 +12,6 @@
                 <svg slot="icon" class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-icon"></use>
                 </svg>
-                <span class="nav-text">搜索</span>
             </span>
         </router-link>
         <router-link class="nav-item" to="/article">
@@ -21,7 +19,6 @@
                 <svg slot="icon" class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#article-icon"></use>
                 </svg>
-                <span class="nav-text">文章</span>
             </span>
         </router-link>
         <router-link class="nav-item" to="/directory">
@@ -29,15 +26,13 @@
                 <svg slot="icon" class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#directory-icon"></use>
                 </svg>
-                <span class="nav-text">目录</span>
             </span>
         </router-link>
         <router-link class="nav-item" to="/other">
             <span class="nav-item-con">
-                <svg slot="icon" class="nav-item-icon">
+                <svg slot="icon" class="nav-item-icon other-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#other-icon"></use>
                 </svg>
-                <span class="nav-text">其它</span>
             </span>
         </router-link>
     </nav>
@@ -50,26 +45,51 @@
 <style lang="scss">
     @import "../assets/scss/define";
     .nav-wrap{
-        @extend %fr;
-        @extend %pr;
+        @extend %pa;
+        @extend %tac;
+        @extend %oh;
+        @extend %w100;
+        @extend %l0;
+        @extend %t50;
+        margin-top: -150px;
     }
     .nav-item{
-        @extend %f14;
-        @extend %c6;
-        margin: 0 10px;
+        @extend %db;
+        @extend %pr;
+        width: 50%;
+        padding-top: 50%;
+        margin: 10px auto;
         &.router-link-active{
-            @extend %fwb;
-            color: #000;
             .nav-item-icon{
+                @extend %w100;
+                @extend %h100;
+                @extend %t0;
+                @extend %l0;
                 fill: #000;
             }
         }
     }
+    .nav-item-con{
+        @extend %pa;
+        @extend %t0;
+        @extend %r0;
+        @extend %l0;
+        @extend %b0;
+    }
     .nav-item-icon{
-        @extend %vam;
-        width: 20px;
-        height: 20px;
-        fill: #999;
+        @extend %pa;
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
+        fill: #ccc;
+        transition: all .3s;
+        &.other-icon{
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 70%;
+        }
     }
     .nav-text{
         @extend %vam;
