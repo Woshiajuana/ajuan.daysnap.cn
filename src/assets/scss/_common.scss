@@ -4,6 +4,7 @@ html,body{
     @extend %w100;
     @extend %h100;
     @extend %oh;
+    background-color: #f5f5f5;
 }
 #app{
     @extend %pa;
@@ -13,12 +14,19 @@ html,body{
     @extend %r0;
 }
 .view-wrap{
-    @extend %pa;
     @extend %df;
-    @extend %t0;
-    @extend %r0;
-    @extend %b0;
-    left: 50px;
+    @extend %ma;
+    width: 800px;
+    height: 100%;
+    background-color: #fff;
+    &.view-full-screen{
+        @extend %pa;
+        @extend %df;
+        @extend %t0;
+        @extend %r0;
+        @extend %b0;
+        left: 50px;
+    }
 }
 .view-part{
     @extend %pr;
