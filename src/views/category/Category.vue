@@ -1,122 +1,29 @@
 <template>
     <div class="view-wrap">
         <div class="view-part view-1 category-wrap">
-
+            <div class="category-list-con">
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+                <a href="#/">HTML</a>
+            </div>
         </div>
 
         <router-view></router-view>
     </div>
 </template>
 <script>
-
     export default {
-        name: 'search',
-        data () {
-            return {
-                article_list_arr: [
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    }
-                ],
-                page_total: 10,
-                page_current: 2
-            }
-        },
-        components: {
-
-        },
-        mounted () {
-            this.$top(0);
-        },
-        methods: {
-            handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
-            },
-            handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
-            }
-        }
+        name: 'category'
     }
 </script>
 <style lang="scss">
@@ -148,6 +55,15 @@
     }
     .category-wrap{
         @extend %oya;
-        padding-top: 150px;
+        padding: 10px 20px;
+    }
+    .category-list-con{
+        @extend %pa;
+        @extend %t50;
+        margin-top: -195px;
+        a{
+            @extend %db;
+            line-height: 1.8;
+        }
     }
 </style>
