@@ -24,12 +24,10 @@
 </template>
 <script>
     import ArticleListItem from '../../components/article-list-item.vue'
-    import Pagination from '../../components/pagination.vue'
     export default {
         name: 'list',
         components: {
-            ArticleListItem,
-            Pagination
+            ArticleListItem
         },
         props: ['article_list_arr','article_href'],
         methods: {
@@ -49,7 +47,6 @@
         padding: 10px 20px;
     }
     .pagination-wrap{
-        @extend %tac;
         padding: 30px 0;
         .el-pager li.active {
             border-color: #333;

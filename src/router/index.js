@@ -7,6 +7,7 @@ import Directory from '../views/directory/Directory.vue'
 import Other from '../views/other/Other.vue'
 import Comment from '../views/comment/Comment.vue'
 import Result from '../views/search/children/Result.vue'
+import Category from '../views/category/Category.vue'
 
 Vue.use(Router);
 
@@ -36,8 +37,11 @@ export default new Router({
                         {
                             path: 'comment',
                             name: 'comment',
-                            component: Comment
-                        }
+                            component: Comment,
+                            meta: {
+                                href: '#/index/article/'
+                            }
+                        },
                     ]
                 }
             ]
@@ -65,7 +69,10 @@ export default new Router({
                                 {
                                     path: 'comment',
                                     name: 'comment',
-                                    component: Comment
+                                    component: Comment,
+                                    meta: {
+                                        href: '#/search/222/article/'
+                                    }
                                 }
                             ]
                         }
@@ -75,9 +82,9 @@ export default new Router({
         },
         /**文章页*/
         {
-            path: '/article',
-            name: 'article',
-            component: Article
+            path: '/category',
+            name: 'category',
+            component: Category
         },
         /**目录页*/
         {

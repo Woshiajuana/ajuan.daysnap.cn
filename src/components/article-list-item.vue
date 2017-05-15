@@ -21,6 +21,7 @@
         @extend %pr;
         @extend %db;
         padding: 20px;
+        max-width: 800px;
         margin-left: 50px;
         border-bottom: 1px solid #f1f1f1;
         &:last-child{

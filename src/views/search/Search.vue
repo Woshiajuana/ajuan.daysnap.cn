@@ -20,123 +20,15 @@
                 <a href="#/">xsxasxasxasxaasxsaxx</a>
             </div>
         </div>
-
         <router-view></router-view>
     </div>
 </template>
 <script>
-    import ArticleListItem from '../../components/article-list-item.vue'
-    import Pagination from '../../components/pagination.vue'
     import SearchBox from '../../components/search-box.vue'
     export default {
         name: 'search',
-        data () {
-            return {
-                article_list_arr: [
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_href: '#/article'
-                    }
-                ],
-                page_total: 10,
-                page_current: 2
-            }
-        },
         components: {
-            ArticleListItem,
-            Pagination,
             SearchBox
-        },
-        mounted () {
-            this.$top(0);
-        },
-        methods: {
-            handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
-            },
-            handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
-            }
         }
     }
 </script>

@@ -14,7 +14,7 @@
                 </svg>
             </span>
         </router-link>
-        <router-link class="nav-item" to="/article">
+        <router-link class="nav-item" to="/category">
             <span class="nav-item-con">
                 <svg slot="icon" class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#article-icon"></use>
