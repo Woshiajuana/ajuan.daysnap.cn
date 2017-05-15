@@ -2,7 +2,7 @@
     <div class="view-part view-3">
         <div class="view-part df">
             <list
-                :article_href="'#/search/article/'"
+                :article_href="'#/search/222/article/'"
                 :article_list_arr="article_list_arr"></list>
             <router-view></router-view>
         </div>

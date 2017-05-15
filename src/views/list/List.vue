@@ -5,7 +5,7 @@
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="article_href + article_list_item.article_href"
+            :article_href="article_href + article_list_item.article_id"
         ></article-list-item>
         <!--分页组件-->
         <div class="pagination-wrap">

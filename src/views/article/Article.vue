@@ -2,42 +2,42 @@
     <div class="view-part view-2">
         <div class="view-part df">
             <div class="view-part view-1 content-wrap">
-                    <h2>文章</h2>
-                    <a href="#/index/article/1/comment">评论</a>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
-                    <p>xsxasxasxsa</p>
+                <h2>文章</h2>
+                <a :href="$route.meta.href + '1/comment'">评论</a>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
+                <p>xsxasxasxsa</p>
             </div>
             <router-view></router-view>
         </div>

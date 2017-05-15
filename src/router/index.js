@@ -29,7 +29,7 @@ export default new Router({
                     name: 'article',
                     component: Article,
                     meta: {
-                        view: 2
+                        href: '#/index/article/'
                     },
                     /**文章评论页*/
                     children: [
@@ -49,11 +49,26 @@ export default new Router({
             component: Search,
             children: [
                 {
-                    path: ':id',
+                    path: ':key_words',
                     name: 'result',
                     component: Result,
                     children: [
-
+                        {
+                            path: 'article/:id',
+                            name: 'article',
+                            component: Article,
+                            meta: {
+                                href: '#/search/222/article/'
+                            },
+                            /**文章评论页*/
+                            children: [
+                                {
+                                    path: 'comment',
+                                    name: 'comment',
+                                    component: Comment
+                                }
+                            ]
+                        }
                     ]
                 }
             ]
