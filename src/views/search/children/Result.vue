@@ -1,11 +1,8 @@
 <template>
-    <div class="view-part view-3">
-        <div class="view-part df">
-            <list
-                :article_href="'#/search/222/article/'"
-                :article_list_arr="article_list_arr"></list>
-            <router-view></router-view>
-        </div>
+    <div class="result-wrap">
+        <list
+            :article_href="'#/search/222/article/'"
+            :article_list_arr="article_list_arr"></list>
     </div>
 </template>
 <script>
@@ -102,8 +99,21 @@
                 ]
             }
         },
+        created () {
+            this.$emit('hasKeyWords',this.$route.params.key_words);
+            this.searchArticle();
+        },
+        watch :{
+            '$route': 'searchArticle'
+        },
         components: {
             List
+        },
+        methods: {
+            searchArticle () {
+                this.$emit('hasKeyWords',this.$route.params.key_words);
+                console.log('正在搜索' + this.$route.params.key_words)
+            }
         }
     }
 </script>

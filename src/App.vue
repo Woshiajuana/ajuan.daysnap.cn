@@ -5,18 +5,16 @@
         <my-header></my-header>
         <!--/头部-->
 
-        <!--<div class="container">-->
-            <!--主体内容视图-->
-            <!--<transition-->
-            <!--name="custom-classes-transition"-->
-            <!--enter-active-class="animated fadeIn"-->
-            <!--leave-active-class="animated fadeOut">-->
-            <!--<keep-alive>-->
-            <router-view></router-view>
-            <!--</keep-alive>-->
-            <!--</transition>-->
-            <!--/主体内容视图-->
-        <!--</div>-->
+        <!--主体内容视图-->
+        <!--<transition-->
+        <!--name="custom-classes-transition"-->
+        <!--enter-active-class="animated fadeIn"-->
+        <!--leave-active-class="animated fadeOut">-->
+        <!--<keep-alive>-->
+        <router-view></router-view>
+        <!--</keep-alive>-->
+        <!--</transition>-->
+        <!--/主体内容视图-->
 
         <!--svg-->
         <svg-template></svg-template>

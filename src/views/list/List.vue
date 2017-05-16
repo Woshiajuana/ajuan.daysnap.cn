@@ -47,6 +47,7 @@
         padding: 10px 20px;
     }
     .pagination-wrap{
+        @extend %tac;
         padding: 30px 0;
         .el-pager li.active {
             border-color: #333;

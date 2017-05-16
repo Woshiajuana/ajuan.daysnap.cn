@@ -76,9 +76,6 @@
             @extend %l0;
         }
     }
-    .close-btn-icon{
-
-    }
     .search-input{
         @extend %df1;
         height: 45px;

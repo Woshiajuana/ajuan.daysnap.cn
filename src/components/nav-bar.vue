@@ -14,14 +14,14 @@
                 </svg>
             </span>
         </router-link>
-        <router-link title="类别" class="nav-item" to="/category">
+        <router-link title="类别" class="nav-item hiddenImportant" to="/category">
             <span class="nav-item-con">
                 <svg class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#article-icon"></use>
                 </svg>
             </span>
         </router-link>
-        <router-link title="归档" class="nav-item" to="/directory">
+        <router-link title="归档" class="nav-item hiddenImportant" to="/directory">
             <span class="nav-item-con">
                 <svg class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#directory-icon"></use>
@@ -42,9 +42,16 @@
                 </svg>
             </span>
         </i>
+        <i @click="returnTop()" title="返回顶部" class="nav-item router-link-active nav-top nav-item-special">
+            <span class="nav-item-con">
+                <svg class="nav-item-icon top-icon">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#top-icon"></use>
+                </svg>
+            </span>
+        </i>
         <i @click="returnPage()" title="返回" class="nav-item router-link-active nav-item-special">
             <span class="nav-item-con">
-                <svg class="nav-item-icon other-icon">
+                <svg class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#return-icon"></use>
                 </svg>
             </span>
@@ -60,6 +67,9 @@
             },
             refreshPage () {
                 window.location.reload(true);
+            },
+            returnTop () {
+                this.$top(0)
             }
         }
     }
@@ -95,6 +105,7 @@
         @extend %dib;
         @extend %pr;
         @extend %cp;
+        @extend %oh;
         width: 20px;
         height: 20px;
         line-height: 20px;
@@ -106,6 +117,12 @@
                 @extend %t0;
                 @extend %l0;
                 fill: #000;
+                &.top-icon{
+                    top: 3%;
+                    left: 3%;
+                    width: 94%;
+                    height: 94%;
+                }
             }
         }
         &:hover{
@@ -121,11 +138,11 @@
         &.nav-item-special{
             &:hover{
                 .nav-item-icon{
-                    fill: #669999;
+                    fill: #13CE66;
                 }
             }
             .nav-item-icon{
-                fill: #669999;
+                fill: #13CE66;
             }
         }
     }
@@ -159,12 +176,27 @@
             animation: rotate360 3s linear infinite;
         }
     }
+    .nav-top{
+        &:hover{
+            .nav-item-icon{
+                animation: animate_top 1.5s linear infinite;
+            }
+        }
+    }
     @keyframes rotate360 {
         0%{
             transform: rotate(0deg);
         }
         100%{
             transform: rotate(360deg);
+        }
+    }
+    @keyframes animate_top {
+        0%{
+            transform: translate3d(0,110%,0);
+        }
+        100%{
+            transform: translate3d(0,-110%,0);
         }
     }
 </style>

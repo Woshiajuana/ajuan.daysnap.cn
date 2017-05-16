@@ -1,20 +1,24 @@
 <template>
     <div class="views-wrap">
-        <div class="search-view">
-            <search-box @searchByKeyWords="searchByKeyWords" v-model="search_key_words"></search-box>
-            <div class="key-words-wrap">
-                <span>关键字：</span>
-                <a href="#/">v建环境</a>
-                <a href="#/">vue如建环境</a>
-                <a href="#/">vue如何搭建环境</a>
-                <a href="#/">vue建环境</a>
-                <a href="#/">vue建环境</a>
-                <a href="#/">vue建环境</a>
-                <a href="#/">html</a>
-                <a href="#/">html</a>
+        <div class="search-view" :class="{'search-active':is_search}">
+            <div class="search-wrap">
+                <search-box @searchByKeyWords="searchByKeyWords" v-model="search_key_words"></search-box>
+                <div class="key-words-wrap">
+                    <span>关键字：</span>
+                    <a href="#/">v建环境</a>
+                    <a href="#/">vue如建环境</a>
+                    <a href="#/">vue如何搭建环境</a>
+                    <a href="#/">vue建环境</a>
+                    <a href="#/">vue建环境</a>
+                    <a href="#/">vue建环境</a>
+                    <a href="#/">html</a>
+                    <a href="#/">html</a>
+                </div>
+            </div>
+            <div class="result-wrap">
+                <router-view v-on:hasKeyWords="hasKeyWords"></router-view>
             </div>
         </div>
-        <router-view></router-view>
     </div>
 </template>
 <script>
@@ -23,12 +27,25 @@
         name: 'search',
         data () {
             return {
-                search_key_words: ''
+                search_key_words: '',
+                is_search: false
             }
         },
         methods: {
             searchByKeyWords (key_words) {
-                console.log(key_words,this.search_key_words)
+                if ( key_words ) {
+                    this.is_search = true;
+                    this.$router.push('/search/' + key_words);
+                } else {
+                    this.is_search = false;
+                    this.$router.push('/search');
+                }
+            },
+            hasKeyWords (key_words) {
+                if ( key_words ) {
+                    this.is_search = true;
+                    this.search_key_words = key_words;
+                }
             }
         },
         components: {
@@ -38,6 +55,13 @@
 </script>
 <style lang="scss">
     @import "../../assets/scss/define";
+    .search-view{
+        padding-top: 150px;
+        transition: padding .5s;
+        &.search-active{
+            padding-top: 50px;
+        }
+    }
     .key-words-wrap{
         @extend %ma;
         width: 85%;
@@ -62,8 +86,5 @@
                 border-bottom: 1px solid #000;
             }
         }
-    }
-    .search-view{
-        padding-top: 150px;
     }
 </style>
