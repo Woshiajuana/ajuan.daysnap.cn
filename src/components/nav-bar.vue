@@ -21,7 +21,7 @@
                 </svg>
             </span>
         </router-link>
-        <router-link title="归档" class="nav-item" to="/directory">
+        <router-link title="归档" class="nav-item" to="/article">
             <span class="nav-item-con">
                 <svg class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#directory-icon"></use>
@@ -139,10 +139,12 @@
             &:hover{
                 .nav-item-icon{
                     fill: #13CE66;
+                    fill: #58b7ff;
                 }
             }
             .nav-item-icon{
                 fill: #13CE66;
+                fill: #58b7ff;
             }
         }
     }

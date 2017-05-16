@@ -1,5 +1,5 @@
 <template>
-    <div class="result-wrap">
+    <div class="article-view">
         <article-list-item
             v-for="(article_list_item,article_list_index) in article_list_arr"
             :article_type="article_list_item.article_type"
@@ -12,7 +12,7 @@
 <script>
     import ArticleListItem from '../../../components/article-list-item.vue'
     export default {
-        name: 'result',
+        name: 'home',
         data () {
             return {
                 article_list_arr: [
@@ -103,27 +103,11 @@
                 ]
             }
         },
-        created () {
-            this.$emit('hasKeyWords',this.$route.params.key_words);
-            this.searchArticle();
-        },
-        watch :{
-            '$route': 'searchArticle'
-        },
         components: {
             ArticleListItem
-        },
-        methods: {
-            searchArticle () {
-                this.$emit('hasKeyWords',this.$route.params.key_words);
-                console.log('正在搜索' + this.$route.params.key_words)
-            }
         }
     }
 </script>
 <style lang="scss">
     @import "../../../assets/scss/define";
-    .result-wrap{
-        @extend %oya;
-    }
 </style>

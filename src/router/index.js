@@ -8,6 +8,7 @@ import Other from '../views/other/Other.vue'
 import Comment from '../views/article/children/Comment.vue'
 import Result from '../views/search/children/Result.vue'
 import Category from '../views/article/children/Category.vue'
+import List from '../views/article/children/List.vue'
 
 Vue.use(Router);
 
@@ -35,8 +36,8 @@ export default new Router({
         },
         /**文章页*/
         {
-            path: '/articles',
-            name: 'articles',
+            path: '/article',
+            name: 'article',
             component: Article,
             children: [
                 /**文章分类页*/
@@ -49,7 +50,7 @@ export default new Router({
                 {
                     path: ':category',
                     name: 'list',
-                    component: Home
+                    component: List
                 },
                 /**文章内容页*/
                 {

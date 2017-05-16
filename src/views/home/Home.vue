@@ -5,7 +5,7 @@
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="'#/articles/' + article_list_item.article_type + '/comment/' + article_list_item.article_id"
+            :article_href="'#/article/' + article_list_item.article_type + '/comment/' + article_list_item.article_id"
         ></article-list-item>
     </div>
 </template>

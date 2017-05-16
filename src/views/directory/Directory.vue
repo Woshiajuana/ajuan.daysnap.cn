@@ -1,5 +1,5 @@
 <template>
-    <div class="container-view">
+    <div class="views-wrap">
         <h1>目录页</h1>
         <h1>目录页</h1>
         <h1>目录页</h1>
