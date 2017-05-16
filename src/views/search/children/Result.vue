@@ -7,6 +7,13 @@
             :article_title="article_list_item.article_title"
             :article_href="'#/article/' + article_list_item.article_type + '/comment/' + article_list_item.article_id"
         ></article-list-item>
+        <p class="result-prompt" v-show="article_list_arr.length">没有了</p>
+        <p class="result-null-prompt" v-show="!article_list_arr.length">
+            <svg class="null-icon">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#null-icon"></use>
+            </svg>
+            <span>没有搜索到结果</span>
+        </p>
     </div>
 </template>
 <script>
@@ -123,7 +130,25 @@
 </script>
 <style lang="scss">
     @import "../../../assets/scss/define";
-    .result-wrap{
-        @extend %oya;
+    .result-null-prompt{
+        @extend %f16;
+        @extend %c6;
+        @extend %tac;
+        padding: 120px 0;
+        span{
+            line-height: 30px;
+        }
+    }
+    .null-icon{
+        @extend %db;
+        @extend %ma;
+        width: 100px;
+        height: 100px;
+        fill: #999;
+    }
+    .result-prompt{
+        @extend %tac;
+        @extend %c9;
+        padding: 30px;
     }
 </style>

@@ -185,20 +185,4 @@
             }
         }
     }
-    @keyframes rotate360 {
-        0%{
-            transform: rotate(0deg);
-        }
-        100%{
-            transform: rotate(360deg);
-        }
-    }
-    @keyframes animate_top {
-        0%{
-            transform: translate3d(0,110%,0);
-        }
-        100%{
-            transform: translate3d(0,-110%,0);
-        }
-    }
 </style>
