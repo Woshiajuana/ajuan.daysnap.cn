@@ -5,91 +5,70 @@ import Search from '../views/search/Search.vue'
 import Article from '../views/article/Article.vue'
 import Directory from '../views/directory/Directory.vue'
 import Other from '../views/other/Other.vue'
-import Comment from '../views/comment/Comment.vue'
+import Comment from '../views/article/children/Comment.vue'
 import Result from '../views/search/children/Result.vue'
-import Category from '../views/category/Category.vue'
-import HomeList from '../views/home/children/HomeList.vue'
+import Category from '../views/article/children/Category.vue'
 
 Vue.use(Router);
 
 export default new Router({
     routes: [
-        /**首页(重定向)*/
-        {
-            path: '/',
-            redirect: { name: 'home' }
-        },
         /**首页*/
         {
-            path: '/index',
+            path: '/',
             name: 'home',
-            component: Home,
-            children: [
-                /**文章内容页*/
-                {
-                    path: '',
-                    name: 'home-list',
-                    component: HomeList,
-                },
-                /**文章页*/
-                {
-                    path: 'comment/:article_id',
-                    name: 'comment',
-                    component: Comment
-                }
-            ]
+            component: Home
         },
         /**搜索页*/
         {
             path: '/search',
             name: 'search',
             component: Search,
+            /**搜索结果页*/
             children: [
                 {
                     path: ':key_words',
                     name: 'result',
-                    component: Result,
-                    children: [
-                        {
-                            path: 'article/:id',
-                            name: 'article',
-                            component: Article,
-                            meta: {
-                                href: '#/search/222/article/'
-                            },
-                            /**文章评论页*/
-                            children: [
-                                {
-                                    path: 'comment',
-                                    name: 'comment',
-                                    component: Comment,
-                                    meta: {
-                                        href: '#/search/222/article/'
-                                    }
-                                }
-                            ]
-                        }
-                    ]
+                    component: Result
                 }
             ]
         },
         /**文章页*/
         {
-            path: '/category',
-            name: 'category',
-            component: Category
-        },
-        /**目录页*/
-        {
-            path: '/directory',
-            name: 'directory',
-            component: Directory
+            path: '/articles',
+            name: 'articles',
+            component: Article,
+            children: [
+                /**文章分类页*/
+                {
+                    path: '',
+                    name: 'category',
+                    component: Category
+                },
+                /**文章列表页*/
+                {
+                    path: ':category',
+                    name: 'list',
+                    component: Home
+                },
+                /**文章内容页*/
+                {
+                    path: ':category/comment/:id',
+                    name: 'comment',
+                    component: Comment
+                }
+            ]
         },
         /**其它页*/
         {
             path: '/other',
             name: 'other',
             component: Other
+        },
+        /**首页(重定向)*/
+        {
+            path: '*',
+            redirect: { name: 'home' }
         }
     ]
 })
