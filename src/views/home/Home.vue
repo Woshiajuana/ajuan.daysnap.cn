@@ -1,12 +1,17 @@
 <template>
     <div class="view-wrap">
-        <list
-            :article_href="'#/index/article/'"
-            :article_list_arr="article_list_arr"></list>
+        <article-list-item
+            v-for="(article_list_item,article_list_index) in article_list_arr"
+            :article_type="article_list_item.article_type"
+            :article_time="article_list_item.article_time"
+            :article_title="article_list_item.article_title"
+            :article_href="'#/' + article_list_item.article_id"
+        ></article-list-item>
         <router-view></router-view>
     </div>
 </template>
 <script>
+    import ArticleListItem from '../../components/article-list-item.vue'
     import List from '../../views/list/List.vue'
     export default {
         name: 'home',
@@ -101,7 +106,8 @@
             }
         },
         components: {
-            List
+            List,
+            ArticleListItem
         }
     }
 </script>

@@ -23,7 +23,7 @@
         padding: 20px;
         max-width: 800px;
         margin-left: 50px;
-        border-bottom: 1px solid #f1f1f1;
+        border-bottom: 1px solid #ddd;
         &:last-child{
             border-bottom: none;
             margin-bottom: 100px;
@@ -54,7 +54,6 @@
         transition: fill .3s;
     }
     .article-list-item-title{
-        @extend %f14;
         @extend %fwb;
         @extend %oh;
         @extend %c6;

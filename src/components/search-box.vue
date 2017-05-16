@@ -46,6 +46,7 @@
         @extend %df1;
         height: 45px;
         border: none;
+        background-color: transparent;
     }
     .search-btn{
         @extend %pr;

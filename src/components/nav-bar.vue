@@ -46,26 +46,54 @@
     @import "../assets/scss/define";
     .nav-wrap{
         @extend %pa;
-        @extend %tac;
         @extend %oh;
-        @extend %w100;
-        @extend %l0;
+        @extend %r0;
         @extend %t50;
-        margin-top: -150px;
+        margin-top: -10px;
+        height: 30px;
+        padding: 0 10px;
+        border-bottom: 1px solid #ccc;
+        &:after,
+        &:before{
+            content: '';
+            @extend %pa;
+            @extend %b0;
+            width: 1px;
+            height: 5px;
+            background-color: #ccc;
+        }
+        &:after{
+            @extend %r0;
+        }
+        &:before{
+            @extend %l0;
+        }
     }
     .nav-item{
-        @extend %db;
+        @extend %dib;
         @extend %pr;
-        width: 50%;
-        padding-top: 50%;
-        margin: 10px auto;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        margin: 5px 5px;
         &.router-link-active{
             .nav-item-icon{
                 @extend %w100;
                 @extend %h100;
                 @extend %t0;
                 @extend %l0;
+                fill: #ffd000;
                 fill: #000;
+            }
+        }
+        &:hover{
+            &.router-link-active{
+                .nav-item-icon{
+                    fill: #000;
+                }
+            }
+            .nav-item-icon{
+                fill: #666;
             }
         }
     }

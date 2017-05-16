@@ -1,32 +1,20 @@
 @import "./define";
 @import "./animate";
+html{
+    overflow-y: scroll;
+}
 html,body{
     @extend %w100;
-    @extend %h100;
-    @extend %oh;
     background-color: #f5f5f5;
 }
 #app{
-    @extend %pa;
-    @extend %t0;
-    @extend %l0;
-    @extend %b0;
-    @extend %r0;
+    @extend %pr;
 }
 .view-wrap{
-    @extend %df;
     @extend %ma;
+    @extend %oh;
+    padding-top: 80px;
     width: 800px;
-    height: 100%;
-    background-color: #fff;
-    &.view-full-screen{
-        @extend %pa;
-        @extend %df;
-        @extend %t0;
-        @extend %r0;
-        @extend %b0;
-        left: 50px;
-    }
 }
 .view-part{
     @extend %pr;
