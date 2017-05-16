@@ -10,37 +10,12 @@ html,body{
 #app{
     @extend %pr;
 }
-.view-wrap{
+.views-wrap{
     @extend %ma;
     @extend %oh;
     padding-top: 80px;
     width: 800px;
 }
-.view-part{
-    @extend %pr;
-    @extend .animated;
-    @extend .fadeIn;
-    transition: all .5s;
-    &.df{
-        @extend %df;
-        @extend %pa;
-        @extend %t0;
-        @extend %r0;
-        @extend %l0;
-        @extend %b0;
-    }
-    &.view-0{
-        @extend %df0;
-    }
-    &.view-1{
-        @extend %df1;
-    }
-    &.view-2{
-        @extend %df2;
-    }
-    &.view-3{
-        @extend %df3;
-    }
-}
+
 
 

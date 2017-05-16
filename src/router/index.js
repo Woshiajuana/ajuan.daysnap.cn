@@ -8,6 +8,7 @@ import Other from '../views/other/Other.vue'
 import Comment from '../views/comment/Comment.vue'
 import Result from '../views/search/children/Result.vue'
 import Category from '../views/category/Category.vue'
+import HomeList from '../views/home/children/HomeList.vue'
 
 Vue.use(Router);
 
@@ -26,23 +27,15 @@ export default new Router({
             children: [
                 /**文章内容页*/
                 {
-                    path: 'article/:id',
-                    name: 'article',
-                    component: Article,
-                    meta: {
-                        href: '#/index/article/'
-                    },
-                    /**文章评论页*/
-                    children: [
-                        {
-                            path: 'comment',
-                            name: 'comment',
-                            component: Comment,
-                            meta: {
-                                href: '#/index/article/'
-                            }
-                        },
-                    ]
+                    path: '',
+                    name: 'home-list',
+                    component: HomeList,
+                },
+                /**文章页*/
+                {
+                    path: 'comment/:article_id',
+                    name: 'comment',
+                    component: Comment
                 }
             ]
         },

@@ -26,6 +26,7 @@
         @extend %r0;
         z-index: 1;
         transform: translateZ(0);
+        background-color: #f5f5f5;
     }
     .header-container{
         @extend %ma;

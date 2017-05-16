@@ -54,9 +54,9 @@
         transition: fill .3s;
     }
     .article-list-item-title{
-        @extend %fwb;
         @extend %oh;
         @extend %c6;
+        font-size: 13px;
         transition: color .3s;
         line-height: 30px;
         &:hover{
