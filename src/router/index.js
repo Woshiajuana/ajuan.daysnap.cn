@@ -8,6 +8,7 @@ import Content from '../views/article/children/Content.vue'
 import Result from '../views/search/children/Result.vue'
 import Category from '../views/article/children/Category.vue'
 import List from '../views/article/children/List.vue'
+import Comment from '../views/article/children/Comment.vue'
 
 Vue.use(Router);
 
@@ -56,6 +57,12 @@ export default new Router({
                     path: ':category/content/:id',
                     name: 'content',
                     component: Content
+                },
+                /**文章评论页*/
+                {
+                    path: ':category/content/:id/comment',
+                    name: 'comment',
+                    component: Comment
                 }
             ]
         },

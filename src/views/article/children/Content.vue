@@ -1,5 +1,6 @@
 <template>
     <div class="content-view">
+        <a :href="'#/article/'+ $route.params.category + '/content/' + $route.params.id + '/comment' ">去评论</a>
         <p>xsxasxasxsa</p>
         <p>xsxasxasxsa</p>
         <p>xsxasxasxsa</p>
