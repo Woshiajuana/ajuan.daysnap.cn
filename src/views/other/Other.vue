@@ -51,17 +51,21 @@
     .other-view{
         line-height: 1.8;
     }
+    .category-box,
     .other-box{
         padding: 0 20px;
     }
+    .category-title,
     .other-title{
         @extend %f16;
         @extend %c9;
         margin-top: 10px;
     }
+    .category-con,
     .other-con{
         @extend %f14;
         @extend %c6;
+        padding-left: 30px;
         a{
             @extend %c6;
             &:hover{
