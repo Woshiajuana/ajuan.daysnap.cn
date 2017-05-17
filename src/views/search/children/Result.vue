@@ -5,7 +5,7 @@
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="'#/article/' + article_list_item.article_type + '/comment/' + article_list_item.article_id"
+            :article_href="'#/article/' + article_list_item.article_type + '/content/' + article_list_item.article_id"
         ></article-list-item>
         <p class="result-prompt" v-show="article_list_arr.length">没有了</p>
         <p class="result-null-prompt" v-show="!article_list_arr.length">

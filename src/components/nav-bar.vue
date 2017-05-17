@@ -116,7 +116,7 @@
                 @extend %h100;
                 @extend %t0;
                 @extend %l0;
-                fill: #000;
+                fill: #58b7ff;
                 &.top-icon{
                     top: 3%;
                     left: 3%;
@@ -128,7 +128,7 @@
         &:hover{
             &.router-link-active{
                 .nav-item-icon{
-                    fill: #000;
+                    fill: #58b7ff;
                 }
             }
             .nav-item-icon{
@@ -138,13 +138,11 @@
         &.nav-item-special{
             &:hover{
                 .nav-item-icon{
-                    fill: #13CE66;
-                    fill: #58b7ff;
+                    fill: #999;
                 }
             }
             .nav-item-icon{
-                fill: #13CE66;
-                fill: #58b7ff;
+                fill: #999;
             }
         }
     }

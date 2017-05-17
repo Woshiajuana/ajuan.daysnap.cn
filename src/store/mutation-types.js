@@ -1,8 +1,8 @@
 /**
  * Created by Administrator on 2017/4/17.
  */
-const SET_TAB_INDEX = 'SET_TAB_INDEX';
+const SET_TITLE = 'SET_TITLE';
 
 export default {
-    SET_TAB_INDEX
+    SET_TITLE
 }

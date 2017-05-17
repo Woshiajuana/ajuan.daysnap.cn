@@ -1,16 +1,17 @@
 <template>
-    <div class="article-view">
+    <div class="list-view">
         <article-list-item
             v-for="(article_list_item,article_list_index) in article_list_arr"
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="'#/article/' + article_list_item.article_type + '/comment/' + article_list_item.article_id"
+            :article_href="'#/article/' + article_list_item.article_type + '/content/' + article_list_item.article_id"
         ></article-list-item>
     </div>
 </template>
 <script>
     import ArticleListItem from '../../../components/article-list-item.vue'
+    import types from '../../../store/mutation-types'
     export default {
         name: 'home',
         data () {
@@ -103,11 +104,11 @@
                 ]
             }
         },
+        created () {
+            this.$store.commit( types.SET_TITLE, this.$route.params.category + '：' )
+        },
         components: {
             ArticleListItem
         }
     }
 </script>
-<style lang="scss">
-    @import "../../../assets/scss/define";
-</style>

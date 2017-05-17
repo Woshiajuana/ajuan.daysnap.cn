@@ -5,7 +5,7 @@ import Search from '../views/search/Search.vue'
 import Article from '../views/article/Article.vue'
 import Directory from '../views/directory/Directory.vue'
 import Other from '../views/other/Other.vue'
-import Comment from '../views/article/children/Comment.vue'
+import Content from '../views/article/children/Content.vue'
 import Result from '../views/search/children/Result.vue'
 import Category from '../views/article/children/Category.vue'
 import List from '../views/article/children/List.vue'
@@ -54,9 +54,9 @@ export default new Router({
                 },
                 /**文章内容页*/
                 {
-                    path: ':category/comment/:id',
-                    name: 'comment',
-                    component: Comment
+                    path: ':category/content/:id',
+                    name: 'content',
+                    component: Content
                 }
             ]
         },

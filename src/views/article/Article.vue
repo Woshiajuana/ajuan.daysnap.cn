@@ -10,4 +10,9 @@
 </script>
 <style lang="scss">
     @import "../../assets/scss/define";
+    .content-view,
+    .comment-view,
+    .category-view{
+        padding: 10px 20px;
+    }
 </style>

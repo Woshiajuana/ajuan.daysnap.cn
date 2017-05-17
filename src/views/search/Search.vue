@@ -23,6 +23,7 @@
 </template>
 <script>
     import SearchBox from '../../components/search-box.vue'
+    import types from '../../store/mutation-types'
     export default {
         name: 'search',
         data () {
@@ -30,6 +31,9 @@
                 search_key_words: '',
                 is_search: false
             }
+        },
+        created () {
+            this.$store.commit( types.SET_TITLE, '搜索：' )
         },
         methods: {
             searchByKeyWords (key_words) {

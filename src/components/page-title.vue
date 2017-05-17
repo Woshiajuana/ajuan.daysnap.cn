@@ -1,5 +1,5 @@
 <template>
-    <h2 class="page-title" v-text="title"></h2>
+    <h1 class="page-title" v-text="title"></h1>
 </template>
 <script>
     export default {
@@ -11,7 +11,14 @@
     @import "../assets/scss/define";
     .page-title{
         @extend %f16;
+        @extend %fwn;
         @extend %c3;
-        padding: 10px 0;
+        @extend %oh;
+        @extend %cd;
+        line-height: 80px;
+        height: 80px;
+        width: 420px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 </style>

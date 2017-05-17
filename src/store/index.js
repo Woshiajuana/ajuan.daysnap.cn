@@ -10,7 +10,7 @@ Vue.use(Vuex);
  * 数据存储
  * */
 const state = {
-   tab_index: '1-1'
+   title: ''
 };
 
 /**
@@ -24,9 +24,9 @@ const modules = {
  * 提交同步请求
  * */
 const mutations = {
-    /**全局设置MENU的tab选项值*/
-    [ types.SET_TAB_INDEX ] (state,tab_index) {
-        state.tab_index = tab_index;
+    /**全局设置title*/
+    [ types.SET_TITLE ] ( state, title ) {
+        state.title = title;
     }
 };
 

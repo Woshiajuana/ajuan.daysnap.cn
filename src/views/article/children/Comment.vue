@@ -1,54 +1,12 @@
 <template>
-    <div class="article-view">
-        <close></close>
-        <h2>评论</h2>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-        <p>xsxasxasxsa</p>
-    </div>
+    <div class="comment-view"></div>
 </template>
 <script>
-    import Close from '../../../components/close.vue'
+    import types from '../../../store/mutation-types'
     export default {
         name: 'comment',
-        components: {
-            Close
+        created () {
+            this.$store.commit( types.SET_TITLE, '评论：' )
         }
     }
 </script>
-<style lang="scss">
-    @import "../../../assets/scss/define";
-    .comment-wrap{
-    }
-</style>

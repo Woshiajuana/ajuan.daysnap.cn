@@ -5,7 +5,7 @@
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="'#/article/' + article_list_item.article_type + '/comment/' + article_list_item.article_id"
+            :article_href="'#/article/' + article_list_item.article_type + '/content/' + article_list_item.article_id"
         ></article-list-item>
         <p class="loading-prompt">
             <svg class="load-icon">
@@ -17,6 +17,7 @@
 </template>
 <script>
     import ArticleListItem from '../../components/article-list-item.vue'
+    import types from '../../store/mutation-types'
     export default {
         name: 'home',
         data () {
@@ -108,7 +109,10 @@
                      }
                  ]
              }
-         },
+        },
+        created () {
+            this.$store.commit( types.SET_TITLE, '首页：' )
+        },
         components: {
             ArticleListItem
         }

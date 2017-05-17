@@ -1,19 +1,24 @@
 <template>
     <header class="header-wrap">
         <div class="header-container">
-            <logo></logo>
+            <page-title :title="title"></page-title>
             <nav-bar></nav-bar>
         </div>
     </header>
 </template>
 <script>
     import NavBar from './nav-bar.vue'
-    import Logo from './logo.vue'
+    import PageTitle from './page-title.vue'
     export default {
         name: 'my-header',
+        computed: {
+            title () {
+                return this.$store.state.title;
+            }
+        },
         components: {
             NavBar,
-            Logo
+            PageTitle
         }
     }
 </script>

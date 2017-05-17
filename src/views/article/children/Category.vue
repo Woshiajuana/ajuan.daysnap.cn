@@ -1,5 +1,5 @@
 <template>
-    <div class="article-view">
+    <div class="category-view">
         <div class="category-list-con">
             <a href="#/article/html">HTML</a>
             <a href="#/article/js">JS</a>
@@ -17,17 +17,16 @@
     </div>
 </template>
 <script>
+    import types from '../../../store/mutation-types'
     export default {
-        name: 'category'
+        name: 'category',
+        created () {
+            this.$store.commit( types.SET_TITLE, '分类：' )
+        }
     }
 </script>
 <style lang="scss">
     @import "../../../assets/scss/define";
-
-    .category-wrap{
-        @extend %oya;
-        padding: 10px 20px;
-    }
     .category-list-con{
         a{
             @extend %db;
