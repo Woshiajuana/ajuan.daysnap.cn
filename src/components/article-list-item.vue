@@ -33,6 +33,7 @@
     .article-list-item-type{
         @extend %vam;
         color: #bbb;
+        text-align: left;
     }
     .article-list-item-type{
         transition: color .3s;
@@ -47,7 +48,7 @@
     .article-list-item{
         @extend %pr;
         @extend %db;
-        padding: 20px;
+        padding: 10px 20px;
         max-width: 800px;
         border-bottom: 1px solid #ddd;
         &:last-child{
@@ -68,8 +69,9 @@
     .article-list-item-prompt{
         @extend %oh;
         @extend %f12;
+        @extend %tar;
         @extend %c9;
-        height: 30px;
-        line-height: 30px;
+        height: 20px;
+        line-height: 20px;
     }
 </style>
