@@ -2,14 +2,14 @@
     <div class="article-list-item">
         <a :href="article_href" class="article-list-item-title" v-text="article_title"></a>
         <p class="article-list-item-prompt">
-            <svg class="article-list-item-time-icon">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-icon"></use>
-            </svg>
-            <span class="article-list-item-time" v-text="article_time"></span>
             <svg class="article-list-item-type-icon">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bookmark-icon"></use>
             </svg>
             <a :href="'#/article/'+article_type" class="article-list-item-type" v-text="article_type.toUpperCase()"></a>
+            <svg class="article-list-item-time-icon">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-icon"></use>
+            </svg>
+            <span class="article-list-item-time" v-text="article_time"></span>
         </p>
     </div>
 </template>
@@ -32,18 +32,23 @@
     .article-list-item-time,
     .article-list-item-type{
         @extend %vam;
+        @extend %oh;
         color: #bbb;
         text-align: left;
+        height: 20px;
+        line-height: 20px;
     }
     .article-list-item-type{
+        @extend %dib;
         transition: color .3s;
+        width: 100px;
         &:hover{
             @extend %c6;
         }
     }
     .article-list-item-time{
         @extend %dib;
-        width: 200px;
+        width: 110px;
     }
     .article-list-item{
         @extend %pr;
