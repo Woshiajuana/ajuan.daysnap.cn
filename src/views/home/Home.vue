@@ -30,7 +30,7 @@
         data () {
              return {
                  page_num: +this.$route.query.page_num || 1,
-                 page_size: 12,
+                 page_size: 15,
                  page_count: '',
                  article_total: 0,
                  article_list_arr: []
@@ -51,6 +51,7 @@
                     page_size: this.page_size
                 },(result) => {
                     if ( result.status ) {
+                        this.$top(0,true);
                         var data = result.data;
                         this.article_list_arr = data.article_arr;
                         this.page_count = data.page_count;
@@ -59,7 +60,6 @@
                 });
             },
             handleCurrentChange (val) {
-                this.$top(0,true);
                 this.page_num = val;
                 Tool.jumpPage('?page_num=' + this.page_num);
             }

@@ -7,123 +7,73 @@
             :article_title="article_list_item.article_title"
             :article_href="'#/article/' + article_list_item.article_type + '/content/' + article_list_item.article_id"
         ></article-list-item>
-        <p class="result-prompt" v-show="article_list_arr.length">没有了</p>
         <p class="result-null-prompt" v-show="!article_list_arr.length">
             <svg class="null-icon">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#null-icon"></use>
             </svg>
             <span>没有搜索到结果</span>
         </p>
+        <div class="page-wrap" v-show="article_list_arr.length">
+            <el-pagination
+                @current-change="handleCurrentChange"
+                :current-page="page_num"
+                :page-size="page_size"
+                layout="total, prev, pager, next, jumper"
+                :total="article_total">
+            </el-pagination>
+        </div>
     </div>
 </template>
 <script>
     import ArticleListItem from '../../../components/article-list-item.vue'
+    import Util from '../../../assets/lib/Util'
+    import Tool from '../../../assets/lib/Tool'
     export default {
         name: 'result',
         data () {
             return {
-                article_list_arr: [
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '1'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '2'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '3'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '4'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '5'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '6'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '7'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '8'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '9'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '10'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '11'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '12'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '13'
-                    },
-                    {
-                        article_type: 'html',
-                        article_time: '2017-05-12 14:36',
-                        article_title: '如何有效的学习html',
-                        article_id: '14'
-                    }
-                ]
+                is_loading: true,
+                page_num: +this.$route.query.page_num || 1,
+                page_size: 15,
+                page_count: '',
+                article_total: 0,
+                article_list_arr: []
             }
         },
         created () {
             this.$emit('hasKeyWords',this.$route.params.key_words);
-            this.searchArticle();
+            this.fetchArticlesList();
         },
         watch :{
-            '$route': 'searchArticle'
+            '$route': 'fetchArticlesList'
         },
         components: {
             ArticleListItem
         },
         methods: {
-            searchArticle () {
-                this.$emit('hasKeyWords',this.$route.params.key_words);
-                console.log('正在搜索' + this.$route.params.key_words)
+            /**获取文章列表信息*/
+            fetchArticlesList (route) {
+                var tab = this.$route.params.category || '';
+                var key_word = route ? route.params.key_words: this.$route.params.key_words;
+                Util.fetchArticlesList({
+                    tab: tab,
+                    page_num: this.page_num,
+                    page_size: this.page_size,
+                    key_word: key_word
+                }, (result) => {
+                    if ( result.status ) {
+                        this.$top(0,true);
+                        this.is_loading = false;
+                        var data = result.data;
+                        this.article_list_arr = data.article_arr;
+                        this.page_count = data.page_count;
+                        this.article_total = data.article_total;
+                    }
+                });
+            },
+            handleCurrentChange (val) {
+                this.page_num = val;
+                Tool.jumpPage('article/'+ this.$route.params.category +'?page_num=' + this.page_num);
             }
         }
     }

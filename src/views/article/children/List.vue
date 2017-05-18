@@ -14,18 +14,32 @@
             </svg>
             <span>没有了</span>
         </p>
+        <div class="page-wrap" v-show="article_list_arr.length">
+            <el-pagination
+                @current-change="handleCurrentChange"
+                :current-page="page_num"
+                :page-size="page_size"
+                layout="total, prev, pager, next, jumper"
+                :total="article_total">
+            </el-pagination>
+        </div>
     </div>
 </template>
 <script>
     import ArticleListItem from '../../../components/article-list-item.vue'
     import types from '../../../store/mutation-types'
     import Util from '../../../assets/lib/Util'
+    import Tool from '../../../assets/lib/Tool'
     import Loading from '../../../components/loading.vue'
     export default {
         name: 'home',
         data () {
             return {
-                is_loading: false,
+                is_loading: true,
+                page_num: +this.$route.query.page_num || 1,
+                page_size: 15,
+                page_count: '',
+                article_total: 0,
                 article_list_arr: []
             }
         },
@@ -33,22 +47,31 @@
             this.fetchArticlesList();
             this.$store.commit( types.SET_TITLE, this.$route.params.category + '：' )
         },
+        watch: {
+            '$route': 'fetchArticlesList'
+        },
         methods: {
             /**获取文章列表信息*/
-            fetchArticlesList () {
-                this.is_loading = true;
-                var tab = this.$route.params.category;
+            fetchArticlesList (route) {
+                var tab = this.$route.params.category || '';
                 Util.fetchArticlesList({
-                    tab: tab
+                    tab: tab,
+                    page_num: this.page_num,
+                    page_size: this.page_size
                 }, (result) => {
-                    setTimeout( () => {
+                    if ( result.status ) {
+                        this.$top(0,true);
                         this.is_loading = false;
-                        if ( result.status ) {
-                            var data = result.data;
-                            this.article_list_arr = data.article_arr;
-                        }
-                    },300);
+                        var data = result.data;
+                        this.article_list_arr = data.article_arr;
+                        this.page_count = data.page_count;
+                        this.article_total = data.article_total;
+                    }
                 });
+            },
+            handleCurrentChange (val) {
+                this.page_num = val;
+                Tool.jumpPage('article/'+ this.$route.params.category +'?page_num=' + this.page_num);
             }
         },
         components: {
