@@ -5,7 +5,7 @@
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="'#/article/' + article_list_item.article_type + '/content/' + article_list_item.article_id"
+            :_id="article_list_item._id"
         ></article-list-item>
         <p class="result-null-prompt" v-show="!article_list_arr.length">
             <svg class="null-icon">

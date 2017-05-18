@@ -1,6 +1,6 @@
 <template>
     <div class="search-box">
-        <input type="text" v-model="search_key_words" placeholder="请输入检索关键词" class="search-input">
+        <input type="text" @keyup.enter="searchByKeyWords()" v-model="search_key_words" placeholder="请输入检索关键词" class="search-input">
         <i @click="clearInput()" class="search-clear" v-show="search_key_words">
             <svg slot="icon" class="close-btn-icon">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use>

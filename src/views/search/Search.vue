@@ -5,14 +5,9 @@
                 <search-box @searchByKeyWords="searchByKeyWords" v-model="search_key_words"></search-box>
                 <div class="key-words-wrap">
                     <span>关键字：</span>
-                    <a href="#/">v建环境</a>
-                    <a href="#/">vue如建环境</a>
-                    <a href="#/">vue如何搭建环境</a>
-                    <a href="#/">vue建环境</a>
-                    <a href="#/">vue建环境</a>
-                    <a href="#/">vue建环境</a>
-                    <a href="#/">html</a>
-                    <a href="#/">html</a>
+                    <a href="#/search/vue">vue.js</a>
+                    <a href="#/search/node">node.js</a>
+                    <a href="#/search/java">java</a>
                 </div>
             </div>
             <div class="result-wrap">
