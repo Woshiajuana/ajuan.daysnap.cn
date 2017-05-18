@@ -87,6 +87,7 @@
         height: 20px;
         line-height: 20px;
     }
+    .result-prompt,
     .result-null-prompt{
         @extend .animated;
         @extend .fadeIn;

@@ -16,6 +16,10 @@ html,body{
     padding: 80px 20px 0;
     width: 760px;
 }
+.page-wrap{
+    @extend %tac;
+    padding: 30px 0;
+}
 
 @keyframes rotate360 {
     0%{

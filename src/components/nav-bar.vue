@@ -69,7 +69,7 @@
                 window.location.reload(true);
             },
             returnTop () {
-                this.$top(0)
+                this.$top(0,true)
             }
         }
     }
