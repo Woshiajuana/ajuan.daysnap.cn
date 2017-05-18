@@ -29,4 +29,8 @@
         fill: #999;
         animation: rotate360 1s linear infinite;
     }
+    .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
 </style>

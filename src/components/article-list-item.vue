@@ -1,6 +1,6 @@
 <template>
     <div class="article-list-item">
-        <a :href="article_href" class="article-list-item-title" v-text="article_title"></a>
+        <a :href="'#/article/' + article_type + '/content/' + _id" class="article-list-item-title" v-text="article_title"></a>
         <p class="article-list-item-prompt">
             <svg class="article-list-item-type-icon">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bookmark-icon"></use>
@@ -9,14 +9,20 @@
             <svg class="article-list-item-time-icon">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-icon"></use>
             </svg>
-            <span class="article-list-item-time" v-text="article_time"></span>
+            <span class="article-list-item-time">{{article_time | articleTime}}</span>
         </p>
     </div>
 </template>
 <script>
+    import Tool from '../assets/lib/Tool'
     export default {
         name: 'article-list-item',
-        props: [ 'article_href', 'article_type', 'article_title', 'article_time']
+        props: [ 'article_href', 'article_type', 'article_title', 'article_time','_id'],
+        filters: {
+            articleTime (article_time) {
+                return Tool.format('yyyy-MM-dd hh:mm',new Date(article_time))
+            }
+        }
     }
 </script>
 <style lang="scss">
@@ -53,6 +59,8 @@
     .article-list-item{
         @extend %pr;
         @extend %db;
+        @extend .animated;
+        @extend .fadeIn;
         padding: 10px 20px;
         max-width: 800px;
         border-bottom: 1px solid #ddd;
@@ -78,5 +86,25 @@
         @extend %c9;
         height: 20px;
         line-height: 20px;
+    }
+    .result-null-prompt{
+        @extend .animated;
+        @extend .fadeIn;
+    }
+    .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+    .fadeIn {
+        animation-name: fadeIn;
     }
 </style>

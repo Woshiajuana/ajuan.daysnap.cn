@@ -5,7 +5,7 @@
             :article_type="article_list_item.article_type"
             :article_time="article_list_item.article_time"
             :article_title="article_list_item.article_title"
-            :article_href="'#/article/' + article_list_item.article_type + '/content/' + article_list_item.article_id"
+            :_id="article_list_item._id"
         ></article-list-item>
         <loading></loading>
     </div>
@@ -14,100 +14,28 @@
     import ArticleListItem from '../../components/article-list-item.vue'
     import types from '../../store/mutation-types'
     import loading from '../../components/loading.vue'
+    import Util from '../../assets/lib/Util'
     export default {
         name: 'home',
         data () {
              return {
-                 article_list_arr: [
-                     {
-                         article_type: 'css',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '1'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '2'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '3'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '4'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '5'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '6'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '7'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '8'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '9'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '10'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '11'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '12'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '13'
-                     },
-                     {
-                         article_type: 'html',
-                         article_time: '2017-05-12 14:36',
-                         article_title: '如何有效的学习html',
-                         article_id: '14'
-                     }
-                 ]
+                 article_list_arr: []
              }
         },
         created () {
-            this.$store.commit( types.SET_TITLE, '首页：' )
+            this.$store.commit( types.SET_TITLE, '首页：' );
+            this.fetchArticlesList();
+        },
+        methods: {
+            /**获取文章列表信息*/
+            fetchArticlesList () {
+                Util.fetchArticlesList({},(result) => {
+                    if ( result.status ) {
+                        var data = result.data;
+                        this.article_list_arr = data.article_arr;
+                    }
+                });
+            }
         },
         components: {
             ArticleListItem,

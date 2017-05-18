@@ -54,13 +54,13 @@ export default new Router({
                 },
                 /**文章内容页*/
                 {
-                    path: ':category/content/:id',
+                    path: ':category/content/:_id',
                     name: 'content',
                     component: Content
                 },
                 /**文章评论页*/
                 {
-                    path: ':category/content/:id/comment',
+                    path: ':category/content/:_id/comment',
                     name: 'comment',
                     component: Comment
                 }

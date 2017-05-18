@@ -142,8 +142,8 @@
     .null-icon{
         @extend %db;
         @extend %ma;
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
         fill: #999;
     }
     .result-prompt{
