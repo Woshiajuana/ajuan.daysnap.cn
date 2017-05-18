@@ -1,6 +1,6 @@
 <template>
     <nav class="nav-wrap">
-        <router-link title="首页" exact class="nav-item" to="/">
+        <router-link title="首页" class="nav-item" to="/index">
             <span class="nav-item-con">
                 <svg class="nav-item-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#home-icon"></use>

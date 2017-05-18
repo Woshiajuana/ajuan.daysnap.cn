@@ -14,9 +14,14 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        /**首页*/
+        /**首页(重定向)*/
         {
             path: '/',
+            redirect: { name: 'home' }
+        },
+        /**首页*/
+        {
+            path: '/index',
             name: 'home',
             component: Home
         },
