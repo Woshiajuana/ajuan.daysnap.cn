@@ -47,13 +47,17 @@
 <style lang="scss">
     @import '../../../assets/scss/define';
     .content-view{
+        font-size: 13px;
+        line-height: 1.8;
         pre{
+            @extend %f12;
             padding: 10px;
             background-color: #ddd;
             border-radius: 5px;
+            line-height: 1.4;
         }
         h2, h3 {
-            font-size: 22px
+            font-size: 22px;
         }
         h4, h5, h6 {
             font-size: 18px
