@@ -1,0 +1,13 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "private": true,
+  "description": "博客文章放到的位置",
+  "main": "./scripts/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Woshiajuana",
+  "license": "ISC"
+}

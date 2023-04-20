@@ -1,0 +1,12 @@
+{
+  "name": "blog.daysnap.cn",
+  "private": true,
+  "description": "博客网站",
+  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["daysnap", "blog", "ajuan", "woshiajuana"],
+  "author": "Woshiajuana",
+  "license": "ISC"
+}
