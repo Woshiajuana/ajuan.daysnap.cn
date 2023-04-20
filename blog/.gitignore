@@ -3,9 +3,11 @@
 /.pnp
 .pnp.js
 
-
 # idea
 .idea/
 
 # lock
 package-lock.json
+
+# auto gen
+mocks/

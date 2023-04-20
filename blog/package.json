@@ -14,10 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "@daysnap/utils": "^0.0.50",
-    "dayjs": "^1.11.7",
     "fast-glob": "^3.2.12",
+    "fs-extra": "^11.1.1",
     "gray-matter": "^4.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1"
   }
 }
