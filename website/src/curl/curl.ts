@@ -21,17 +21,18 @@ export const curl = async <T>(
     body = JSON.stringify(params)
   }
 
-  const response = await fetch(
-    url.startsWith('http') ? url : `${BASE_URL}${url}`,
-    {
-      body,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      ...options,
+  if (!url.startsWith('http')) {
+    url = `${BASE_URL}${url}`
+  }
+
+  const response = await fetch(url, {
+    body,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-  )
+    ...options,
+  })
 
   const { data, msg, code }: ResponseData<T> = await response.json()
 

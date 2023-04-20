@@ -24,3 +24,13 @@ export interface ResponseData<T> {
   data: T
   msg: string
 }
+
+export interface PagingParams<T = unknown> {
+  pageIndex: number
+  pageSize: number
+}
+
+export interface PagingResult<T = unknown> {
+  total: number
+  list: T[]
+}
