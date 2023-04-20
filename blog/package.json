@@ -13,8 +13,11 @@
   "author": "Woshiajuana",
   "license": "ISC",
   "dependencies": {
-    "typescript": "^5.0.4",
+    "@daysnap/utils": "^0.0.50",
+    "dayjs": "^1.11.7",
+    "fast-glob": "^3.2.12",
+    "gray-matter": "^4.0.3",
     "ts-node": "^10.9.1",
-    "gray-matter": "^4.0.3"
+    "typescript": "^5.0.4"
   }
 }
