@@ -2,16 +2,19 @@
   "name": "blog",
   "version": "0.0.1",
   "private": true,
-  "description": "博客文章放到的位置",
+  "description": "博客文章内容",
   "main": "./scripts/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run gen && npm run serve",
+    "gen": "ts-node ./scripts/index.ts",
+    "serve": "serve -p 12580"
   },
   "keywords": [],
   "author": "Woshiajuana",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "typescript": "^5.0.4",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "gray-matter": "^4.0.3"
   }
 }

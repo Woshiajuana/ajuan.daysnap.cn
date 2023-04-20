@@ -2,11 +2,20 @@
   "name": "blog.daysnap.cn",
   "private": true,
   "description": "博客网站",
-  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently --kill-others \"npm:dev:*\"",
+    "dev:blog": "pnpm -C ./blog dev",
+    "dev:website": "pnpm -C ./website dev"
   },
-  "keywords": ["daysnap", "blog", "ajuan", "woshiajuana"],
+  "keywords": [
+    "daysnap",
+    "blog",
+    "ajuan",
+    "woshiajuana"
+  ],
   "author": "Woshiajuana",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
 }
