@@ -1,0 +1,11 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+
+# idea
+.idea/
+
+# lock
+package-lock.json

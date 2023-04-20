@@ -1,0 +1,389 @@
+# 基础教程
+
+
+## 响应式
+
+使用了 `ES5` 的 `Object.definePropery` 重写所有属性的 `getter` 和 `setter` 方法；
+
+```js
+function convert(obj) {
+    Object.keys(obj).forEach(key => {
+        let internalValue = obj[key];
+        Object.defineProperty(obj, key, {
+            get () {
+                console.log(`getting key "${key}": ${internalValue}`);
+                return internalValue;
+            },
+            set (newValue) {
+                console.log(`setting key "${key}" to: ${newValue}`);
+                internalValue = newValue;
+            },
+        })
+    });
+}
+```
+
+## 
+
+```js
+let activeUpdate = null;
+window.Dep = class Dep {
+    constructor () {
+        this.subscribers = new Set();
+    }
+    depend () {
+        if (activeUpdate) {
+            this.subscribers.add(activeUpdate);
+        }
+    }
+    notify () {
+        this.subscribers.forEach(sub => sub());
+    }
+}
+function autorun (update) {
+    function wrappedUpdate () {
+        activeUpdate = wrappedUpdate;
+        update();
+        activeUpdate = null;
+    }
+    wrappedUpdate();
+}
+```
+
+## 插件简介
+
+```js
+function plugin (Vue, options) {
+    // ...plugin code
+}
+Vue.use(plugin);
+```
+
+
+##  Render Function
+
+template
+-> (compiled into) Render Function
+-> (returns) Virtual DOM
+-> (generates) Actual DOM
+
+
+Actual DOM
+```
+'[object HTMLDivElement]'
+```
+
+Virtual DOM
+```
+'{ tag: 'div', data: { attrs: {}, ... }, children: [] }'
+```
+
+Render Function API
+```
+export defualt {
+    render (h) {
+        return h('div', {}, [...]);
+    }
+}
+```
+
+案例
+```html
+<template>
+    <example :tags="['h1', 'h2', 'h3']"></example>
+</template>
+<script>
+    Vue.component('example', {
+        props: ['tags'],
+        render (h) {
+            const children = this.tags.map((tag, index) => h(tag, index));
+            return h('div', children);
+        }
+    })
+</script>
+```
+
+
+## 函数组件
+
+```js
+Vue.component('example', {
+    // props: ['tags'], // 函数组件这里可以不用声明
+    functional: true,
+    render (h, context) {
+        const { props, slots } = context;
+        const children = props.tags.map((tag, index) => h(tag, index));
+        return h('div', children);
+    }
+})
+```
+
+
+## 高阶组件
+
+```html
+
+<div id="app">
+    <smart-avatar username="vuejs"></smart-avatar>
+</div>
+
+<script>
+
+// mock API
+function fetchURL (username, cb) {
+    setTimeout(() => {
+        cb(`https://img.owulia.com/daysnap/607d0ca6d3ad886378eb0cd8/AVATAR/20210419163036.jpeg?w=64`);
+    }, 500);
+}
+
+const Avatar = {
+    props: ['src'],
+    template: `<img :src="src"/>`,
+}
+
+function withAvatarURL (InnerComponent) {
+   return {
+       props: ['username'],
+       data () {
+            return {
+                url: 'http://default.avatar'
+            }
+       },
+       created () {
+            fetchURL(this.username, url => {
+                this.url = url;
+            });
+       },
+       render (h) {
+            return h(InnerComponent, {
+               props: {
+                   src: this.url,
+                   attrs: this.$attrs,
+               }
+            }, this.$slots.default);
+       }
+   }
+}
+
+const SmartAvatar = withAvatarURL(Avatar);
+
+new Vue({
+    el: '#app',
+    components: {
+        SmartAvatar,
+    },
+});
+</script>
+
+```
+
+
+## Vuex
+
+- `mutations` 、`actions` 把异步代码和状态更改代码分开；
+- `mutations` 只关注状态的变更，接收参数改变状态；
+- `actions` 可以做很多事情；
+
+
+简易版本
+
+```js
+function createStore ({ state, mutations }) {
+    // 
+    return new Vue({
+        data: { state },
+        methods: {
+            commit (mutationType) {
+                mutations[mutationType](this.state); 
+            },
+        }
+    })
+}
+
+const store = createStore({
+    state: { count: 0 },
+    mutations: {
+        inc (state) {
+            state.count++;
+        }
+    } 
+});
+
+const Counter = {
+    render (h) {
+        return h('div', store.state.count);
+    }
+};
+
+new Vue({
+    el: '#app',
+    components: {
+        Counter,
+    },
+    methods: {
+        inc () {
+            store.commit('inc'); 
+        }
+    }
+});
+
+```
+
+
+## 函数式编程
+
+```js
+
+function app ({ el, model, view, actions }) {
+    const wrappedActions = {};
+    Object.keys(actions).forEach(key => {
+        const originalAction = actions[key];
+        wrappedActions[key] = () => {
+            const nextModel = originalAction(vm.model);
+            vm.model = nextModel;
+        }
+    });
+    const vm = new Vue({
+        el,
+        data: {
+            model,
+        },
+        render (h) {
+            return view(h, this.model, actions);
+        },
+    });
+}
+
+app({
+    el: '#app',
+    model: {
+        count: 0,
+    },
+    actions: {
+        inc: ({ count }) => ({ count: count + 1 }),
+        dec: ({ count }) => ({ count: count - 1 }),
+    },
+    view: (h, model, actions) => h('div', {
+        attrs: { id: 'app'},
+    }, [
+        model.count, ' ',
+        h('button', { on: { click: actions.inc } }, '+'),
+        h('button', { on: { click: actions.dec } }, '-'),
+    ])
+})
+```
+
+
+## 哈希路由
+
+```html
+
+<div id="root">
+    <component :is="url"></component>
+    <a href="#foo">foo</a>
+    <a href="#bar">bar</a>
+</div>
+
+<script>
+
+window.addEventListener('hashchange', () => {
+    app.url = window.location.hash.slice(1);
+});
+
+const app = new Vue({
+    el: '#app',
+    data: {
+        url: window.location.hash.slice(1),
+    },
+    components: {
+        foo: { template: `<div>foo</div>` },
+        bar: { template: `<div>bar</div>` },
+    }
+});
+</script>
+
+```
+
+```html
+<div id="root"></div>
+
+<script>
+
+const Foo = { template: `<div>foo</div>` };
+const Bar = { template: `<div>bar</div>` };
+const NotFound = { template: `<div>not found!</div>` };
+
+const routeTable = {
+    'foo': Foo,
+    'bar': Bar,
+};
+
+window.addEventListener('hashchange', () => {
+    app.url = window.location.hash.slice(1);
+});
+
+const app = new Vue({
+    el: '#app',
+    data: {
+        url: window.location.hash.slice(1),
+    },
+    render(h) {
+        return h('div', [
+            h(routeTable[this.url] || NotFound),
+            h('a', { attrs: { href: '#foo' }}, 'foo'),
+            ' | ',
+            h('a', { attrs: { href: '#bar' }}, 'bar'),
+        ]);
+    }
+});
+</script>
+
+```
+
+
+```
+// path-to-regexp
+```
+
+
+
+## 表单验证
+
+- Markup-based(vee-validate)
+- Model-based(vuelidate)
+
+```html
+<script>
+    const validationPlugin = {
+        install(vue) {
+            Vue.mixin({
+                beforeCreate () {
+                    const rules = this.$options.validations;
+                    if (rules) {
+                        this.$options.computed = Object.assign({}, this.$options.computed, {
+                            $v() {
+                                let valid = true;
+                                const errors = [];
+                                Object.keys(rules).forEach(key => {
+                                    const rule = rules[key];
+                                    const value = this[key];
+                                    const result = rule.validate(value);
+                                    if (!result) {
+                                        valid = false;
+                                        errors.push(rule, message(key, value));
+                                    }
+                                });
+                                return {
+                                    valid,
+                                    errors,
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+        }
+        
+    }
+</script>
+```
