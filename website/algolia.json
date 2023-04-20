@@ -1,0 +1,18 @@
+{
+  "index_name": "nextjs-blog",
+  "start_urls": ["https://blog.daysnap.cn/"],
+  "rateLimit": 8,
+  "maxDepth": 10,
+  "selectors": {
+    "lvl0": {
+      "selector": "",
+      "defaultValue": "Documentation"
+    },
+    "lvl1": "main h1",
+    "lvl2": "main h2",
+    "lvl3": "main h3",
+    "lvl4": "main h4",
+    "lvl5": "main h5",
+    "content": "main p, main li"
+  }
+}
