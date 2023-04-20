@@ -16,12 +16,15 @@ async function run(input: string) {
     const [, category] = url.split('/')
     dirs[category]++
     return { ...data, url, category }
-  }).sort((x, y) => {
-    
   })
+  // .sort((x, y) => {
+    
+  // })
 
   // 目录
   const categories = Object.entries(dirs).map(([name, number]) => ({ name, number }))
+
+  console.log('docs => ', docs)
 }
 
 run(resolve('articles'))

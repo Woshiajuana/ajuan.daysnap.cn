@@ -1,6 +1,6 @@
 ---
-title: 'React'
-date: '2021-01-12 12:22'
+title: React
+date: 2021-01-12 12:22
 ---
 
 # React
