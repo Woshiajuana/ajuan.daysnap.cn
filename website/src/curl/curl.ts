@@ -1,5 +1,6 @@
-import { ResponseData } from '@/types'
 import qs from 'querystring'
+import { formatPathParams } from '@daysnap/utils'
+import { ResponseData } from '@/types'
 import { RESPONSE_CODE, BASE_URL } from '@/constants'
 
 export const curl = async <T>(
@@ -11,15 +12,7 @@ export const curl = async <T>(
   options = Object.assign({ method: 'get' }, options)
 
   // path 参数替换
-  if (params) {
-    Object.keys(params).forEach((key) => {
-      const k = `{${key}}`
-      if (url.includes(k)) {
-        url = url.replace(k, params[key])
-        delete params[key]
-      }
-    })
-  }
+  ;({ path: url, rest: params } = formatPathParams(url, params))
 
   let body: BodyInit | null = null
   if (options.method!.toLocaleLowerCase() === 'get' && params) {
@@ -42,6 +35,7 @@ export const curl = async <T>(
 
   const { data, msg, code }: ResponseData<T> = await response.json()
 
+  console.log('code => ', code, url)
   if (code !== RESPONSE_CODE.SUCCESS) {
     throw new Error(msg)
   }

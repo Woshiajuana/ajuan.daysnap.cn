@@ -30,7 +30,7 @@ async function run(options: {
 
   // gen json
   const genJson = (filename: string, data: any) => {
-    fs.writeFileSync(path.join(output, filename), JSON.stringify({ code: 0, data }, null, 2))
+    fs.writeFileSync(path.join(output, filename), JSON.stringify({ code: 'S00000', data }, null, 2))
   }
   fs.ensureDirSync(output)
   genJson('articles.json', articles)
