@@ -68,7 +68,7 @@ jobs:
           script: |
             cd /web/blog
             npm i
-            pm2 reload blog
+            npm run restart
   
   # algolia:
   #     needs: deploy
