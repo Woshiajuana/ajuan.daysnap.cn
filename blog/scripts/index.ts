@@ -26,7 +26,7 @@ async function run(options: {
   })
 
   // 目录
-  const categories = Object.entries(dirs).map(([name, number]) => ({ name, number }))
+  const categories = Object.entries(dirs).map(([label, number]) => ({ label, number }))
 
   // gen json
   const genJson = (filename: string, data: any) => {

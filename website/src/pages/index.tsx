@@ -16,18 +16,18 @@ export interface HomePageProps {
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
   context,
 ) => {
-  const size = 10
+  const size = 1
   let { page = '1', category = '' } = context.query as Record<string, any>
   page = parseInt(page)
 
-  const [categories, { list, total }] = await Promise.all([
+  const [categories, { list }] = await Promise.all([
     reqCategoryList(),
     reqArticleList(),
   ])
 
-  const articles = list
-    .filter((item) => !category || item.category === category)
-    .slice((page - 1) * size, page * size)
+  const data = list.filter((item) => !category || item.category === category)
+  const total = data.length
+  const articles = data.slice((page - 1) * size, page * size)
 
   return {
     props: {

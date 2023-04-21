@@ -36,7 +36,6 @@ export const curl = async <T>(
 
   const { data, msg, code }: ResponseData<T> = await response.json()
 
-  console.log('code => ', code, url)
   if (code !== RESPONSE_CODE.SUCCESS) {
     throw new Error(msg)
   }

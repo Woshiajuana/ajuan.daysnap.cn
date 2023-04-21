@@ -4,8 +4,6 @@ date: 2021-01-12 12:22
 abstract: 用于构建用户界面的 `JavaScript` 库。
 ---
 
-# React
-
 > [中文官网](https://react.docschina.org/)
 
 用于构建用户界面的 `JavaScript` 库。
