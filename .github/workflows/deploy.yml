@@ -45,4 +45,4 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }} # 私钥
           source: "./blog/articles,./blog/images,./blog/mocks" # 发送文件
           target: "/web/blog/assets/" # 目标目录
-          strip_components: 1
+          strip_components: 2
