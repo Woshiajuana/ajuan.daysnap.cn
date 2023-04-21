@@ -1,17 +1,15 @@
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import matter from 'gray-matter'
 import { reqArticleInfo, reqArticleList } from '@/curl'
 import { ArticleItem } from '@/types'
 import { Aside, Catalog } from '@/components'
-import { markdown } from '@/utils'
 
 export interface ArticlePageProps {
   article: ArticleItem
 }
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
-  const articles = await reqArticleList()
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { list: articles } = await reqArticleList()
   const paths = articles.map((item) => {
     return { params: { id: item.id } }
   })
@@ -30,11 +28,6 @@ export const getStaticProps: GetStaticProps<
 
   const article = await reqArticleInfo({
     id: params?.id ?? '',
-  })
-
-  const { content } = matter(article.content)
-  Object.assign(article, {
-    content: markdown.render(content),
   })
 
   return { props: { article } }

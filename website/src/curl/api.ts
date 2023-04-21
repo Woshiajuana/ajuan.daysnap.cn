@@ -1,6 +1,8 @@
 import { curl } from '@/curl/curl'
 import { ArticleItem, CategoryItem, PagingResult } from '@/types'
 import { BASE_URL } from '@/constants'
+import matter from 'gray-matter'
+import { markdown } from '@/utils'
 
 // 获取分类列表
 export const reqCategoryList = () =>
@@ -16,9 +18,12 @@ export const reqArticleInfo = async (params: { id: string }) => {
 
   const article = list.find((item) => item.id === params.id)!
 
-  article.content = await fetch(
-    `${BASE_URL}mocks/${article.path}?v=${Date.now()}`,
+  const result = await fetch(
+    `${BASE_URL}articles${article.url}?v=${Date.now()}`,
   ).then((res) => res.text())
+
+  const { content } = matter(result)
+  article.content = markdown.render(content)
 
   return article
 }

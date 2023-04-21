@@ -14,9 +14,12 @@ export interface ArticleItem {
   id: string
   title: string
   date: string
-  content: string
+  url: string
+  category: string
   abstract: string
-  path: string
+
+  // 详情才会有
+  content: string
 }
 
 export interface ResponseData<T> {

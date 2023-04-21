@@ -3,10 +3,11 @@ import { useQuery } from '@/hooks'
 
 export interface PaginationProps {
   total: number
+  size: number
 }
 
 export function Pagination(props: PaginationProps) {
-  const { total } = props
+  const { total, size } = props
   const { page = '1', ...rest } = useQuery<{
     page?: string
     category: string
@@ -21,7 +22,7 @@ export function Pagination(props: PaginationProps) {
         上一页
       </Link>
       <span className="mx-4">
-        <strong>{page}</strong>/{Math.ceil(total / 10)}
+        <strong>{page}</strong>/{Math.ceil(total / size)}
       </span>
       <Link href={{ pathname: '/', query: { ...rest, page: nextPage } }}>
         下一页

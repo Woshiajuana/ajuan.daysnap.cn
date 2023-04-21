@@ -8,26 +8,34 @@ import { Copyright } from '@/components/Copyright'
 export interface HomePageProps {
   categories: CategoryItem[]
   articles: ArticleItem[]
-  page: string
+  page: number
+  size: number
   total: number
 }
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
   context,
 ) => {
-  const { page = '1', category = '' } = context.query as Record<string, any>
+  const size = 10
+  let { page = '1', category = '' } = context.query as Record<string, any>
+  page = parseInt(page)
 
-  const [categories, articles] = await Promise.all([
+  const [categories, { list, total }] = await Promise.all([
     reqCategoryList(),
     reqArticleList(),
   ])
+
+  const articles = list
+    .filter((item) => !category || item.category === category)
+    .slice((page - 1) * size, page * size)
 
   return {
     props: {
       categories,
       articles,
-      total: articles.length,
+      total,
       page,
+      size,
       category,
     },
   }
@@ -36,7 +44,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
 export default function HomePage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
-  const { categories, articles, total } = props
+  const { categories, articles, total, size } = props
 
   return (
     <>
@@ -45,7 +53,7 @@ export default function HomePage(
       </Head>
       <div className="flex-1 py-6">
         <ArticleList articles={articles} />
-        <Pagination total={total} />
+        <Pagination total={total} size={size} />
       </div>
       <Aside>
         <Category categories={categories} />
