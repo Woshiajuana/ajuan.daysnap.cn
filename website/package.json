@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "next-start": "next start",
+    "lint": "next lint",
+    "start": "pm2 start npm --watch --name blog-website -- run next-start",
+    "restart": "pm2 restart blog-website"
   },
   "dependencies": {
     "@daysnap/utils": "^0.0.50",
