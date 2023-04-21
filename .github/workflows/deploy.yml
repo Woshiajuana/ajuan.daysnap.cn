@@ -43,5 +43,6 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }} # 公网ip
           username: ${{ secrets.REMOTE_USERNAME }} # 用户名
           key: ${{ secrets.PRIVATE_KEY }} # 私钥
-          source: "./blog/articles/*" # 发送文件
+          source: "./blog/articles,./blog/images,./blog/mocks" # 发送文件
           target: "/web/blog/assets/" # 目标目录
+          strip_components: 1
