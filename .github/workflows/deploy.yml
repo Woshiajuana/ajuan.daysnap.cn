@@ -34,10 +34,10 @@ jobs:
         run: |
           node -v
           pnpm install
-          pnpm run build:blog
+          pnpm run build
 
-      # 发布到目标服务器
-      - name: Upload
+      # 博客资源发布到目标服务器
+      - name: Upload Blog Assets
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }} # 公网ip
@@ -46,3 +46,41 @@ jobs:
           source: "./blog/articles,./blog/images,./blog/mocks" # 发送文件
           target: "/web/blog/assets/" # 目标目录
           strip_components: 2
+
+      # 网站发布到目标服务器
+      - name: Upload Website
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }} # 公网ip
+          username: ${{ secrets.REMOTE_USERNAME }} # 用户名
+          key: ${{ secrets.PRIVATE_KEY }} # 私钥
+          source: "./website/.next,./website/public,./website/package.json,./website/.npmrc" # 发送文件
+          target: "/web/blog/" # 目标目录
+          strip_components: 2
+
+     # 对应第6步，重启安装依赖、后端服务2
+      - name: Server Reload
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd /web/blog
+            npm i
+            pm2 reload blog
+  
+  # algolia:
+  #     needs: deploy
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v2
+  #       - name: Get the content of algolia.json as config
+  #         id: algolia_config
+  #         run: echo "::set-output name=config::$(cat website/algolia.json | jq -r tostring)"
+  #       - name: Push indices to Algolia
+  #         uses: signcl/docsearch-scraper-action@master
+  #         env:
+  #           APPLICATION_ID: ${{ secrets.APPLICATION_ID }}
+  #           API_KEY: ${{ secrets.API_KEY }}
+  #           CONFIG: ${{ steps.algolia_config.outputs.config }}

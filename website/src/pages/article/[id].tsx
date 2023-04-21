@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { reqArticleInfo, reqArticleList } from '@/curl'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { reqArticleInfo } from '@/curl'
 import { ArticleItem } from '@/types'
 import { Aside, Catalog } from '@/components'
 
@@ -8,19 +8,7 @@ export interface ArticlePageProps {
   article: ArticleItem
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { list: articles } = await reqArticleList()
-  const paths = articles.map((item) => {
-    return { params: { id: item.id } }
-  })
-
-  return {
-    paths,
-    fallback: false,
-  }
-}
-
-export const getStaticProps: GetStaticProps<
+export const getServerSideProps: GetServerSideProps<
   ArticlePageProps,
   { id: string }
 > = async (context) => {
@@ -34,7 +22,7 @@ export const getStaticProps: GetStaticProps<
 }
 
 export default function ArticlePage(
-  props: InferGetStaticPropsType<typeof getStaticProps>,
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
   const { article } = props
 
