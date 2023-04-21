@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "concurrently --kill-others \"npm:dev:*\"",
     "dev:blog": "pnpm -C ./blog dev",
-    "dev:website": "pnpm -C ./website dev"
+    "dev:website": "pnpm -C ./website dev",
+
+    "build:blog": "pnpm -C ./blog build"
   },
   "keywords": [
     "daysnap",

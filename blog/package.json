@@ -5,8 +5,8 @@
   "description": "博客文章内容",
   "main": "./scripts/index.ts",
   "scripts": {
-    "dev": "npm run gen && npm run serve",
-    "gen": "ts-node ./scripts/index.ts",
+    "dev": "npm run build && npm run serve",
+    "build": "ts-node ./scripts/index.ts",
     "serve": "serve -p 12580"
   },
   "keywords": [],

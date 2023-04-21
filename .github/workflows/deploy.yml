@@ -1,0 +1,47 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      # 获取源码
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # 设置 node
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # setup pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      # 安装依赖 打包
+      - name: Install and Build
+        run: |
+          node -v
+          pnpm install
+          pnpm run build:blog
+
+      # 发布到目标服务器
+      - name: Upload
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }} # 公网ip
+          username: ${{ secrets.REMOTE_USERNAME }} # 用户名
+          key: ${{ secrets.PRIVATE_KEY }} # 私钥
+          source: "./blog/articles" # 发送文件
+          target: "/web/blog/assets/" # 目标目录
