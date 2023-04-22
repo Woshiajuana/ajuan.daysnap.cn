@@ -8,11 +8,11 @@
       "selector": "",
       "defaultValue": "Documentation"
     },
-    "lvl1": "main h1",
-    "lvl2": "main h2",
-    "lvl3": "main h3",
-    "lvl4": "main h4",
-    "lvl5": "main h5",
-    "content": "main p, main li"
+    "lvl1": "article h1",
+    "lvl2": "article h2",
+    "lvl3": "article h3",
+    "lvl4": "article h4",
+    "lvl5": "article h5",
+    "content": "article p, article li"
   }
 }
