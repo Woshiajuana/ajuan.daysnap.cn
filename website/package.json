@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "next-start": "next start",
+    "next-start": "cross-env BASE_URL=https://blog.daysnap.cn/assets/ next start",
     "lint": "next lint",
+    "stop": "pm2 stop blog-website",
     "start": "pm2 start npm --watch --name blog-website -- run next-start",
     "restart": "pm2 restart blog-website"
   },
@@ -37,6 +38,7 @@
     "@types/react-dom": "18.0.11",
     "@types/uslug": "^1.0.1",
     "autoprefixer": "10.4.14",
+    "cross-env": "^7.0.3",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "eslint-config-prettier": "^8.8.0",
