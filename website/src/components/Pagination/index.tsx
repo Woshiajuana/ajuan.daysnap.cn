@@ -18,15 +18,19 @@ export function Pagination(props: PaginationProps) {
 
   return (
     <div className="flex items-center justify-center py-4 text-sm">
-      <Link href={{ pathname: '/', query: { ...rest, page: prevPage } }}>
-        上一页
-      </Link>
+      {prevPage > 0 && (
+        <Link href={{ pathname: '/', query: { ...rest, page: prevPage } }}>
+          上一页
+        </Link>
+      )}
       <span className="mx-4">
         <strong>{page}</strong>/{Math.ceil(total / size)}
       </span>
-      <Link href={{ pathname: '/', query: { ...rest, page: nextPage } }}>
-        下一页
-      </Link>
+      {nextPage < total && (
+        <Link href={{ pathname: '/', query: { ...rest, page: nextPage } }}>
+          下一页
+        </Link>
+      )}
     </div>
   )
 }
