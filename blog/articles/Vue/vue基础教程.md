@@ -6,7 +6,11 @@ abstract: 使用了 `ES5` 的 `Object.definePropery` 重写所有属性的 `gett
 
 ## 响应式
 
-使用了 `ES5` 的 `Object.definePropery` 重写所有属性的 `getter` 和 `setter` 方法；
+![xx](/assets/images/icon-6.jpg)
+
+<img src="/assets/images/icon-6.jpg"/>
+
+使用了 `ES5` 的 `Object.defineProperty` 重写所有属性的 `getter` 和 `setter` 方法；
 
 ```js
 function convert(obj) {

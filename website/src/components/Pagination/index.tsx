@@ -26,7 +26,7 @@ export function Pagination(props: PaginationProps) {
       <span className="mx-4">
         <strong>{page}</strong>/{Math.ceil(total / size)}
       </span>
-      {nextPage < total && (
+      {nextPage <= total && (
         <Link href={{ pathname: '/', query: { ...rest, page: nextPage } }}>
           下一页
         </Link>

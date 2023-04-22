@@ -19,6 +19,7 @@
   "author": "Woshiajuana",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "fs-extra": "^11.1.1"
   }
 }

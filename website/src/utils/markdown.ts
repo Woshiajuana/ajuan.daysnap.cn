@@ -6,6 +6,7 @@ import uslug from 'uslug'
 const uslugify = (s: string) => uslug(s)
 
 export const markdown = new MarkdownIt({
+  html: true,
   highlight(str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       // https://github.com/highlightjs/highlight.js/issues/2277
