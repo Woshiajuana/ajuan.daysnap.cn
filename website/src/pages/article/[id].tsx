@@ -36,7 +36,7 @@ export default function ArticlePage(
     let timer: number | null = null
     const handler = (event: MouseEvent) => {
       const target = event.target as HTMLDivElement
-      if (!target.classList.contains('language-js')) {
+      if (target.tagName !== 'CODE') {
         return
       }
       if (timer) {
@@ -62,7 +62,7 @@ export default function ArticlePage(
       <Head>
         <title>{article.title} - Bee</title>
       </Head>
-      <article className="prose prose-indigo flex-1 pt-6 w-full">
+      <article className="prose1 prose1-indigo flex-1 pt-6 w-full">
         <header>
           <h1>{article.title}</h1>
           <time>{article.date}</time>
