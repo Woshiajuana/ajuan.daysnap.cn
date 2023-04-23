@@ -6,6 +6,7 @@ function withOpacity(cssVariable) {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -15,6 +16,11 @@ module.exports = {
 
       maxWidth: {
         main: '960px',
+      },
+
+      backgroundColor: {
+        'base-color': withOpacity('--ds-bg-base-color'),
+        'base-muted-color': withOpacity('--ds-bg-base-muted-color'),
       },
     },
   },
