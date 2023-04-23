@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "next-start": "next start",
+    "next-start": "cross-env BASE_URL=https://blog.daysnap.cn/ next start",
     "lint": "next lint",
     "stop": "pm2 stop blog-website",
     "start": "pm2 start npm --watch --name blog-website -- run next-start",

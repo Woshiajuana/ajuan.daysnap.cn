@@ -2,7 +2,7 @@ import qs from 'querystring'
 import { formatPathParams } from '@daysnap/utils'
 import { ResponseData } from '@/types'
 
-export const BASE_URL = process.env.BASE_URL || '/'
+export const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
 
 export enum RESPONSE_CODE {
   SUCCESS = 'S00000',
