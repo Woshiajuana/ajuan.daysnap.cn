@@ -1,7 +1,6 @@
 import matter from 'gray-matter'
-import { curl } from '@/curl/curl'
+import { curl, BASE_URL } from '@/curl/curl'
 import { ArticleItem, CategoryItem, PagingResult } from '@/types'
-import { BASE_URL } from '@/constants'
 import { markdown } from '@/utils'
 
 // 获取分类列表

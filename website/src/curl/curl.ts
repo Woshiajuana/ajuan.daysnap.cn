@@ -1,7 +1,13 @@
 import qs from 'querystring'
 import { formatPathParams } from '@daysnap/utils'
 import { ResponseData } from '@/types'
-import { RESPONSE_CODE, BASE_URL } from '@/constants'
+
+export const BASE_URL = process.env.BASE_URL || '/'
+
+export enum RESPONSE_CODE {
+  SUCCESS = 'S00000',
+  ERROR = 'F99999',
+}
 
 export const curl = async <T>(
   url: string,

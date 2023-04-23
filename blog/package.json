@@ -5,9 +5,8 @@
   "description": "博客文章内容",
   "main": "./scripts/index.ts",
   "scripts": {
-    "dev": "npm run build && npm run serve",
-    "build": "ts-node ./scripts/index.ts",
-    "serve": "serve -p 12580"
+    "dev": "npm run build",
+    "build": "ts-node ./scripts/index.ts"
   },
   "keywords": [],
   "author": "Woshiajuana",
