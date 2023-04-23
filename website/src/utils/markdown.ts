@@ -5,8 +5,11 @@ import uslug from 'uslug'
 
 const uslugify = (s: string) => uslug(s)
 
+// markdown-it docs see https://markdown-it.docschina.org/
 export const markdown = new MarkdownIt({
   html: true,
+  linkify: true,
+  typographer: true,
   highlight(str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       // https://github.com/highlightjs/highlight.js/issues/2277

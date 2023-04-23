@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import copy from 'copy-to-clipboard'
 import { reqArticleInfo } from '@/curl'
 import { ArticleItem } from '@/types'
 import { Aside, Catalog } from '@/components'
@@ -25,6 +27,35 @@ export default function ArticlePage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
   const { article } = props
+
+  // 复制
+  useEffect(() => {
+    const container = document.querySelector<HTMLDivElement>(
+      '#bee-article-content',
+    )
+    let timer: number | null = null
+    const handler = (event: MouseEvent) => {
+      const target = event.target as HTMLDivElement
+      if (!target.classList.contains('language-js')) {
+        return
+      }
+      if (timer) {
+        return
+      }
+      const content = target.innerText
+      if (copy(content)) {
+        target.classList.add('code-copy-success')
+        timer = window.setTimeout(() => {
+          target.classList.remove('code-copy-success')
+          timer = null
+        }, 1400)
+      }
+    }
+    container?.addEventListener('click', handler)
+    return () => {
+      container?.removeEventListener('click', handler)
+    }
+  }, [])
 
   return (
     <>
