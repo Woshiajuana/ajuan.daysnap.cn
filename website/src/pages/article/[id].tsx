@@ -4,7 +4,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import copy from 'copy-to-clipboard'
 import { reqArticleInfo } from '@/curl'
 import { ArticleItem } from '@/types'
-import { Aside, Catalog } from '@/components'
+import { Aside, Catalog, ArticleContent } from '@/components'
 
 export interface ArticlePageProps {
   article: ArticleItem
@@ -62,19 +62,16 @@ export default function ArticlePage(
       <Head>
         <title>{article.title} - Bee</title>
       </Head>
+
       <article className="flex-1 pt-6 w-full">
         <header>
           <h1>{article.title}</h1>
           <time>{article.date}</time>
         </header>
-        <div
-          className="prose prose-neutral"
-          id="bee-article-content"
-          dangerouslySetInnerHTML={{
-            __html: article.content,
-          }}
-        />
+
+        <ArticleContent html={article.content} />
       </article>
+
       <Aside>
         <Catalog />
       </Aside>
