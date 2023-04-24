@@ -62,12 +62,13 @@ export default function ArticlePage(
       <Head>
         <title>{article.title} - Bee</title>
       </Head>
-      <article className="prose1 prose1-indigo flex-1 pt-6 w-full">
+      <article className="flex-1 pt-6 w-full">
         <header>
           <h1>{article.title}</h1>
           <time>{article.date}</time>
         </header>
         <div
+          className="prose prose-neutral"
           id="bee-article-content"
           dangerouslySetInnerHTML={{
             __html: article.content,
