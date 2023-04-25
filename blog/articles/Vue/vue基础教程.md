@@ -4,6 +4,8 @@ date: 2020-05-12 12:22
 abstract: 使用了 `ES5` 的 `Object.definePropery` 重写所有属性的 `getter` 和 `setter` 方法；
 ---
 
+[[toc]]
+
 ## 响应式
 
 ![xx](/assets/images/icon-6.jpg)
