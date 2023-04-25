@@ -34,7 +34,8 @@ html{
     overflow: initial;
   }
 
-  > pre:hover {
+  // > pre:hover {
+  > pre {
     code:before {
       position: absolute;
       z-index: 9;

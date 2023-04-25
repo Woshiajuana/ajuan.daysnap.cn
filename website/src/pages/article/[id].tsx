@@ -63,7 +63,7 @@ export default function ArticlePage(
         <title>{article.title} - Bee</title>
       </Head>
 
-      <article className="flex-1 pt-6 w-full">
+      <article className="flex-1 pt-6 w-full overflow-hidden">
         <header>
           <h1>{article.title}</h1>
           <time>{article.date}</time>
