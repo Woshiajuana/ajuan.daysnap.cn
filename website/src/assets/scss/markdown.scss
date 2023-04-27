@@ -20,7 +20,23 @@
   color: hsla(220, 7.89473684%, 70.19607843%, 0.5);
 }
 .code-block-btn{
-
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  min-width: 24px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  background-color: #404756;
+  i{
+    font-size: 12px;
+  }
+  &:hover{
+    background-color: #404756;
+  }
 }
 .code-block-inner{
   display: flex;

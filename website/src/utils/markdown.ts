@@ -56,7 +56,9 @@ export const markdown = new MarkdownIt({
               <i class="bee-icon bee-arrow"></i>
             </button>
             <span class="code-lang">${info}</span>
-            <button class="code-block-btn">复制</button>
+            <button class="code-block-btn">
+              <i class="bee-icon bee-copy"></i>
+            </button>
           </div>
           <div class="code-block-inner">
             <div class="code-block-line-groups">${lines}</div>
