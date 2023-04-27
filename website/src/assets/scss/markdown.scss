@@ -2,10 +2,19 @@
 .code-block{
   overflow: hidden;
   border-radius: 4px;
+
+  &:hover,
+  &.is-collapsed{
+    .code-block-inner{
+      display: none;
+    }
+    .code-arrow-btn{
+      margin-left: -3px;
+    }
+  }
 }
 .code-block-menu{
   background-color: #242933;
-  border-bottom: 1px solid #191E25;
   height: 38px;
   display: flex;
   align-items: center;
@@ -15,9 +24,15 @@
 .code-block-btn{
   color: rgb(179, 179, 179);
 }
-.code-lang{
+.code-block-lang{
   margin-left: auto;
   color: hsla(220, 7.89473684%, 70.19607843%, 0.5);
+}
+.code-block-divider{
+  margin: 0 12px;
+  height: 16px;
+  background-color: #3c424d;
+  width: 1px;
 }
 .code-block-btn{
   height: 24px;
@@ -30,17 +45,19 @@
   min-width: 24px;
   padding: 0 5px;
   box-sizing: border-box;
+  font-size: 12px;
   background-color: #404756;
-  i{
-    font-size: 12px;
-  }
   &:hover{
-    background-color: #404756;
+    background-color: #535f78;
   }
+}
+.code-arrow-btn{
+  margin-left: 5px;
 }
 .code-block-inner{
   display: flex;
   overflow-x: auto;
+  border-top: 1px solid #191E25;
   background-color: #272c35;
   font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
   padding: 10px 0;

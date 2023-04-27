@@ -46,17 +46,18 @@ export const markdown = new MarkdownIt({
       blocks.splice(-1)
 
       const lines = blocks
-        .map((item, index) => `<span class="code-block-line">${index}</span>`)
+        .map((_, index) => `<span class="code-block-line">${index}</span>`)
         .join('')
 
       return `
         <div class="code-block">
           <div class="code-block-menu">
-            <button class="code-block-btn">
+            <button class="code-block-btn code-arrow-btn">
               <i class="bee-icon bee-arrow"></i>
             </button>
-            <span class="code-lang">${info}</span>
-            <button class="code-block-btn">
+            <span class="code-block-lang">${info}</span>
+            <span class="code-block-divider"></span>
+            <button class="code-block-btn" title="复制">
               <i class="bee-icon bee-copy"></i>
             </button>
           </div>
