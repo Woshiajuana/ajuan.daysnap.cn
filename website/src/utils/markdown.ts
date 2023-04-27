@@ -16,12 +16,13 @@ export const markdown = new MarkdownIt({
         language: lang,
         ignoreIllegals: true,
       })
-      // const rawCode = value
-      //   .split(/\n/)
-      //   .map((item, index) => {
-      //     return `<div data-line="${index}">${item}</div>`
-      //   })
-      //   .join('')
+      const lines = value.split(/\n/)
+      // lines.splice(-1)
+      const rawCode = lines
+        .map((item, index) => {
+          return `<div data-line="${index}">${item}</div>`
+        })
+        .join('')
       return value
     }
     return ''
@@ -41,9 +42,12 @@ export const markdown = new MarkdownIt({
       const { info, content } = tokens[idx]
       const rawCode = fence(...args)
 
-      const lines = content
-        .split(/\n/)
+      const blocks = content.split(/\n/)
+      blocks.splice(-1)
+
+      const lines = blocks
         .map((item, index) => `<span class="code-block-line">${index}</span>`)
+        .join('')
 
       return `
         <div class="code-block">

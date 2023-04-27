@@ -13,7 +13,7 @@ export function Layout(props: LayoutProps) {
       <Header />
 
       <main className="flex mx-auto max-w-[960px] items-start box-border px-4">
-        <Sidebar />
+        {/*<Sidebar />*/}
 
         {children}
       </main>
