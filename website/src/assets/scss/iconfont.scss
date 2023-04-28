@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bee-success:before {
+  content: "\e7f8";
+}
+
 .bee-copy:before {
   content: "\e61d";
 }

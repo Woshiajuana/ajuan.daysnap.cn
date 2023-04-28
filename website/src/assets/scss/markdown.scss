@@ -3,13 +3,15 @@
   overflow: hidden;
   border-radius: 4px;
 
-  &:hover,
   &.is-collapsed{
     .code-block-inner{
       display: none;
     }
     .code-arrow-btn{
       margin-left: -3px;
+      i{
+        transform: rotateZ(-90deg);
+      }
     }
   }
 }
@@ -20,9 +22,6 @@
   align-items: center;
   font-size: 14px;
   padding: 0 12px;
-}
-.code-block-btn{
-  color: rgb(179, 179, 179);
 }
 .code-block-lang{
   margin-left: auto;
@@ -35,6 +34,7 @@
   width: 1px;
 }
 .code-block-btn{
+  color: rgb(179, 179, 179);
   height: 24px;
   border-radius: 4px;
   display: flex;
@@ -42,8 +42,7 @@
   align-items: center;
   transition: all 0.3s;
   cursor: pointer;
-  min-width: 24px;
-  padding: 0 5px;
+  width: 24px;
   box-sizing: border-box;
   font-size: 12px;
   background-color: #404756;
@@ -53,6 +52,16 @@
 }
 .code-arrow-btn{
   margin-left: 5px;
+  i{
+    pointer-events: none;
+    transition: all 0.3s;
+  }
+}
+.code-copy-btn{
+  &.is-success{
+    color: #fff;
+    background-color: rgb(0, 237, 51);
+  }
 }
 .code-block-inner{
   display: flex;
