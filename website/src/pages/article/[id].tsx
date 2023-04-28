@@ -28,27 +28,39 @@ export default function ArticlePage(
 ) {
   const { article } = props
 
-  // 复制
+  // 复制 or 展开/收起
   useEffect(() => {
     const container = document.querySelector<HTMLDivElement>(
       '#bee-article-content',
     )
-    let timer: number | null = null
     const handler = (event: MouseEvent) => {
       const target = event.target as HTMLDivElement
-      if (target.tagName !== 'CODE') {
-        return
+
+      // 复制
+      if (target.classList.contains('code-copy-btn')) {
+        if (target.classList.contains('is-success')) {
+          return
+        }
+        const content = (
+          target.parentElement?.parentElement?.querySelector(
+            '.code-block-content',
+          ) as HTMLElement
+        )?.innerText
+        if (copy(content)) {
+          target.classList.add('is-success')
+          target.classList.add('bee-success')
+          target.classList.remove('bee-copy')
+          window.setTimeout(() => {
+            target.classList.remove('is-success')
+            target.classList.remove('bee-success')
+            target.classList.add('bee-copy')
+          }, 1000)
+        }
       }
-      if (timer) {
-        return
-      }
-      const content = target.innerText
-      if (copy(content)) {
-        target.classList.add('code-copy-success')
-        timer = window.setTimeout(() => {
-          target.classList.remove('code-copy-success')
-          timer = null
-        }, 1400)
+
+      // 展开/收起
+      if (target.classList.contains('code-arrow-btn')) {
+        target.parentElement?.parentElement?.classList.toggle('is-collapsed')
       }
     }
     container?.addEventListener('click', handler)
