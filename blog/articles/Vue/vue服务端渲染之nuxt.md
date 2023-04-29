@@ -32,3 +32,8 @@ renderer.renderToString(app).then(html => {
     console.log(err);
 });
 ```
+
+
+```
+const s = 'xxax'
+```

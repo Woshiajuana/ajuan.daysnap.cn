@@ -3,6 +3,7 @@ import hljs from 'highlight.js'
 import anchorPlugin from 'markdown-it-anchor'
 import tocPlugin from 'markdown-it-table-of-contents'
 import uslug from 'uslug'
+import 'highlight.js/styles/ir-black.css'
 
 // markdown-it docs see https://markdown-it.docschina.org/
 export const markdown = new MarkdownIt({
@@ -16,13 +17,6 @@ export const markdown = new MarkdownIt({
         language: lang,
         ignoreIllegals: true,
       })
-      const lines = value.split(/\n/)
-      // lines.splice(-1)
-      const rawCode = lines
-        .map((item, index) => {
-          return `<div data-line="${index}">${item}</div>`
-        })
-        .join('')
       return value
     }
     return ''
@@ -46,7 +40,7 @@ export const markdown = new MarkdownIt({
       blocks.splice(-1)
 
       const lines = blocks
-        .map((_, index) => `<span class="code-block-line">${index}</span>`)
+        .map((_, index) => `<span class="code-block-line">${index + 1}</span>`)
         .join('')
 
       return `
