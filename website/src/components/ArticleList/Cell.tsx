@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import { ArticleItem } from '@/types'
-import classes from './index.module.scss'
-import classnames from 'classnames'
 import { DateTime } from '@/components'
 
 export interface ArticleCellProps {
@@ -13,13 +11,16 @@ export function ArticleCell(props: ArticleCellProps) {
   const { id, title, abstract, date } = article
 
   return (
-    <li className={classnames(`mb-6`, classes.cell)}>
-      <Link className="block" href={`/article/${id}`}>
-        <h2 className="text-lg text-primary">{title}</h2>
-        <p className="text-gray-600 mt-1">{abstract}</p>
-        <div className="mt-1 text-gray-500">
+    <li className="mb-4">
+      <Link
+        className="block rounded bg-gray-100 dark:bg-neutral-800 p-4 transition duration-200 hover:outline-none hover:ring-2 hover:ring-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+        href={`/article/${id}`}
+      >
+        <h2 className="text-xl leading-normal">{title}</h2>
+        <div className="mb-4 text-xs font-medium tracking-wide mt-1">
           <DateTime time={date} template="YYYY/MM/DD hh:mm" />
         </div>
+        <p className="text-sm leading-normal">{abstract}</p>
       </Link>
     </li>
   )

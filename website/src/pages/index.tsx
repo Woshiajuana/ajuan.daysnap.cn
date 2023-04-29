@@ -16,7 +16,7 @@ export interface HomePageProps {
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
   context,
 ) => {
-  const size = 1
+  const size = 2
   let { page = '1', category = '' } = context.query as Record<string, any>
   page = parseInt(page)
 
