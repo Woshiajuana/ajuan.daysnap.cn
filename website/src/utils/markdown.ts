@@ -3,7 +3,7 @@ import hljs from 'highlight.js'
 import anchorPlugin from 'markdown-it-anchor'
 import tocPlugin from 'markdown-it-table-of-contents'
 import uslug from 'uslug'
-import 'highlight.js/styles/ir-black.css'
+import 'highlight.js/styles/github-dark.css'
 
 // markdown-it docs see https://markdown-it.docschina.org/
 export const markdown = new MarkdownIt({

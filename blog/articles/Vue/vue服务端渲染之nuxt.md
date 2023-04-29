@@ -33,6 +33,15 @@ renderer.renderToString(app).then(html => {
 });
 ```
 
+```css
+.div{
+    display: block;
+}
+```
+
+```bash
+npm install
+```
 
 ```
 const s = 'xxax'
