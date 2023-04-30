@@ -14,7 +14,7 @@ export function ArticleCell(props: ArticleCellProps) {
     <li className="mb-4">
       <Link
         className="block rounded bg-gray-100 dark:bg-neutral-800 p-4 transition duration-200 hover:outline-none hover:ring-2 hover:ring-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-400"
-        href={`/article/${id}`}
+        href={`/blog/${id}`}
       >
         <h2 className="text-xl leading-normal">{title}</h2>
         <div className="mb-4 text-xs font-medium tracking-wide mt-1">
