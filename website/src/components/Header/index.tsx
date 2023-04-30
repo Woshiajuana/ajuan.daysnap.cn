@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { SearchBox } from '@/components'
+import { DocSearchBox } from './DocSearchBox'
+import { Navbar } from './Navbar'
 
 export function Header() {
   return (
@@ -9,7 +10,9 @@ export function Header() {
           Ajuan Blog
         </Link>
 
-        <SearchBox />
+        <Navbar />
+
+        <DocSearchBox />
       </div>
     </header>
   )

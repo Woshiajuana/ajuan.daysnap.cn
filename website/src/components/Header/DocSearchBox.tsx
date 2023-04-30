@@ -1,6 +1,9 @@
-import { DocSearchTranslations } from '@docsearch/react'
+import { DocSearch } from '@docsearch/react'
+import type { DocSearchTranslations } from '@docsearch/react'
 
-export const translations: DocSearchTranslations = {
+import '@docsearch/css'
+
+const translations: DocSearchTranslations = {
   button: {
     buttonText: '搜索',
     buttonAriaLabel: '搜索',
@@ -41,4 +44,16 @@ export const translations: DocSearchTranslations = {
       reportMissingResultsLinkText: '点击反馈',
     },
   },
+}
+
+export function DocSearchBox() {
+  return (
+    <DocSearch
+      placeholder="搜索文档"
+      translations={translations}
+      appId="YMMTJ6XYBU"
+      indexName="nextjs-blog"
+      apiKey="0394e3cca91b65cb33911ed93ee8801d"
+    />
+  )
 }
