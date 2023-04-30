@@ -15,6 +15,7 @@ export function Pagination(props: PaginationProps) {
 
   const prevPage = +page - 1
   const nextPage = +page + 1
+  const pageTotal = Math.ceil(total / size)
 
   return (
     <div className="flex items-center justify-center py-4 text-sm">
@@ -24,9 +25,9 @@ export function Pagination(props: PaginationProps) {
         </Link>
       )}
       <span className="mx-4">
-        <strong>{page}</strong>/{Math.ceil(total / size)}
+        <strong>{page}</strong>/{pageTotal}
       </span>
-      {nextPage <= total && (
+      {nextPage <= pageTotal && (
         <Link href={{ pathname: '/', query: { ...rest, page: nextPage } }}>
           下一页
         </Link>
