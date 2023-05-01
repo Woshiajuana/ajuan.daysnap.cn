@@ -33,7 +33,6 @@ export default function HomePage(
 
       <div className="flex-1 py-6">
         <ArticleList articles={articles} />
-        <Pagination total={total} size={size} />
       </div>
     </>
   )
