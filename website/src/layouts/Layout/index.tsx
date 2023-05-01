@@ -12,7 +12,7 @@ export function Layout(props: LayoutProps) {
     <>
       <Header />
 
-      <main className="flex mx-auto max-w-screen-md items-start box-border px-4">
+      <main className="mx-auto max-w-screen-md box-border px-4">
         {/* <Sidebar /> */}
 
         {children}

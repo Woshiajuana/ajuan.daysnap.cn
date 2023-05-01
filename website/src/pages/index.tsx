@@ -2,6 +2,9 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { ArticleItem } from '@/types'
 import { reqArticleList } from '@/curl'
 import { ArticleList, SEO } from '@/components'
+import Link from 'next/link'
+import { ProjectList } from '@/components/Project/ProjectList'
+import { websiteMetadata } from '@/utils'
 
 export interface HomePageProps {
   articles: ArticleItem[]
@@ -28,9 +31,39 @@ export default function HomePage(
     <>
       <SEO title="首页 👏" />
 
-      <div className="flex-1 py-6">
+      <section>
+        <div>
+          <div>
+            <img src="/next.svg" alt="" />
+          </div>
+          <div>
+            <h1>{websiteMetadata.title}</h1>
+          </div>
+        </div>
+        <div>
+          <p>
+            Hello! I am Alan, a software developer and photographer based in
+            Florida. I have a passion for learning and creating. Let&apos;s
+            create something together!
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h2>最近文章</h2>
+          <Link href="/">查看更多</Link>
+        </div>
         <ArticleList articles={articles} />
-      </div>
+      </section>
+
+      <section>
+        <div>
+          <h2>最近项目</h2>
+          <Link href="/">查看更多</Link>
+        </div>
+        <ProjectList />
+      </section>
     </>
   )
 }
