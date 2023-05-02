@@ -3,7 +3,6 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { ArticleItem, CategoryItem } from '@/types'
 import { reqArticleList, reqCategoryList } from '@/curl'
 import { ArticleList, Aside, Category, Pagination } from '@/components'
-import { Copyright } from '@/components/Copyright'
 
 export interface HomePageProps {
   categories: CategoryItem[]
@@ -57,7 +56,6 @@ export default function BlogPage(
       </div>
       <Aside>
         <Category categories={categories} />
-        <Copyright />
       </Aside>
     </>
   )
