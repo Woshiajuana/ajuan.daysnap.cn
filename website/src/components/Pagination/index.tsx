@@ -20,7 +20,7 @@ export function Pagination(props: PaginationProps) {
   return (
     <div className="flex items-center justify-center py-4 text-sm">
       {prevPage > 0 && (
-        <Link href={{ pathname: '/', query: { ...rest, page: prevPage } }}>
+        <Link href={{ pathname: '/blog', query: { ...rest, page: prevPage } }}>
           上一页
         </Link>
       )}
@@ -28,7 +28,7 @@ export function Pagination(props: PaginationProps) {
         <strong>{page}</strong>/{pageTotal}
       </span>
       {nextPage <= pageTotal && (
-        <Link href={{ pathname: '/', query: { ...rest, page: nextPage } }}>
+        <Link href={{ pathname: '/blog', query: { ...rest, page: nextPage } }}>
           下一页
         </Link>
       )}
