@@ -1,19 +1,26 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import classnames from 'classnames'
 
 function NavbarLink({ children, href }: { children: any; href: string }) {
   const { pathname } = useRouter()
+  const active = pathname === href
 
   return (
     <Link
-      className="relative px-3 h-8 transition-all text-gray-400 hover:text-neutral-800 dark:hover:text-neutral-200 flex items-center justify-center"
+      className={classnames(
+        `relative px-4 h-9 transition-all text-regular-color flex items-center justify-center`,
+        {
+          'text-primary-color': active,
+        },
+      )}
       href={href}
     >
       {children}
-      {pathname === href ? (
+      {active ? (
         <motion.div
-          className="absolute inset-0 bg-gray-200 dark:bg-neutral-800 rounded-md z-[-1]"
+          className="absolute inset-0 bg-gray-400/20 dark:bg-neutral-800 rounded-md z-[-1] bg-primary/10"
           layoutId="navbar"
           transition={{
             type: 'spring',

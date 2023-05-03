@@ -4,14 +4,12 @@ import { Logo } from './Logo'
 
 export function Header() {
   return (
-    <header className="z-10 bg-clip-padding backdrop-blur-xl">
-      <div className="flex items-center justify-between h-14 max-w-screen-lg m-auto box-border px-4">
-        <Logo />
+    <header className="flex items-center px-4 py-4">
+      <Logo />
 
-        <DocSearchBox />
+      <DocSearchBox />
 
-        <Navbar />
-      </div>
+      <Navbar />
     </header>
   )
 }

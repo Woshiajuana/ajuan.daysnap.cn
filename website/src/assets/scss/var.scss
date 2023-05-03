@@ -1,17 +1,77 @@
 @layer base {
+  html{
+    font-feature-settings: "ss04";
+    font-family: Montserrat, sans-serif, -apple-system;
+  }
+
   :root{
-    --ds-primary-color: 0, 112, 243;
+    /*主题色*/
+    --ds-primary-color: 16, 158, 255;
+    --ds-primary-disabled-color: 160, 207, 255;
+    --ds-primary-hover-color: 102, 177, 255;
+
+    /*成功*/
+    --ds-success-color: 103, 194, 58;
+    --ds-success-disabled-color: 179, 225, 157;
+    --ds-success-hover-color: 133, 206, 97;
+
+    /*警告*/
+    --ds-warning-color: 230, 162, 60;
+    --ds-warning-disabled-color: 243, 209, 158;
+    --ds-warning-hover-color: 235, 181, 99;
+
+    /*危险*/
+    --ds-danger-color: 245, 108, 108;
+    --ds-danger-disabled-color: 250, 182, 182;
+    --ds-danger-hover-color: 247, 137, 137;
+
+    /*信息*/
+    --ds-info-color: 243, 243, 242;
+    --ds-info-disabled-color: 233, 233, 235;
+    --ds-info-hover-color: 255, 255, 255;
   }
 
-  // light
+  /*亮度*/
+  .light,
   [data-theme="light"] {
-    --ds-bg-base-color: 255, 255, 255;
-    --ds-bg-base-muted-color: 38, 38, 38;
+    /*文字*/
+    --ds-text-primary-color: 48, 49, 51;
+    --ds-text-regular-color: 96, 98, 102;
+    --ds-text-secondary-color: 144, 147, 153;
+    --ds-text-placeholder-color: 192, 196, 204;
+
+    /*边框*/
+    --ds-border-primary-color: 220, 223, 230;
+    --ds-border-regular-color: 228, 231, 237;
+    --ds-border-secondary-color: 235, 238, 245;
+    --ds-border-placeholder-color: 242, 246, 252;
+
+    /*背景*/
+    --ds-bg-primary-color: 255, 255, 255;
+    --ds-bg-regular-color: 255, 255, 255;
+    --ds-bg-secondary-color: 255, 255, 255;
+    --ds-bg-placeholder-color: 255, 255, 255;
   }
 
-  // dark
+  .dark,
   [data-theme="dark"] {
-    --ds-bg-base-color: 23, 23, 23;
-    --ds-bg-base-muted-color: 38, 38, 38;
+    /*文字*/
+    --ds-text-primary-color: 209, 213, 219;
+    --ds-text-regular-color: 156, 163, 175;
+    --ds-text-secondary-color: 144, 147, 153;
+    --ds-text-placeholder-color: 192, 196, 204;
+
+    /*边框*/
+    --ds-border-primary-color: 107, 114, 128;
+    --ds-border-regular-color: 81, 81, 81;
+    --ds-border-secondary-color: 51, 51, 51;
+    --ds-border-placeholder-color: 41, 41, 41;
+
+    /*背景*/
+    --ds-bg-primary-color: 18, 18, 18;
+    --ds-bg-regular-color: 29, 36, 42;
+    --ds-bg-secondary-color: 17, 24, 39;
+    --ds-bg-placeholder-color: 255, 255, 255;
   }
+
 }
