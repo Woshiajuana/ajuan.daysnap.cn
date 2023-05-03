@@ -1,6 +1,7 @@
 import { DocSearchBox } from './DocSearchBox'
 import { Navbar } from './Navbar'
 import { Logo } from './Logo'
+import { MobileMenu } from './MobileMenu'
 
 export function Header() {
   return (
@@ -10,6 +11,8 @@ export function Header() {
       <DocSearchBox />
 
       <Navbar />
+
+      <MobileMenu />
     </header>
   )
 }
