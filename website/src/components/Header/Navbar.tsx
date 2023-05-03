@@ -10,10 +10,8 @@ function NavbarLink({ children, href }: { children: any; href: string }) {
   return (
     <Link
       className={classnames(
-        `relative px-4 h-9 transition-all text-regular-color flex items-center justify-center`,
-        {
-          'text-primary-color': active,
-        },
+        `relative px-4 h-9 transition-all flex items-center justify-center`,
+        active ? 'text-primary' : 'text-regular-color',
       )}
       href={href}
     >
