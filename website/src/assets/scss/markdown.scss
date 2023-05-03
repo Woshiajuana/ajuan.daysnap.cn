@@ -1,3 +1,10 @@
+.prose{
+  max-width: none !important;
+  h1{
+    line-height: 1.6;
+    font-size: 2em;
+  }
+}
 
 .code-block{
   overflow: hidden;
