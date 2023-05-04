@@ -1,9 +1,9 @@
 @font-face {
   font-family: "bee-icon"; /* Project id 3971130 */
-  src: url('iconfont.woff2?t=1682606842352') format('woff2'),
-       url('iconfont.woff?t=1682606842352') format('woff'),
-       url('iconfont.ttf?t=1682606842352') format('truetype'),
-       url('iconfont.svg?t=1682606842352#bee-icon') format('svg');
+  src: url('iconfont.woff2?t=1683164205883') format('woff2'),
+       url('iconfont.woff?t=1683164205883') format('woff'),
+       url('iconfont.ttf?t=1683164205883') format('truetype'),
+       url('iconfont.svg?t=1683164205883#bee-icon') format('svg');
 }
 
 .bee-icon {
@@ -12,6 +12,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.bee-close:before {
+  content: "\e615";
+}
+
+.bee-menu:before {
+  content: "\e7c6";
 }
 
 .bee-success:before {

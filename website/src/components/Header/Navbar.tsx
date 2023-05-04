@@ -33,7 +33,7 @@ function NavbarLink({ children, href }: { children: any; href: string }) {
 
 export function Navbar() {
   return (
-    <nav className="flex items-center ml-4">
+    <nav className="hidden sm:flex items-center ml-4">
       <NavbarLink href="/">首页</NavbarLink>
       <NavbarLink href="/blog">博客</NavbarLink>
       <NavbarLink href="/project">项目</NavbarLink>

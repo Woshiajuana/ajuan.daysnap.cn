@@ -13,6 +13,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bee-close:before {
+  content: "\e615";
+}
+
+.bee-menu:before {
+  content: "\e7c6";
+}
+
 .bee-success:before {
   content: "\e7f8";
 }

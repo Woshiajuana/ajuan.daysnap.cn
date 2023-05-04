@@ -10,7 +10,10 @@ export function ThemeToggle(props: { className?: string }) {
   return (
     <button
       aria-label="Toggle Theme"
-      className={classnames('w-10', className)}
+      className={classnames(
+        'flex items-center justify-center h-9 w-9 bg-red-100',
+        className,
+      )}
       onClick={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
       }}
