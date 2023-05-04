@@ -13,7 +13,7 @@ export function Header() {
 
       <Navbar />
 
-      <ThemeToggle className="hidden sm:flex" />
+      <ThemeToggle className="hidden sm:flex ml-4" />
 
       <MobileMenu />
     </header>

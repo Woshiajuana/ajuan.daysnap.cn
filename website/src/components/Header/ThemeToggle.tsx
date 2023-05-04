@@ -11,7 +11,7 @@ export function ThemeToggle(props: { className?: string }) {
     <button
       aria-label="Toggle Theme"
       className={classnames(
-        'flex items-center justify-center h-9 w-9 bg-red-100',
+        'flex items-center justify-center h-9 w-9 border-regular-color border rounded-md',
         className,
       )}
       onClick={() => {

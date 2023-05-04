@@ -1,3 +1,30 @@
+.logo {
+  @apply text-primary-color relative flex items-center text-2xl mr-auto font-bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  &::after{
+    @apply text-primary absolute top-0 left-0;
+    content: attr(data-content);
+    clip-path: ellipse(1rem 1rem at -0% 50%);
+    -webkit-clip-path: ellipse(1rem 1rem at -0% 50%);
+    animation: spotlight 10s infinite;
+  }
+}
+@keyframes spotlight {
+  0% {
+    clip-path: ellipse(1rem 1rem at -0% 50%);
+    -webkit-clip-path: ellipse(1rem 1rem at -0% 50%);
+  }
+  50% {
+    clip-path: ellipse(1rem 1rem at 100% 50%);
+    -webkit-clip-path: ellipse(1rem 1rem at 100% 50%);
+  }
+  100% {
+    clip-path: ellipse(1rem 1rem at 0% 50%);
+    -webkit-clip-path: ellipse(1rem 1rem at -0% 50%);
+  }
+}
+
 .menu{
   @apply fixed left-0 right-0 bottom-0 top-16 bg-regular-color border-t border-secondary-color lg:hidden overflow-y-auto box-border pb-20;
   transition: opacity 300ms ease, transform 300ms ease;

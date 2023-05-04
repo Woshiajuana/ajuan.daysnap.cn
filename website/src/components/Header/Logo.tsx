@@ -1,14 +1,16 @@
 import { websiteMetadata } from '@/utils'
 import Link from 'next/link'
+import classes from './index.module.scss'
 
 export function Logo() {
   return (
     <Link
       scroll={false}
       href="/"
-      className="flex items-center text-lg mr-auto font-bold"
+      data-content={websiteMetadata.title.toLocaleUpperCase()}
+      className={classes.logo}
     >
-      {websiteMetadata.title}
+      {websiteMetadata.title.toLocaleUpperCase()}
     </Link>
   )
 }
