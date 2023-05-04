@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="zh">
       <Head>
         <meta
           name="viewport"
@@ -11,7 +11,7 @@ export default function Document() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className="bg-primary-color">
+      <body className="bg-red">
         <Main />
         <NextScript />
       </body>

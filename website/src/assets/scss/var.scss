@@ -27,8 +27,8 @@
   }
 
   /*亮度*/
-  .light,
-  [data-theme="light"] {
+  // [data-theme="light"],
+  .light {
     /*文字*/
     --ds-text-primary-color: 48, 49, 51;
     --ds-text-regular-color: 96, 98, 102;
@@ -48,8 +48,8 @@
     --ds-bg-placeholder-color: 255, 255, 255;
   }
 
-  .dark,
-  [data-theme="dark"] {
+  // [data-theme="dark"],
+  .dark {
     /*文字*/
     --ds-text-primary-color: 209, 213, 219;
     --ds-text-regular-color: 156, 163, 175;
