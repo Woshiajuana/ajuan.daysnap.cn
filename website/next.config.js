@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
 
+  images: {
+    domains: ['picsum.photos'],
+  },
+
   // 试验性功能
   experimental: {
     // https://github.com/vercel/next.js/issues/44999
