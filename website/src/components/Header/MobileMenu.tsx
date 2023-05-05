@@ -6,7 +6,7 @@ import useDelayedRender from 'use-delayed-render'
 import { ThemeToggle } from './ThemeToggle'
 import { useOverflow } from '@/hooks'
 import { Icon } from '../Icon'
-import styles from './index.module.scss'
+import classes from './index.module.scss'
 
 interface MobileMenuProps extends HTMLAttributes<HTMLLIElement> {
   href: string
@@ -58,8 +58,8 @@ export function MobileMenu() {
 
       {isMenuMounted && (
         <div
-          className={classnames(styles.menu, {
-            [styles.isActive]: isMenuRendered,
+          className={classnames(classes.menu, {
+            [classes.isActive]: isMenuRendered,
           })}
         >
           <ul>

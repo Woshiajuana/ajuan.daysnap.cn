@@ -18,10 +18,10 @@ export const Icon = forwardRef<HTMLElement, IconProps>((props, ref) => {
       {...rest}
       ref={ref}
       className={classnames(
-        prefixClass ?? 'bee-icon',
+        prefixClass ?? 'me-icon',
         styles.icon,
         {
-          [`bee-${name}`]: !!name,
+          [`me-${name}`]: !!name,
           ['animate-spin']: spin,
         },
         className,

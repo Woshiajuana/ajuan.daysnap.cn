@@ -15,7 +15,7 @@ const useCatalogInfo = () => {
   })
 
   useEffect(() => {
-    setCatalogInfo(parseHtml(document.getElementById('bee-article-content')!))
+    setCatalogInfo(parseHtml(document.getElementById('article-content')!))
   }, [])
 
   return catalogInfo

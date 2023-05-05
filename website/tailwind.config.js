@@ -61,6 +61,7 @@ module.exports = {
         'base-hover-color': withOpacity('--ds-text-base-hover-color'),
       },
 
+      // 边框
       borderColor: {
         'primary-color': withOpacity('--ds-border-primary-color'),
         'regular-color': withOpacity('--ds-border-regular-color'),
@@ -69,6 +70,25 @@ module.exports = {
 
         'base-color': withOpacity('--ds-border-base-color'),
         'base-muted-color': withOpacity('--ds-border-base-muted-color'),
+      },
+
+      // 动画
+      animation: {
+        'bounce-x': 'bounce-x 1s ease-in-out infinite',
+      },
+
+      // 动画帧
+      keyframes: {
+        'bounce-x': {
+          '0%, 100%': {
+            'animation-timing-function': 'cubic-bezier(.8,0,1,1)',
+            transform: 'rotate(-3deg)',
+          },
+          '50%': {
+            'animation-timing-function': 'cubic-bezier(0,0,.2,1)',
+            transform: 'translateX(-25%)',
+          },
+        },
       },
     },
   },

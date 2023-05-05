@@ -1,75 +1,78 @@
 @font-face {
-  font-family: "bee-icon"; /* Project id 3971130 */
+  font-family: "me-icon"; /* Project id 3971130 */
   src: url('iconfont.woff2?t=1679902844049') format('woff2'),
   url('iconfont.woff?t=1679902844049') format('woff'),
   url('iconfont.ttf?t=1679902844049') format('truetype');
 }
 
-.bee-icon {
-  font-family: "bee-icon" !important;
-  font-size: inherit;
+.me-icon {
+  font-family: "me-icon" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.bee-close:before {
+.me-right-arrow:before {
+  content: "\e840";
+}
+
+.me-close:before {
   content: "\e615";
 }
 
-.bee-menu:before {
+.me-menu:before {
   content: "\e7c6";
 }
 
-.bee-success:before {
+.me-success:before {
   content: "\e7f8";
 }
 
-.bee-copy:before {
+.me-copy:before {
   content: "\e61d";
 }
 
-.bee-arrow:before {
+.me-arrow:before {
   content: "\e629";
 }
 
-.bee-return-copy:before {
+.me-return-copy:before {
   content: "\e6f6";
 }
 
-.bee-github:before {
+.me-github:before {
   content: "\e600";
 }
 
-.bee-mail:before {
+.me-mail:before {
   content: "\e6af";
 }
 
-.bee-top:before {
+.me-top:before {
   content: "\e6f5";
 }
 
-.bee-return:before {
+.me-return:before {
   content: "\e662";
 }
 
-.bee-link:before {
+.me-link:before {
   content: "\e6b6";
 }
 
-.bee-return-copy1:before {
+.me-return-copy1:before {
   content: "\e6f7";
 }
 
-.bee-light:before {
+.me-light:before {
   content: "\e64b";
 }
 
-.bee-dark:before {
+.me-dark:before {
   content: "\e6c2";
 }
 
-.bee-logo:before {
+.me-logo:before {
   content: "\e60c";
 }
 

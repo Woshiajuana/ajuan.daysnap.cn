@@ -26,7 +26,7 @@
 }
 
 .menu{
-  @apply fixed left-0 right-0 bottom-0 top-16 bg-regular-color border-t border-secondary-color lg:hidden overflow-y-auto box-border pb-20;
+  @apply fixed z-20 left-0 right-0 bottom-0 top-16 bg-regular-color border-t border-secondary-color lg:hidden overflow-y-auto box-border pb-20;
   transition: opacity 300ms ease, transform 300ms ease;
 
   li{

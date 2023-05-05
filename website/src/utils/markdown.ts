@@ -47,11 +47,11 @@ export const markdown = new MarkdownIt({
         <div class="code-block">
           <div class="code-block-menu">
             <button class="code-block-btn code-arrow-btn">
-              <i class="bee-icon bee-arrow"></i>
+              <i class="me-icon me-arrow"></i>
             </button>
             <span class="code-block-lang">${info}</span>
             <span class="code-block-divider"></span>
-            <button class="code-block-btn code-copy-btn bee-icon bee-copy" title="复制"></button>
+            <button class="code-block-btn code-copy-btn me-icon me-copy" title="复制"></button>
           </div>
           <div class="code-block-inner">
             <div class="code-block-line-groups">${lines}</div>
