@@ -2,7 +2,7 @@ import Head from 'next/head'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { ArticleItem, CategoryItem } from '@/types'
 import { reqArticleList, reqCategoryList } from '@/curl'
-import { ArticleList, Aside, Category, Pagination } from '@/components'
+import { ArticleList, Aside, Category, Pagination, SEO } from '@/components'
 
 export interface HomePageProps {
   categories: CategoryItem[]
@@ -47,16 +47,16 @@ export default function BlogPage(
 
   return (
     <>
-      <Head>
-        <title>博客 👏 - Ajuan</title>
-      </Head>
-      <div className="flex-1 py-6">
+      <SEO title="博客 👏" />
+
+      <div className="py-6">
         <ArticleList articles={articles} />
         <Pagination total={total} size={size} />
+
+        <Aside>
+          <Category categories={categories} />
+        </Aside>
       </div>
-      <Aside>
-        <Category categories={categories} />
-      </Aside>
     </>
   )
 }

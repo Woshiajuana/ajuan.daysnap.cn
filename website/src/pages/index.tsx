@@ -1,9 +1,9 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Image from 'next/image'
 import { ArticleItem } from '@/types'
 import { reqArticleList } from '@/curl'
-import { ArticleList, Icon, SEO } from '@/components'
+import { ArticleList, Icon, SEO, ProjectList } from '@/components'
 import Link from 'next/link'
-import { ProjectList } from '@/components/Project/ProjectList'
 import { websiteMetadata } from '@/utils'
 
 export interface HomePageProps {
@@ -34,9 +34,14 @@ export default function HomePage(
       <section className="py-20">
         <div className="flex flex-col items-center justify-center space-x-0 space-y-4 sm:flex-row sm:space-x-8 sm:space-y-0">
           <div className="relative h-64 w-64 select-none overflow-hidden rounded-full bg-neutral-700 ring-2 ring-neutral-600 ring-offset-2 ring-offset-neutral-900 sm:h-40 sm:w-40">
-            <img src="/next.svg" alt="" />
+            <Image
+              alt="avatar"
+              width="500"
+              height="500"
+              src="https://picsum.photos/500/500"
+            />
           </div>
-          <div>
+          <div className="text-center sm:text-left">
             <h1 className="text-primary-color text-4xl">
               {websiteMetadata.title}
             </h1>
@@ -83,7 +88,7 @@ export default function HomePage(
         <div className="flex items-baseline justify-between mb-4">
           <h2 className="text-primary-color text-2xl">最近项目</h2>
           <Link
-            href="/blog"
+            href="/project"
             className="flex text-sm items-center group text-regular-color hover:text-primary-color transition-colors"
           >
             查看更多
