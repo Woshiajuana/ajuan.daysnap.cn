@@ -32,7 +32,7 @@ export default function BlogInfoPage(
         <title>{article.title} - Bee</title>
       </Head>
 
-      <article className="flex-1 pt-6 w-full overflow-hidden">
+      <article className="pt-6 w-full overflow-hidden">
         <header>
           <h1>{article.title}</h1>
           <time>{article.date}</time>

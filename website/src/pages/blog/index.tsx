@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { ArticleItem, CategoryItem } from '@/types'
 import { reqArticleList, reqCategoryList } from '@/curl'
@@ -49,7 +48,7 @@ export default function BlogPage(
     <>
       <SEO title="博客 👏" />
 
-      <div className="py-6">
+      <div className="py-20">
         <ArticleList articles={articles} />
         <Pagination total={total} size={size} />
 

@@ -4,7 +4,7 @@ import { Icon } from '../Icon'
 
 export function Footer() {
   return (
-    <footer className="max-w-screen-md m-auto py-4">
+    <footer className="max-w-screen-md m-auto py-10 border-t border-regular-color">
       <ul className="flex items-center justify-center">
         {websiteMetadata.linkGroup.map((item, index) => {
           return (

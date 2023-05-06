@@ -5,7 +5,7 @@ export default function ProjectPage() {
     <>
       <SEO title="项目 👏" />
 
-      <div className="py-6">
+      <div className="py-20">
         <ProjectList />
         <Pagination total={10} size={2} />
       </div>
