@@ -67,7 +67,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             cd /web/blog
-            npm i
+            npm i --force
             npm run restart
   
       # algolia
