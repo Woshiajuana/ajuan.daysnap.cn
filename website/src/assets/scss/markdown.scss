@@ -27,20 +27,37 @@
     padding-right: 0.23em;
     font-weight: 500;
     user-select: none;
-    opacity: 1;
-    transition: color .25s,opacity .25s;
+    opacity: 0;
+    transition: color .25s, opacity .25s;
+  }
+
+  a{
+    text-decoration: none;
+    font-weight: normal;
     color: rgba(var(--ds-primary-color), 1);
   }
 
-
-  .table-of-contents{
-    a{
-      text-decoration: none;
-      font-weight: normal;
-      color: rgba(var(--ds-primary-color), 1);
+  h1:hover,
+  h1:hover,
+  h2:hover,
+  h2:focus,
+  h3:hover,
+  h3:focus,
+  h4:hover,
+  h4:focus,
+  h5:hover,
+  h5:focus,
+  h6:hover,
+  h6:focus {
+    .header-anchor{
+      opacity: 1;
     }
   }
 
+}
+
+.prose-headings:font-normal :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"] *))) {
+  font-weight: 500;
 }
 
 .code-block{
@@ -147,6 +164,5 @@
     tab-size: 4;
     font-size: 13px;
     font-weight: 300;
-    //font-weight: inherit;
   }
 }

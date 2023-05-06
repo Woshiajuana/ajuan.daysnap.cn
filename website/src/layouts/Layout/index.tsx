@@ -21,7 +21,7 @@ export function Layout(props: LayoutProps) {
     <>
       <Header />
 
-      <main className="mx-auto max-w-screen-md box-border px-4">
+      <main className="relative bg-red-300 mx-auto max-w-screen-md box-border px-4">
         {/* <Sidebar /> */}
 
         {children}

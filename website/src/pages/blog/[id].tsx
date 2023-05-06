@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { reqArticleInfo } from '@/curl'
 import { ArticleItem } from '@/types'
-import { Aside, Catalog, ArticleContent } from '@/components'
+import { Aside, Catalog, ArticleContent, SEO } from '@/components'
 
 export interface ArticlePageProps {
   article: ArticleItem
@@ -28,11 +28,9 @@ export default function BlogInfoPage(
 
   return (
     <>
-      <Head>
-        <title>{article.title} - Bee</title>
-      </Head>
+      <SEO title={article.title} />
 
-      <article className="pt-10 sm:pt-20 w-full overflow-hidden">
+      <article className="pt-10 sm:pt-20 w-full">
         <header className="mb-10">
           <h1 className="text-primary-color text-4xl">{article.title}</h1>
           <p className="text-xs text-secondary-color mt-2">
