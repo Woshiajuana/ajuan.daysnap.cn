@@ -5,6 +5,43 @@
     font-size: 2em;
   }
 }
+.prose :where(code):not(:where([class~=code-block] *)):not(:where([class~=not-prose] *)) {
+  background-color: rgba(var(--ds-bg-regular-color), 1);
+  // color: rgb(229 229 229/var(--tw-text-opacity));
+  color: rgba(var(--ds-primary-color), 1);
+  padding: 0.25rem 0.5rem;
+  white-space: pre-wrap;
+  font-weight: normal;
+  border-radius: 4px;
+
+  &::after,
+  &::before{
+    display: none;
+  }
+}
+
+.prose{
+  .header-anchor{
+    float: left;
+    margin-left: -0.87em;
+    padding-right: 0.23em;
+    font-weight: 500;
+    user-select: none;
+    opacity: 1;
+    transition: color .25s,opacity .25s;
+    color: rgba(var(--ds-primary-color), 1);
+  }
+
+
+  .table-of-contents{
+    a{
+      text-decoration: none;
+      font-weight: normal;
+      color: rgba(var(--ds-primary-color), 1);
+    }
+  }
+
+}
 
 .code-block{
   overflow: hidden;

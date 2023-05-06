@@ -26,7 +26,7 @@ export const markdown = new MarkdownIt({
     slugify: uslug,
     permalink: true,
     permalinkBefore: true,
-    permalinkSymbol: '',
+    permalinkSymbol: '¶',
   })
   .use(tocPlugin)
   .use((md) => {

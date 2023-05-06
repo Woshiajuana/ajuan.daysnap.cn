@@ -32,10 +32,12 @@ export default function BlogInfoPage(
         <title>{article.title} - Bee</title>
       </Head>
 
-      <article className="pt-6 w-full overflow-hidden">
-        <header>
-          <h1>{article.title}</h1>
-          <time>{article.date}</time>
+      <article className="pt-10 sm:pt-20 w-full overflow-hidden">
+        <header className="mb-10">
+          <h1 className="text-primary-color text-4xl">{article.title}</h1>
+          <p className="text-xs text-secondary-color mt-2">
+            <time>{article.date}</time>
+          </p>
         </header>
 
         <ArticleContent html={article.content} />
