@@ -29,7 +29,7 @@ export function Tree<T = any>(props: TreeProps<T>) {
               <div
                 onClick={() => onSelect?.(item)}
                 className={classnames(
-                  `relative flex items-center text-[0.8rem] h-7 text-gray-500 cursor-pointer hover:text-primary`,
+                  `relative flex items-center text-sm h-7 text-gray-500 cursor-pointer hover:text-primary`,
                   {
                     ['text-primary']: key === current,
                   },
