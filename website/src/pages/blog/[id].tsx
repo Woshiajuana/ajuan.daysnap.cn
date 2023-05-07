@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { reqArticleInfo } from '@/curl'
 import { ArticleItem } from '@/types'

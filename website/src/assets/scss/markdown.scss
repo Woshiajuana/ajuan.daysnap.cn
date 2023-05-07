@@ -56,10 +56,6 @@
 
 }
 
-.prose-headings:font-normal :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"] *))) {
-  font-weight: 500;
-}
-
 .code-block{
   overflow: hidden;
   border-radius: 4px;
