@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "concurrently --kill-others \"npm:dev:*\"",
     "dev:link": "ts-node ./scripts/link.ts",
-    "dev:blog": "pnpm -C ./blog dev",
+    "dev:source": "pnpm -C ./source dev",
     "dev:website": "pnpm -C ./website dev",
-    "build": "npm run build:blog && npm run build:website",
-    "build:blog": "pnpm -C ./blog build",
+    "build": "npm run build:source && npm run build:website",
+    "build:source": "pnpm -C ./source build",
     "build:website": "pnpm -C ./website build"
   },
   "keywords": [
