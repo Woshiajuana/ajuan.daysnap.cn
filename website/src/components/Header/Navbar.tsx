@@ -37,7 +37,6 @@ export function Navbar() {
       <NavbarLink href="/">首页</NavbarLink>
       <NavbarLink href="/blog">博客</NavbarLink>
       <NavbarLink href="/project">项目</NavbarLink>
-      <NavbarLink href="/about">关于我</NavbarLink>
     </nav>
   )
 }

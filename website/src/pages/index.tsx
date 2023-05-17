@@ -89,7 +89,7 @@ export default function HomePage(
         <BlogList list={blogs} />
       </section>
 
-      <section className="mb-20">
+      <section>
         <div className="flex items-baseline justify-between mb-4">
           <h2 className="text-primary-color text-2xl">最近项目</h2>
           <Link

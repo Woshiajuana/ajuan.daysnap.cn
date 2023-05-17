@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
+    "preserveValueImports": true,
+    "ignoreDeprecations": "5.0",
     "target": "ESNext",
     "allowJs": true,
     "skipLibCheck": true,

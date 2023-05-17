@@ -3,14 +3,14 @@ import type { BlogItem } from '@/types'
 import { reqBlogList } from '@/api'
 import { BlogList, Pagination, SEO } from '@/components'
 
-export interface HomePageProps {
+export interface BlogPageProps {
   blogs: BlogItem[]
   page: number
   size: number
   total: number
 }
 
-export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
+export const getServerSideProps: GetServerSideProps<BlogPageProps> = async (
   context,
 ) => {
   const size = 2

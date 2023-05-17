@@ -1,44 +1,44 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { reqBlogInfo } from '@/api'
-import type { BlogItem } from '@/types'
+import { reqProjectInfo } from '@/api'
+import type { ProjectItem } from '@/types'
 import { Aside, Catalog, ArticleContent, SEO } from '@/components'
 
-export interface BlogInfoPageProps {
-  blog: BlogItem
+export interface ProjectInfoPageProps {
+  project: ProjectItem
 }
 
 export const getServerSideProps: GetServerSideProps<
-  BlogInfoPageProps,
+  ProjectInfoPageProps,
   { id: string }
 > = async (context) => {
   const { params } = context
 
-  const blog = await reqBlogInfo({
+  const project = await reqProjectInfo({
     id: params?.id ?? '',
   })
 
-  return { props: { blog } }
+  return { props: { project } }
 }
 
 export default function BlogInfoPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
-  const { blog } = props
+  const { project } = props
 
   return (
     <>
-      <SEO title={blog.title} />
+      <SEO title={project.title} />
 
       <div className="flex items-start pt-10 sm:pt-20">
         <article className="flex-1 overflow-hidden">
           <header className="mb-10">
-            <h1 className="text-primary-color text-4xl">{blog.title}</h1>
+            <h1 className="text-primary-color text-4xl">{project.title}</h1>
             <p className="text-xs text-secondary-color mt-2">
-              <time>{blog.date}</time>
+              <time>{project.date}</time>
             </p>
           </header>
 
-          <ArticleContent html={blog.content} />
+          <ArticleContent html={project.content} />
         </article>
 
         <Aside>

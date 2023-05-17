@@ -1,5 +1,5 @@
 import type { BlogItem } from '@/types'
-import { BlogCell } from './Cell'
+import { BlogCell } from './BlogCell'
 
 export interface BlogListProps {
   list: BlogItem[]

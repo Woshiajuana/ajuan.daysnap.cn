@@ -1,5 +1,5 @@
 export * from './ArticleContent'
-export * from './BlogList'
+export * from './Blog'
 export * from './Aside'
 export * from './Catalog'
 export * from './DateTime'
