@@ -1,4 +1,4 @@
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react'
+import { type MutableRefObject, useCallback, useEffect, useRef } from 'react'
 
 export function useScrollTo(
   ref: MutableRefObject<HTMLElement | null | undefined>,

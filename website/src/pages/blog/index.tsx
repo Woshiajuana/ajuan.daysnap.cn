@@ -1,10 +1,10 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { BlogItem } from '@/types'
-import { reqArticleList } from '@/api'
-import { ArticleList, Pagination, SEO } from '@/components'
+import type { BlogItem } from '@/types'
+import { reqBlogList } from '@/api'
+import { BlogList, Pagination, SEO } from '@/components'
 
 export interface HomePageProps {
-  articles: BlogItem[]
+  blogs: BlogItem[]
   page: number
   size: number
   total: number
@@ -14,17 +14,16 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
   context,
 ) => {
   const size = 2
-  let { page = '1', category = '' } = context.query as Record<string, any>
+  let { page = '1' } = context.query as Record<string, any>
   page = parseInt(page)
 
-  const { list } = await reqArticleList()
-  const data = list.filter((item) => !category || item.category === category)
-  const total = data.length
-  const articles = data.slice((page - 1) * size, page * size)
+  const { list } = await reqBlogList()
+  const total = list.length
+  const blogs = list.slice((page - 1) * size, page * size)
 
   return {
     props: {
-      articles,
+      blogs,
       total,
       page,
       size,
@@ -35,14 +34,14 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
 export default function BlogPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
-  const { articles, total, size } = props
+  const { blogs, total, size } = props
 
   return (
     <>
       <SEO title="博客 👏" />
 
       <div className="py-20">
-        <ArticleList articles={articles} />
+        <BlogList list={blogs} />
         <Pagination total={total} size={size} />
       </div>
     </>

@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react'
+import { type ReactNode, useEffect } from 'react'
 import { Footer, Header } from '@/components'
 import { useTheme } from 'next-themes'
 

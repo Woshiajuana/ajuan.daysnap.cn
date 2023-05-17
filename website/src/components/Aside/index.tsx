@@ -1,6 +1,6 @@
-import { HTMLAttributes, useCallback, useRef } from 'react'
+import { type HTMLAttributes, useCallback, useRef } from 'react'
 import classnames from 'classnames'
-import { AsideContext, AsideContextValue } from './context'
+import { AsideContext, type AsideContextValue } from './context'
 import classes from './index.module.scss'
 
 export * from './context'

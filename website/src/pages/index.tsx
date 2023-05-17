@@ -1,23 +1,28 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
-import { BlogItem } from '@/types'
-import { reqArticleList } from '@/api'
-import { ArticleList, Icon, SEO, ProjectList } from '@/components'
+import type { BlogItem, ProjectItem } from '@/types'
+import { reqBlogList, reqProjectList } from '@/api'
+import { BlogList, Icon, SEO, ProjectList } from '@/components'
 import Link from 'next/link'
 import { websiteMetadata } from '@/utils'
 
 export interface HomePageProps {
-  articles: BlogItem[]
+  blogs: BlogItem[]
+  projects: ProjectItem[]
 }
 
 export const getServerSideProps: GetServerSideProps<
   HomePageProps
 > = async () => {
-  const { list } = await reqArticleList()
+  const [{ list: blogs }, { list: projects }] = await Promise.all([
+    reqBlogList(),
+    reqProjectList(),
+  ])
 
   return {
     props: {
-      articles: list.slice(0, 3),
+      blogs: blogs.slice(0, 3),
+      projects: projects.slice(0, 3),
     },
   }
 }
@@ -25,7 +30,7 @@ export const getServerSideProps: GetServerSideProps<
 export default function HomePage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
-  const { articles } = props
+  const { blogs, projects } = props
 
   return (
     <>
@@ -81,7 +86,7 @@ export default function HomePage(
             />
           </Link>
         </div>
-        <ArticleList articles={articles} />
+        <BlogList list={blogs} />
       </section>
 
       <section className="mb-20">
@@ -98,7 +103,7 @@ export default function HomePage(
             />
           </Link>
         </div>
-        <ProjectList />
+        <ProjectList list={projects} />
       </section>
     </>
   )

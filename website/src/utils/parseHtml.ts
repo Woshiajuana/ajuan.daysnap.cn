@@ -1,4 +1,4 @@
-import { CatalogItem } from '@/types'
+import type { CatalogItem } from '@/types'
 
 export function parseHtml(el: HTMLElement) {
   const objHLevel = ['H2', 'H3', 'H4', 'H5', 'H6', 'H7']

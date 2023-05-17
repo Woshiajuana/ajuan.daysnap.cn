@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import classnames from 'classnames'
 import { useRouter } from 'next/router'
-import { HTMLAttributes, useState } from 'react'
+import { type HTMLAttributes, useState } from 'react'
 import useDelayedRender from 'use-delayed-render'
 import { ThemeToggle } from './ThemeToggle'
 import { useOverflow } from '@/hooks'

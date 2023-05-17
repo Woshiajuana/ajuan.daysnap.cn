@@ -1,4 +1,4 @@
-import dayjs, { ConfigType } from 'dayjs'
+import dayjs, { type ConfigType } from 'dayjs'
 import type { TimeHTMLAttributes } from 'react'
 
 export interface DateTimeProps extends TimeHTMLAttributes<HTMLTimeElement> {

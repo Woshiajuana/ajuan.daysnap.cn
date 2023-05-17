@@ -1,14 +1,14 @@
 import Link from 'next/link'
-import { BlogItem } from '@/types'
+import { type BlogItem } from '@/types'
 import { DateTime } from '@/components'
 
-export interface ArticleCellProps {
-  article: BlogItem
+export interface BlogCellProps {
+  blog: BlogItem
 }
 
-export function ArticleCell(props: ArticleCellProps) {
-  const { article } = props
-  const { id, title, abstract, date } = article
+export function BlogCell(props: BlogCellProps) {
+  const { blog } = props
+  const { id, title, abstract, date } = blog
 
   return (
     <li className="mb-4">

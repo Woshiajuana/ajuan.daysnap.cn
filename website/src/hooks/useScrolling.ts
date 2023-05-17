@@ -1,4 +1,4 @@
-import { useEffect, MutableRefObject } from 'react'
+import { useEffect, type MutableRefObject } from 'react'
 
 export const useScrolling = (
   ref: MutableRefObject<HTMLElement | Window | undefined>,
