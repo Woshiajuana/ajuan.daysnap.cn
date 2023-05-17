@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @import "var.scss";
-@import "iconfont.scss";
 @import "markdown.scss";
 @import "doc-search.scss";
+@import './iconfont/iconfont.scss';
+
 
 html{
   font-feature-settings: "ss04";

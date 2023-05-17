@@ -1,13 +1,13 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
-import { ArticleItem } from '@/types'
-import { reqArticleList } from '@/curl'
+import { BlogItem } from '@/types'
+import { reqArticleList } from '@/api'
 import { ArticleList, Icon, SEO, ProjectList } from '@/components'
 import Link from 'next/link'
 import { websiteMetadata } from '@/utils'
 
 export interface HomePageProps {
-  articles: ArticleItem[]
+  articles: BlogItem[]
 }
 
 export const getServerSideProps: GetServerSideProps<

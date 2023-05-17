@@ -6,17 +6,23 @@ export interface CatalogItem {
   children: CatalogItem[]
 }
 
-export interface CategoryItem {
-  label: string
-}
-
-export interface ArticleItem {
+export interface BlogItem {
   id: string
   title: string
   date: string
   url: string
-  category: string
   abstract: string
+
+  // 详情才会有
+  content: string
+}
+
+export interface ProjectItem {
+  id: string
+  title: string
+  date: string
+  url: string
+  coverUrl: string
 
   // 详情才会有
   content: string

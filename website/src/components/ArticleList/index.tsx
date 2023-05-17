@@ -1,8 +1,8 @@
-import type { ArticleItem } from '@/types'
+import type { BlogItem } from '@/types'
 import { ArticleCell } from './Cell'
 
 export interface ArticleListProps {
-  articles: ArticleItem[]
+  articles: BlogItem[]
 }
 
 export function ArticleList(props: ArticleListProps) {

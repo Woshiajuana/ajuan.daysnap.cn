@@ -1,10 +1,10 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { reqArticleInfo } from '@/curl'
-import { ArticleItem } from '@/types'
+import { reqArticleInfo } from '@/api'
+import { BlogItem } from '@/types'
 import { Aside, Catalog, ArticleContent, SEO } from '@/components'
 
 export interface ArticlePageProps {
-  article: ArticleItem
+  article: BlogItem
 }
 
 export const getServerSideProps: GetServerSideProps<

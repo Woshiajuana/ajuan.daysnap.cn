@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { ArticleItem } from '@/types'
+import { BlogItem } from '@/types'
 import { DateTime } from '@/components'
 
 export interface ArticleCellProps {
-  article: ArticleItem
+  article: BlogItem
 }
 
 export function ArticleCell(props: ArticleCellProps) {
