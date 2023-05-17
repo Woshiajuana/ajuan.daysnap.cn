@@ -63,17 +63,26 @@ export function MobileMenu() {
           })}
         >
           <ul>
-            <MenuItem href="/" style={{ transitionDelay: '150ms' }}>
+            <MenuItem
+              href="/"
+              style={{ transitionDelay: '150ms' }}
+              onClick={() => setVisible(false)}
+            >
               首页
             </MenuItem>
-            <MenuItem href="/blog" style={{ transitionDelay: '175ms' }}>
+            <MenuItem
+              href="/blog"
+              style={{ transitionDelay: '175ms' }}
+              onClick={() => setVisible(false)}
+            >
               博客
             </MenuItem>
-            <MenuItem href="/project" style={{ transitionDelay: '200ms' }}>
+            <MenuItem
+              href="/project"
+              style={{ transitionDelay: '200ms' }}
+              onClick={() => setVisible(false)}
+            >
               项目
-            </MenuItem>
-            <MenuItem href="/about" style={{ transitionDelay: '225ms' }}>
-              关于我
             </MenuItem>
           </ul>
           <ThemeToggle className="fixed right-4 bottom-4" />
