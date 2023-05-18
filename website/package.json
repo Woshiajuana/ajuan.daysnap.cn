@@ -12,6 +12,7 @@
     "restart": "pm2 restart blog-website"
   },
   "dependencies": {
+    "@algolia/client-search": "^4.17.0",
     "@daysnap/utils": "^0.0.50",
     "@docsearch/react": "^3.3.3",
     "classnames": "^2.3.2",

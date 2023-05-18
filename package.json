@@ -9,7 +9,8 @@
     "dev:website": "pnpm -C ./website dev",
     "build": "npm run build:source && npm run build:website",
     "build:source": "pnpm -C ./source build",
-    "build:website": "pnpm -C ./website build"
+    "build:website": "pnpm -C ./website build",
+    "clean": "rimraf **/node_modules"
   },
   "keywords": [
     "daysnap",
@@ -20,7 +21,10 @@
   "author": "Woshiajuana",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "18.15.12",
     "concurrently": "^8.0.1",
-    "ts-node": "^10.9.1"
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }

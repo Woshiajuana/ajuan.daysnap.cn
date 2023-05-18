@@ -37,13 +37,13 @@ jobs:
           pnpm run build
 
       # 博客资源发布到目标服务器
-      - name: Upload Blog Assets
+      - name: Upload Website Assets
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }} # 公网ip
           username: ${{ secrets.REMOTE_USERNAME }} # 用户名
           key: ${{ secrets.PRIVATE_KEY }} # 私钥
-          source: "./blog/articles,./blog/images,./blog/mocks" # 发送文件
+          source: "./source/blogs,./source/projects,./source/images,./source/mocks" # 发送文件
           target: "/web/blog/public/assets/" # 目标目录
           strip_components: 2
 
