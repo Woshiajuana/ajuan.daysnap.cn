@@ -10,6 +10,10 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      maxWidth: {
+        main: '42.5rem',
+      },
+
       // 颜色
       colors: {
         // 主题
