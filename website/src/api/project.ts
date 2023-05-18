@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import { curl, BASE_URL } from '@/api/curl'
-import { PagingResult, ProjectItem } from '@/types'
+import type { PagingResult, ProjectItem } from '@/types'
 import { markdown } from '@/utils'
 
 // 获取项目列表

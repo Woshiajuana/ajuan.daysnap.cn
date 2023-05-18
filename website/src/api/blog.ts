@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import { curl, BASE_URL } from '@/api/curl'
-import { BlogItem, PagingResult } from '@/types'
+import type { BlogItem, PagingResult } from '@/types'
 import { markdown } from '@/utils'
 
 // 获取文章列表

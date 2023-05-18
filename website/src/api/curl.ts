@@ -1,6 +1,6 @@
 import qs from 'querystring'
 import { formatPathParams } from '@daysnap/utils'
-import { ResponseData } from '@/types'
+import type { ResponseData } from '@/types'
 
 export const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
 
