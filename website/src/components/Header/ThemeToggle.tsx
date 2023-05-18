@@ -3,8 +3,13 @@ import { useTheme } from 'next-themes'
 import { useMounted } from '@/hooks'
 import { Icon } from '../Icon'
 
-export function ThemeToggle(props: { className?: string }) {
-  const { className } = props
+export interface ThemeToggleProps {
+  className?: string
+  onClick?: () => void
+}
+
+export function ThemeToggle(props: ThemeToggleProps) {
+  const { className, onClick } = props
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
   return (
@@ -16,6 +21,7 @@ export function ThemeToggle(props: { className?: string }) {
       )}
       onClick={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+        onClick?.()
       }}
     >
       <Icon size={20} name={mounted ? resolvedTheme : 'light'} />

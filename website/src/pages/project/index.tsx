@@ -40,10 +40,9 @@ export default function ProjectPage(
     <>
       <SEO title="项目 👏" />
 
-      <div className="py-20">
-        <ProjectList list={projects} />
-        <Pagination total={total} size={size} />
-      </div>
+      <ProjectList list={projects} />
+
+      <Pagination total={total} size={size} />
     </>
   )
 }

@@ -59,13 +59,13 @@ export default function HomePage(
               rel="noopener noreferrer"
               className="text-regular-color"
             >
-              University of Florida
+              something something
             </a>
           </div>
         </div>
         <div className="flex items-center justify-center mt-6">
           <p className="w-full sm:max-w-xl text-regular-color">
-            Hello! I am Alan, a software developer and photographer based in
+            Hello! I am Ajuan, a software developer and photographer based in
             Florida. I have a passion for learning and creating. Let&apos;s
             create something together!
           </p>

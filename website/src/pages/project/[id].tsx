@@ -29,8 +29,8 @@ export default function BlogInfoPage(
     <>
       <SEO title={project.title} />
 
-      <div className="flex items-start pt-10 sm:pt-20">
-        <article className="flex-1 overflow-hidden">
+      <div className="flex items-start">
+        <article className="w-full">
           <header className="mb-10">
             <h1 className="text-primary-color text-4xl">{project.title}</h1>
             <p className="text-xs text-secondary-color mt-2">

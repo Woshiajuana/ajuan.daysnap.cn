@@ -40,10 +40,9 @@ export default function BlogPage(
     <>
       <SEO title="博客 👏" />
 
-      <div className="py-20">
-        <BlogList list={blogs} />
-        <Pagination total={total} size={size} />
-      </div>
+      <BlogList list={blogs} />
+
+      <Pagination total={total} size={size} />
     </>
   )
 }

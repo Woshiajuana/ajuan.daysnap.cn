@@ -85,7 +85,10 @@ export function MobileMenu() {
               项目
             </MenuItem>
           </ul>
-          <ThemeToggle className="fixed right-4 bottom-4" />
+          <ThemeToggle
+            className="fixed right-4 bottom-4"
+            onClick={() => setVisible(false)}
+          />
         </div>
       )}
     </>

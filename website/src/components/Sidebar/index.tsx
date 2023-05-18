@@ -35,7 +35,7 @@ export function Sidebar() {
   const mounted = useMounted()
 
   return (
-    <div className="fixed -ml-4 md:-ml-14 top-52 z-10">
+    <div className="hidden sm:block fixed -ml-4 md:-ml-14 top-52 z-10">
       <button
         aria-label="Return"
         title="返回"
