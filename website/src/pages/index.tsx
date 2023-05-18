@@ -36,7 +36,7 @@ export default function HomePage(
     <>
       <SEO title="首页 👏" />
 
-      <section className="py-20">
+      <section className="py-10">
         <div className="flex flex-col items-center justify-center space-x-0 space-y-4 sm:flex-row sm:space-x-8 sm:space-y-0">
           <div className="relative h-64 w-64 select-none overflow-hidden rounded-full bg-neutral-700 ring-2 ring-neutral-600 ring-offset-2 ring-offset-neutral-900 sm:h-40 sm:w-40">
             <Image
@@ -72,7 +72,7 @@ export default function HomePage(
         </div>
       </section>
 
-      <section className="mb-20">
+      <section className="mt-10 sm:mt-20">
         <div className="flex items-baseline justify-between mb-4">
           <h2 className="text-primary-color text-2xl">最近文章</h2>
           <Link
@@ -89,7 +89,7 @@ export default function HomePage(
         <BlogList list={blogs} />
       </section>
 
-      <section>
+      <section className="mt-10 sm:mt-20">
         <div className="flex items-baseline justify-between mb-4">
           <h2 className="text-primary-color text-2xl">最近项目</h2>
           <Link

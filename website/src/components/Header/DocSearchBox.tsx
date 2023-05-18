@@ -2,6 +2,7 @@ import { DocSearch } from '@docsearch/react'
 import type { DocSearchTranslations } from '@docsearch/react'
 
 import '@docsearch/css'
+import { websiteMetadata } from '@/utils'
 
 const translations: DocSearchTranslations = {
   button: {
@@ -51,9 +52,9 @@ export function DocSearchBox() {
     <DocSearch
       placeholder="搜索文档"
       translations={translations}
-      appId="YMMTJ6XYBU"
-      indexName="nextjs-blog"
-      apiKey="0394e3cca91b65cb33911ed93ee8801d"
+      appId={websiteMetadata.algolia.appId}
+      indexName={websiteMetadata.algolia.indexName}
+      apiKey={websiteMetadata.algolia.apiKey}
     />
   )
 }

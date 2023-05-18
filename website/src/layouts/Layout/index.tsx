@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect } from 'react'
-import { Footer, Header } from '@/components'
+import { Footer, Header, Sidebar } from '@/components'
 import { useTheme } from 'next-themes'
 
 export interface LayoutProps {
@@ -21,8 +21,8 @@ export function Layout(props: LayoutProps) {
     <>
       <Header />
 
-      <main className="relative bg-red- mx-auto max-w-screen-md box-border px-4">
-        {/* <Sidebar /> */}
+      <main className="relative mx-auto max-w-screen-sm max-w-[680px] box-border px-4 py-10 sm:py-20">
+        <Sidebar />
 
         {children}
       </main>

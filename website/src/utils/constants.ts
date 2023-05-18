@@ -17,4 +17,9 @@ export const websiteMetadata = {
       icon: 'github',
     },
   ],
+  algolia: {
+    appId: 'YMMTJ6XYBU',
+    indexName: 'nextjs-blog',
+    apiKey: '0394e3cca91b65cb33911ed93ee8801d',
+  },
 }
