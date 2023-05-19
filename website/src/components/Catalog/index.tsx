@@ -32,7 +32,7 @@ export function Catalog() {
       const index = sourceCatalogs.findIndex((item) => {
         return item.start <= scrollTop && scrollTop < item.end
       })
-      onScroll({ scrollTop: index * 1.75 * 18 })
+      onScroll({ scrollTop: index * 2 * 18 })
       const item = sourceCatalogs[index]
       if (item) {
         setCurrent(item.key)

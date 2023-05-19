@@ -29,13 +29,11 @@ export function Tree<T = any>(props: TreeProps<T>) {
               <div
                 onClick={() => onSelect?.(item)}
                 className={classnames(
-                  `relative flex items-center text-sm h-7 text-gray-500 cursor-pointer hover:text-primary`,
-                  {
-                    ['text-primary']: key === current,
-                  },
+                  `relative flex items-center text-sm h-8 cursor-pointer hover:text-primary`,
+                  key === current ? 'text-primary' : 'text-secondary-color',
                 )}
               >
-                <span className="relative px-2.5 h-7 inline-flex items-center justify-center max-w-full">
+                <span className="relative px-2.5 h-8 inline-flex items-center justify-center max-w-full">
                   <span className="text-ellipsis whitespace-nowrap max-w-full overflow-hidden">
                     {label}
                   </span>
@@ -54,7 +52,7 @@ export function Tree<T = any>(props: TreeProps<T>) {
               </div>
               {!!children?.length ? (
                 <Tree
-                  className="pl-2.5"
+                  className="pl-4"
                   data={children}
                   keyName={keyName}
                   current={current}
