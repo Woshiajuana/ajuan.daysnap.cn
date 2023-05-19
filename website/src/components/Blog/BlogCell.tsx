@@ -11,7 +11,7 @@ export function BlogCell(props: BlogCellProps) {
   const { id, title, abstract, date } = blog
 
   return (
-    <li className="mb-4">
+    <li className="mb-4 last:mb-0">
       <Link
         className="block rounded bg-regular-color p-4 transition duration-200 hover:outline-none hover:ring-2 hover:ring-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-400"
         href={`/blog/${id}`}

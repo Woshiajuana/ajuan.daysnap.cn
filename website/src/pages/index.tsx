@@ -43,32 +43,22 @@ export default function HomePage(
               alt="avatar"
               width="500"
               height="500"
-              src="https://picsum.photos/500/500"
+              src={websiteMetadata.avatar}
             />
           </div>
           <div className="text-center sm:text-left">
             <h1 className="text-primary-color text-4xl">
               {websiteMetadata.title}
             </h1>
-            <p className="text-regular-color mt-2">
-              Application Developer Analyst 2
-            </p>
-            <a
-              href="https://www.ufl.edu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-regular-color"
-            >
-              something something
-            </a>
+            <p className="text-regular-color mt-2">{websiteMetadata.name}</p>
+            <p className="text-regular-color">{websiteMetadata.job}</p>
           </div>
         </div>
-        <div className="flex items-center justify-center mt-6">
-          <p className="w-full sm:max-w-xl text-regular-color">
-            Hello! I am Ajuan, a software developer and photographer based in
-            Florida. I have a passion for learning and creating. Let&apos;s
-            create something together!
-          </p>
+        <div className="flex items-center justify-center mt-12">
+          <p
+            className="w-full sm:max-w-xl text-regular-color"
+            dangerouslySetInnerHTML={{ __html: websiteMetadata.introduce }}
+          ></p>
         </div>
       </section>
 

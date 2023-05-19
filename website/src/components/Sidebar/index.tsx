@@ -1,5 +1,6 @@
 import { Icon } from '@/components'
 import { useRouter } from 'next/router'
+import copy from 'copy-to-clipboard'
 import {
   useDocumentEle,
   useMounted,
@@ -33,6 +34,11 @@ export function Sidebar() {
   // 切换主题
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
+
+  // 复制
+  const handleCopy = () => {
+    copy(window.location.href)
+  }
 
   return (
     <div className="hidden sm:block fixed -ml-4 md:-ml-14 top-52 z-10">
@@ -68,6 +74,7 @@ export function Sidebar() {
         <Icon size="24" name="mail" />
       </a>
       <button
+        onClick={handleCopy}
         title="分享链接"
         className="mt-1 w-10 h-10 flex items-center justify-center transition-colors text-regular-color hover:text-primary-color"
       >

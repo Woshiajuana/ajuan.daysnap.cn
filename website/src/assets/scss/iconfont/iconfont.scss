@@ -16,6 +16,10 @@
   content: "\e840";
 }
 
+.me-left-arrow:before {
+  content: "\e841";
+}
+
 .me-close:before {
   content: "\e615";
 }
@@ -70,9 +74,5 @@
 
 .me-dark:before {
   content: "\e6c2";
-}
-
-.me-logo:before {
-  content: "\e60c";
 }
 

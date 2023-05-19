@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
 
   images: {
-    domains: ['picsum.photos'],
+    domains: ['picsum.photos', 'avatars.githubusercontent.com'],
   },
 
   // 试验性功能
