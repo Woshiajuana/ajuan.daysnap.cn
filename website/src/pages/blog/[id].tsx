@@ -35,7 +35,7 @@ export default function BlogInfoPage(
             <h1 className="text-primary-color text-4xl">{blog.title}</h1>
             <DateTime
               className="mt-2"
-              time={blog.date}
+              time={blog.createTime}
               template="YYYY/MM/DD hh:mm"
             />
           </header>

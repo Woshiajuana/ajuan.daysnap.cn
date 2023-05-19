@@ -14,12 +14,17 @@ async function run(options: {
   // 文章
   const articles = glob.sync(normalizePath(path.join(input, '**/*.md'))).map(filepath => {
     const buffer = fs.readFileSync(filepath)
-    const { date, ...rest } = matter(buffer).data as { date: string }
+    const { createTime, updateTime, ...rest } = matter(buffer).data as { createTime: string, updateTime: string }
     const url = normalizePath(filepath.replace(input, ''))
-    return { ...rest, url, date, id: date ? new Date(date).getTime().toString() : Math.random().toString().slice(2) }
-  })
-  .sort((x, y) => {
-    return new Date(x.date).getTime() - new Date(y.date).getTime()
+    return { 
+      ...rest,
+      url, 
+      createTime, 
+      updateTime: updateTime ?? createTime,
+      id: createTime ? new Date(createTime).getTime().toString() : Math.random().toString().slice(2)
+    }
+  }).sort((x, y) => {
+    return new Date(y.createTime).getTime() - new Date(x.createTime).getTime()
   })
 
   const genJson = (filename: string, data: any) => {

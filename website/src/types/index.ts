@@ -9,7 +9,8 @@ export interface CatalogItem {
 export interface BlogItem {
   id: string
   title: string
-  date: string
+  createTime: string
+  updateTime: string
   url: string
   abstract: string
 
@@ -20,7 +21,8 @@ export interface BlogItem {
 export interface ProjectItem {
   id: string
   title: string
-  date: string
+  createTime: string
+  updateTime: string
   url: string
   coverUrl: string
 

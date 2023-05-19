@@ -1,6 +1,6 @@
 ---
 title: Vue 服务端渲染之 nuxt
-date: 2023-03-12 12:22
+createTime: 2023-03-12 12:22
 abstract: 客户端渲染（CSR） 和 服务端渲染（SSR）
 ---
 

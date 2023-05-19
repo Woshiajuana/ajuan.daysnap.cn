@@ -8,7 +8,7 @@ export interface BlogCellProps {
 
 export function BlogCell(props: BlogCellProps) {
   const { blog } = props
-  const { id, title, abstract, date } = blog
+  const { id, title, abstract, createTime } = blog
 
   return (
     <li className="mb-4 last:mb-0">
@@ -17,7 +17,11 @@ export function BlogCell(props: BlogCellProps) {
         href={`/blog/${id}`}
       >
         <h2 className="text-xl text-primary-color">{title}</h2>
-        <DateTime className="mt-1" time={date} template="YYYY/MM/DD hh:mm" />
+        <DateTime
+          className="mt-1"
+          time={createTime}
+          template="YYYY/MM/DD hh:mm"
+        />
         <p className="mt-4 text-secondary-color">{abstract}</p>
       </Link>
     </li>
