@@ -1,7 +1,7 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { reqBlogInfo } from '@/api'
 import type { BlogItem } from '@/types'
-import { Aside, Catalog, ArticleContent, SEO } from '@/components'
+import { Aside, Catalog, ArticleContent, SEO, DateTime } from '@/components'
 
 export interface BlogInfoPageProps {
   blog: BlogItem
@@ -33,9 +33,11 @@ export default function BlogInfoPage(
         <article className="w-full">
           <header className="mb-10">
             <h1 className="text-primary-color text-4xl">{blog.title}</h1>
-            <p className="text-xs text-secondary-color mt-2">
-              <time>{blog.date}</time>
-            </p>
+            <DateTime
+              className="mt-2"
+              time={blog.date}
+              template="YYYY/MM/DD hh:mm"
+            />
           </header>
 
           <ArticleContent html={blog.content} />
