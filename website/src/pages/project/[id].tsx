@@ -1,7 +1,7 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { reqProjectInfo } from '@/api'
 import type { ProjectItem } from '@/types'
-import { Aside, Catalog, ArticleContent, SEO } from '@/components'
+import { Aside, Catalog, ArticleContent, SEO, DateTime } from '@/components'
 
 export interface ProjectInfoPageProps {
   project: ProjectItem
@@ -33,9 +33,11 @@ export default function BlogInfoPage(
         <article className="w-full">
           <header className="mb-10">
             <h1 className="text-primary-color text-4xl">{project.title}</h1>
-            <p className="text-xs text-secondary-color mt-2">
-              <time>{project.date}</time>
-            </p>
+            <DateTime
+              className="mt-2"
+              time={project.date}
+              template="YYYY/MM/DD hh:mm"
+            />
           </header>
 
           <ArticleContent html={project.content} />

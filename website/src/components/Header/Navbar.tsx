@@ -2,10 +2,16 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
+import { useMemo } from 'react'
 
 function NavbarLink({ children, href }: { children: any; href: string }) {
   const { pathname } = useRouter()
-  const active = pathname === href
+  const active = useMemo(() => {
+    if (href === '/') {
+      return pathname === href
+    }
+    return pathname.startsWith(href)
+  }, [href, pathname])
 
   return (
     <Link
