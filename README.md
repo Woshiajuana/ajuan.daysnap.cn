@@ -1,3 +1,3 @@
-# blog.daysnap.cn
+# ajuan.daysnap.cn
 
 ...

@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "next-start": "cross-env BASE_URL=https://blog.daysnap.cn/ next start",
+    "next-start": "cross-env BASE_URL=https://ajuan.daysnap.cn/ next start",
     "lint": "next lint",
-    "stop": "pm2 stop blog-website",
-    "start": "pm2 start npm --watch --name blog-website -- run next-start",
-    "restart": "pm2 restart blog-website"
+    "stop": "pm2 stop ajuan-website",
+    "start": "pm2 start npm --watch --name ajuan-website -- run next-start",
+    "restart": "pm2 restart ajuan-website"
   },
   "dependencies": {
     "@algolia/client-search": "^4.17.0",

@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.REMOTE_USERNAME }} # 用户名
           key: ${{ secrets.PRIVATE_KEY }} # 私钥
           source: "./source/blogs,./source/projects,./source/images,./source/mocks" # 发送文件
-          target: "/web/blog/public/assets/" # 目标目录
+          target: "/web/ajuan/public/assets/" # 目标目录
           strip_components: 2
 
       # 网站发布到目标服务器
@@ -55,7 +55,7 @@ jobs:
           username: ${{ secrets.REMOTE_USERNAME }} # 用户名
           key: ${{ secrets.PRIVATE_KEY }} # 私钥
           source: "./website/.next,./website/public,./website/package.json,./website/.npmrc" # 发送文件
-          target: "/web/blog/" # 目标目录
+          target: "/web/ajuan/" # 目标目录
           strip_components: 2
 
       # 安装依赖、重启后端服务
@@ -66,7 +66,7 @@ jobs:
           username: ${{ secrets.REMOTE_USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            cd /web/blog
+            cd /web/ajuan
             npm i --force
             npm run restart
   

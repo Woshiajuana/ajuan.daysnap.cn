@@ -1,6 +1,6 @@
 {
-  "index_name": "nextjs-blog",
-  "start_urls": ["https://blog.daysnap.cn/"],
+  "index_name": "ajuan-website",
+  "start_urls": ["https://ajuan.daysnap.cn/"],
   "rateLimit": 8,
   "maxDepth": 10,
   "selectors": {
