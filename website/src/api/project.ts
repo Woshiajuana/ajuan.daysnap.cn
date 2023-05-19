@@ -17,8 +17,8 @@ export const reqProjectInfo = async (params: { id: string }) => {
     `${BASE_URL}assets/projects${article.url}?v=${Date.now()}`,
   ).then((res) => res.text())
 
-  const { content } = matter(result)
-  article.content = markdown.render(content)
+  const { content, data } = matter(result)
+  Object.assign(article, data, { content: markdown.render(content) })
 
   return article
 }
