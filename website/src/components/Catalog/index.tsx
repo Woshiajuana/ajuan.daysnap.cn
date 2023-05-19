@@ -15,7 +15,12 @@ const useCatalogInfo = () => {
   })
 
   useEffect(() => {
-    setCatalogInfo(parseHtml(document.getElementById('article-content')!))
+    setTimeout(() => {
+      const container = document.getElementById('article-content')
+      if (container) {
+        setCatalogInfo(parseHtml(container))
+      }
+    }, 500)
   }, [])
 
   return catalogInfo

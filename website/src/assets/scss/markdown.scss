@@ -72,6 +72,21 @@
       }
     }
   }
+
+  blockquote{
+    border-radius: 4px;
+    padding: 0 1rem;
+    overflow: hidden;
+    background-color: rgba(var(--ds-bg-regular-color), 1);
+    font-weight: 400;
+    border-left-color: rgba(var(--ds-primary-color), 1);
+    p{
+      &::after,
+      &::before{
+        display: none;
+      }
+    }
+  }
 }
 
 .dark{

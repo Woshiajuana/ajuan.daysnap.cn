@@ -13,7 +13,7 @@ export function parseHtml(el: HTMLElement) {
         end: 0,
         level: objHLevel.indexOf(item.nodeName) + 1,
         label,
-        offsetTop: (item as any).offsetTop - 70,
+        offsetTop: (item as any).offsetTop,
         parent: false,
         children: [],
       }
