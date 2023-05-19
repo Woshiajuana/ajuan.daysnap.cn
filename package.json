@@ -3,7 +3,7 @@
   "private": true,
   "description": "博客网站",
   "scripts": {
-    "dev": "concurrently --kill-others \"npm:dev:*\"",
+    "dev": "npm run dev:link && npm run dev:source && npm run dev:website",
     "dev:link": "ts-node ./scripts/link.ts",
     "dev:source": "pnpm -C ./source dev",
     "dev:website": "pnpm -C ./website dev",
@@ -22,7 +22,6 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "18.15.12",
-    "concurrently": "^8.0.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
