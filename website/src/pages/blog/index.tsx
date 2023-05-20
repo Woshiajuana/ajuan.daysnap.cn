@@ -13,7 +13,7 @@ export interface BlogPageProps {
 export const getServerSideProps: GetServerSideProps<BlogPageProps> = async (
   context,
 ) => {
-  const size = 20
+  const size = 10
   let { page = '1' } = context.query as Record<string, any>
   page = parseInt(page)
 

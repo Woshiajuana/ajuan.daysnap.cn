@@ -13,7 +13,7 @@ export interface ProjectPageProps {
 export const getServerSideProps: GetServerSideProps<ProjectPageProps> = async (
   context,
 ) => {
-  const size = 20
+  const size = 10
   let { page = '1' } = context.query as Record<string, any>
   page = parseInt(page)
 
