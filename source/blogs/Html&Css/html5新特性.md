@@ -2,6 +2,7 @@
 title: HTML5新特性
 createTime: 2018-01-01 12:22
 updateTime: 2023-05-19 22:47
+tags: http http5
 abstract: 2014年10月29日，万维网联盟宣布，经过接近8年的艰苦努力，HTML5标准规范终于制定完成。
 ---
 

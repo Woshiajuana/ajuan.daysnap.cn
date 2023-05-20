@@ -11,12 +11,11 @@ export interface PaginationButtonProps extends LinkProps {
 export function PaginationButton(props: PaginationButtonProps) {
   const { disabled = false, className, children, ...rest } = props
   const classes = classnames(
-    `text-regular-color hover:text-primary-color transition-colors`,
+    `transition-colors`,
     className,
-    {
-      'cursor-not-allowed text-placeholder-color hover:text-placeholder-color':
-        disabled,
-    },
+    disabled
+      ? 'cursor-not-allowed text-placeholder-color hover:text-placeholder-color'
+      : 'text-regular-color hover:text-primary-color',
   )
   return disabled ? (
     <button disabled={disabled} className={classes}>

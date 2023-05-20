@@ -31,7 +31,7 @@ export function Pagination(props: PaginationProps) {
         上一页
       </PaginationButton>
       <span className="mx-4 text-secondary-color">
-        <strong className="text-primary-color">{page}</strong> / {pageTotal}
+        <strong className="text-primary">{page}</strong> / {pageTotal}
       </span>
       <PaginationButton
         disabled={nextPage > pageTotal}
