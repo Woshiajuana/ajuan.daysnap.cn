@@ -111,7 +111,7 @@ npm install -g @nestjs/cli
 ## ORM
 
 `ORM`（Object Relational Mapping）对象关系映射，其主要作用是在编程中，把面向对象的概念跟数据库中的概念对应起来。
- 
+
 ### 特点
 
 - 方便维护：数据模型定义在同一个地方，利于重构
@@ -119,13 +119,12 @@ npm install -g @nestjs/cli
 - 工具多、自动化能力强：数据库删除关联数据、事务操作等
 - 缺点：因为是`sql`高度集成，所以不利于`sql`优化
 
-## 常用的ORM库
+## 常用的 ORM 库
 
 - `knex`
 - `prisma`
 - `sequelize`
 - `typeorm`
-
 
 ## 数据库
 
@@ -135,10 +134,51 @@ npm install -g @nestjs/cli
 - 主键：区分、查询、排序数据
 - 外键：关联两个表
 
+聚合查询
+
+```ts
+// SELECT logs.result as result, COUNT(logs.result) as count from logs, user WHERE user.id = logs.userId AND user.id = 2 GROUP BY logs.result;
+function findLogsByGroup(id: number) {
+  return this.logsRepository
+    .createQueryBuilder("logs")
+    .select("logs.result", "result")
+    .addSelect('COUNT("logs.result")', "count")
+    .leftJoinAndSelect("logs.user", "user")
+    .where("user.id = :id", { id })
+    .groupBy("logs.result")
+    .orderBy("count", "DESC")
+    .getRawMany();
+}
+```
+
+已有数据库，如何生成实体类
+
+```
+typeorm-model-generator
+```
 
 ```bash
 docker-compose up -d
 ```
+
+## 日志
+
+第三方日志方案
+
+- `winston`
+  - `nest-winston`
+  - `winston-daily-rotate-file`
+- `pino`
+  - `pino-pretty`
+  - `pino-roll`
+
+日志等级
+
+- `Log`：通用日志，按需进行记录（打印）
+- `Warning`：警告日志，比如：尝试多次进行数据库操作
+- `Error`：严重日志，比如：数据库异常
+- `Debug`：调试日志，比如：加载数据日志
+- `Verbose`：详细日志，所有的操作与详细信息（非必要不打印）
 
 ## 参考文档
 
