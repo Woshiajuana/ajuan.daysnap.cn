@@ -48,6 +48,12 @@ Daysnap 全站搭建，包含如下应用：
   - `jenkins`
 - 一期开发周期：`2023-05-22` ~ `2023-07-16`
 
+参考文档：
+
+- [NestJS 中文文档](https://docs.nestjs.cn/9/firststeps)
+- [数据库设计参考](https://open.yesapi.cn/list.html)
+- [TypeORM 中文文档](https://typeorm.bootcss.com/)
+
 ## PC 端&WAP 端
 
 支持响应式，PC 端和 WAP 端是一套代码

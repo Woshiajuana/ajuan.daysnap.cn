@@ -182,10 +182,12 @@ docker-compose up -d
 
 ## 参考文档
 
-- [中文文档](https://docs.nestjs.cn/9/firststeps)
+- [NestJS 中文文档](https://docs.nestjs.cn/9/firststeps)
 
 - [NestJS 微服务架构实践](https://juejin.cn/post/7075233589977153549)
 
 - [文档案例](https://github.com/dzzzzzy/Nestjs-Learning)
 
 - [数据库设计参考](https://open.yesapi.cn/list.html)
+
+- [TypeORM中文文档](https://typeorm.bootcss.com/)
