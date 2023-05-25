@@ -161,6 +161,21 @@ typeorm-model-generator
 docker-compose up -d
 ```
 
+`remove` 可以一次性删除单个或者多个实例，并且 `remove` 可以触发 `BeforeRemove`、`AfterRemove` 钩子
+
+```js
+await repository.remove(user);
+await repository.remove([user1, user2, user3]);
+```
+
+`delete` 可以一次性删除单个或者多个 id 实例，或者给定条件
+
+```js
+await repository.delete(1);
+await repository.delete([1, 2, 3]);
+await repository.delete({ username: "张三" });
+```
+
 ## 日志
 
 第三方日志方案
@@ -180,6 +195,24 @@ docker-compose up -d
 - `Debug`：调试日志，比如：加载数据日志
 - `Verbose`：详细日志，所有的操作与详细信息（非必要不打印）
 
+
+## DTO 校验
+
+```ts
+export class UserDto {
+  @IsString()
+  @IsNotEmpty()
+  @Length(6, 20, {
+    // $value: 当前传入的值
+    // $property: 当前属性名
+    // $target: 当前类
+    // $constraint1: 最小长度 ...
+    message: `用户名长度必须在$constraint1到$constraint2之间，当前传递的值是：$value`
+  })
+  username: string
+}
+```
+
 ## 参考文档
 
 - [NestJS 中文文档](https://docs.nestjs.cn/9/firststeps)
@@ -190,4 +223,4 @@ docker-compose up -d
 
 - [数据库设计参考](https://open.yesapi.cn/list.html)
 
-- [TypeORM中文文档](https://typeorm.bootcss.com/)
+- [TypeORM 中文文档](https://typeorm.bootcss.com/)
