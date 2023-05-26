@@ -195,7 +195,6 @@ await repository.delete({ username: "张三" });
 - `Debug`：调试日志，比如：加载数据日志
 - `Verbose`：详细日志，所有的操作与详细信息（非必要不打印）
 
-
 ## DTO 校验
 
 ```ts
@@ -207,10 +206,78 @@ export class UserDto {
     // $property: 当前属性名
     // $target: 当前类
     // $constraint1: 最小长度 ...
-    message: `用户名长度必须在$constraint1到$constraint2之间，当前传递的值是：$value`
+    message: `用户名长度必须在$constraint1到$constraint2之间，当前传递的值是：$value`,
   })
-  username: string
+  username: string;
 }
+```
+
+## 守卫 Guard
+
+1. 装饰器的执行顺序，方法的装饰器如果有多个，则是从下往上执行
+2. 如果使用`UseGuard`传递多个守卫，则从前往后执行，如果前面的`Guard`没有通过，则后面的`Guard`不会执行
+
+```ts
+@Injectable()
+export class AdminGuard implements CanActivate {
+  constructor(private userService: UserService) {}
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const req = context.switchToHttp().getRequest();
+
+    return true;
+  }
+}
+```
+
+## 测试
+
+- 单元测试
+  - Jest
+  - Vitest
+  - mocha
+- 集成测试
+  - Cypress
+  - Nightware
+  - Pactum
+
+```ts
+describe("AuthController", () => {
+  let controller: AuthController;
+  let mockAuthService: Partial<AuthService>;
+
+  beforeEach(async () => {
+    mockAuthService = {
+      signin() {
+        return "token";
+      },
+    };
+
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [AuthController],
+      providers: [
+        {
+          provide: AuthService,
+          useValue: mockAuthService,
+        },
+      ],
+    }).compile();
+
+    controller = module.get<AuthController>(AuthController);
+  });
+
+  it("鉴权-初始化-实例化", () => {
+    expect(controller).toBeDefined();
+  });
+
+  it("鉴权-控制器-signin登录", async () => {
+    const res = controller.signin({
+      username: "test",
+      password: "123456",
+    } as SigninUserDto);
+    expect(await res).not.toBeNull();
+    expect((await res).access_token).toBe("token");
+  });
+});
 ```
 
 ## 参考文档
