@@ -280,6 +280,28 @@ describe("AuthController", () => {
 });
 ```
 
+server
+
+```ts
+const module: TestingModule = await Test.createTestingModule({
+  providers: [
+    AuthService,
+    {
+      provide: AuthService,
+      useValue: mockAuthService,
+    },
+  ],
+}).compile();
+
+server = module.get<AuthService>(AuthService);
+// servers
+it("报错", async () => {
+  await expect(
+    service.signup(mockUser.username, mockUser.password)
+  ).rejects.toThrow(new ForbiddenException("用户已存在"));
+});
+```
+
 ## 参考文档
 
 - [NestJS 中文文档](https://docs.nestjs.cn/9/firststeps)
