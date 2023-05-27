@@ -302,6 +302,27 @@ it("报错", async () => {
 });
 ```
 
+集成测试，见源码
+
+```ts
+export class AppFactory {
+  static init() {}
+}
+```
+
+## 数据库
+
+./docker-compose.yml
+
+```bash
+docker-compose up -d
+```
+
+## npm 库
+
+- PactumJs
+- SuperTest
+
 ## 参考文档
 
 - [NestJS 中文文档](https://docs.nestjs.cn/9/firststeps)
@@ -313,3 +334,5 @@ it("报错", async () => {
 - [数据库设计参考](https://open.yesapi.cn/list.html)
 
 - [TypeORM 中文文档](https://typeorm.bootcss.com/)
+
+- [github 源码仓库](https://github.com/ygqygq2/nestjs-learning)
