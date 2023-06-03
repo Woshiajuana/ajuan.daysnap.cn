@@ -336,3 +336,5 @@ docker-compose up -d
 - [TypeORM 中文文档](https://typeorm.bootcss.com/)
 
 - [github 源码仓库](https://github.com/ygqygq2/nestjs-learning)
+
+- [序列化](https://zhuanlan.zhihu.com/p/632313020)
