@@ -312,6 +312,8 @@ export class AppFactory {
 
 ## 数据库
 
+![一图概括](/assets/images/WX20230525-150516@2x.png)
+
 ./docker-compose.yml
 
 ```bash
