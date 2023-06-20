@@ -1,7 +1,7 @@
 ---
 title: Flutter环境搭建
 createTime: 2023-06-20 10:38
-tags: docker
+tags: flutter
 abstract: flutter 环境相关配置搭建
 ---
 
@@ -126,9 +126,6 @@ fvm install 3.7.6
 # 设置全局默认
 fvm global 3.7.6
 
-# 使用
-fvm use 3.7.6
-
 # 删除SDK
 fvm remove 3.7.6
 
@@ -223,3 +220,7 @@ brew list
 ```bash
 brew remove dart
 ```
+
+## Sidekick 桌面应用
+
+[下载地址](https://github.com/fluttertools/sidekick)
