@@ -2,7 +2,7 @@
 title: Flutter环境搭建
 createTime: 2023-06-20 10:38
 tags: docker
-abstract:
+abstract: flutter 环境相关配置搭建
 ---
 
 ## Flutter SDK
@@ -55,4 +55,140 @@ source ~/.bash_profile
 
 ```bash
 flutter doctor
+```
+
+## FVM
+
+FVM 用来管理 flutter 的版本
+
+[官网地址](https://fvm.app/)
+
+### 安装
+
+1. 安装 `fvm`
+
+```bash
+brew uninstall leoafarias/fvm/fvm
+brew untap leoafarias/fvm
+```
+
+2. 安装 `sdk`
+
+```bash
+fvm install 3.7.6
+```
+
+3. 设置全局
+
+```bash
+fvm global 3.7.6
+```
+
+4. 修改环境变量
+
+```
+code ~/.bash_profile
+
+# flutter sdk
+export PATH=${PATH}:~/fvm/default/bin
+
+# dart sdk
+export PATH=${PATH}:~/fvm/default/bin/cache/dart-sdk/bin
+export PATH=${PATH}:~/.pub-cache/bin
+
+source ~/.bash_profile
+```
+
+5. `vscode` 配置
+
+`setting.json` 面板
+
+```json
+"dart.flutterSdkPath": "~/fvm/default/bin"
+```
+
+`Android studio` 设置
+
+```bash
+~/fvm/default/bin
+```
+
+### 常用命令
+
+```bash
+# 安装
+fvm install 3.7.6
+
+# 设置全局默认
+fvm global 3.7.6
+
+# 使用
+fvm use 3.7.6
+
+# 删除SDK
+fvm remove 3.7.6
+
+# 查看已安装版本
+fvm list
+
+# 查看可安装版本
+fvm release
+
+# 检测环境
+fvm doctor
+```
+
+### 卸载
+
+```bash
+brew tap leoafarias/fvm
+brew install fvm
+```
+
+### 项目单独配置 sdk 版本
+
+- 进入到项目目录，执行
+
+```bash
+fvm use 3.7.6
+```
+
+- vscode sdk 搜索
+
+编辑 `.vscode/settings.json`
+
+```json
+{
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  // Remove .fvm files from search
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  // Remove from file watching
+  "files.watcherExclude": {
+    "**/.fvm": true
+  }
+}
+```
+
+- `Android Studio` 忽略搜索目录
+
+修改 `.idea/workspace.xml`
+
+```xml
+<component name="VcsManagerConfiguration">
+  <ignored-roots>
+    <path value="$PROJECT_DIR$/.fvm/flutter_sdk" />
+  </ignored-roots>
+</component>
+```
+
+- `Android Studio` 调整 sdk 位置
+
+- `Git` 忽略 `fvm/flutter_sdk`
+
+编辑 `.gitignore`
+
+```bash
+.fvm/flutter_sdk
 ```
