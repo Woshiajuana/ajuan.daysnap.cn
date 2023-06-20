@@ -86,16 +86,20 @@ fvm global 3.7.6
 
 4. 修改环境变量
 
-```
+```bash
 code ~/.bash_profile
+```
 
+```
 # flutter sdk
 export PATH=${PATH}:~/fvm/default/bin
 
 # dart sdk
 export PATH=${PATH}:~/fvm/default/bin/cache/dart-sdk/bin
 export PATH=${PATH}:~/.pub-cache/bin
+```
 
+```bash
 source ~/.bash_profile
 ```
 
@@ -191,4 +195,31 @@ fvm use 3.7.6
 
 ```bash
 .fvm/flutter_sdk
+```
+
+## 常见问题
+
+1. Dart sdk 重复
+
+```
+[!] Flutter (Channel stable, 3.7.6, on Mac OS X 10.14.6 18G103 darwin-x64, locale
+    zh-Hans-CN)
+    ! Warning: `dart` on your path resolves to
+      /usr/local/Cellar/dart/3.0.5/libexec/bin/dart, which is not inside your current
+      Flutter SDK checkout at /Users/ajuan/fvm/versions/3.7.6. Consider adding
+      /Users/ajuan/fvm/versions/3.7.6/bin to the front of your path.
+```
+
+根据路径 `Cellar`，判断出这是使用 `homebrew`安装的 `Dart`。
+
+使用 `brew list` 查看是否安装过
+
+```bash
+brew list
+```
+
+现在 `flutter sdk` 会包含 `dart sdk`，所以直接卸载 `Dart` 即可
+
+```bash
+brew remove dart
 ```
