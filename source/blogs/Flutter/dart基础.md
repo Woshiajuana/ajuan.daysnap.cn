@@ -82,7 +82,37 @@ class Singleton {
   static late final Singleton _instance = Singleton._internal();
 }
 ```
+ 
+被标记为 late 的变量 _instance 的初始化操作将会延迟到字段首次被访问时执行，而不是在类加载时就初始化。这样，Dart 语言特有的单例模式的实现方式就这么产生了。
+
+
+## 导入第三方库
+
+编写 `pubspec.yaml`
+
+```yaml
+dependencies:
+  dio: ^4.0.6
+```
+
+执行拉取包命令
+
+```bash
+dart pub get
+```
+
+导入github上的包
+
+```yml
+dependencies:
+  # 包名 
+  uuid:
+    git:
+      url: https://github.com/username/dart-name
+      ref: master
+```
+
 
 ## 参考文档
 
-1. https://flutter.cn/community/tutorials/singleton-pattern-in-flutter-n-dart
+1. https://flutter.cn/community/tutorials/singleton-pattern-in-flutter-n-dart 
