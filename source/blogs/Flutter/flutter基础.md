@@ -67,25 +67,22 @@ UnconstrainedBox 不受约束
 
 - `Row`、`Column`、`ListView` 这种组件属于 `unbounded`
 
-
 ## 生命周期
 
 ![一图概况](/assets/images/000129.png)
 
 执行顺序，从上往下：
 
-
-| 名称 | 说明 |
-| :-------------------: | :-------------------------: |
-| createState | 创建 State 只执行 1 次 |
-| initState | 初始 State, mounted 等于 true, 只执行 1 次 |
+|         名称          |                        说明                         |
+| :-------------------: | :-------------------------------------------------: |
+|      createState      |               创建 State 只执行 1 次                |
+|       initState       |     初始 State, mounted 等于 true, 只执行 1 次      |
 | didChangeDependencies | 父或祖先 widget 中的 InheritedWidget 改变时会被调用 |
-| build | UI 被重新渲染的时候多次执行 |
-| addPostFrameCallback | 渲染结束回调，只执行 1 次 |
-| didUpdateWidget | 父类 setState 后，子类就会触发 |
-| deactivate | 从组件树中移除 State 时调用 |
-| dispose | 组件被释放时调用 |
-
+|         build         |             UI 被重新渲染的时候多次执行             |
+| addPostFrameCallback  |              渲染结束回调，只执行 1 次              |
+|    didUpdateWidget    |           父类 setState 后，子类就会触发            |
+|      deactivate       |             从组件树中移除 State 时调用             |
+|        dispose        |                  组件被释放时调用                   |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -214,4 +211,115 @@ flutter: initState
 flutter: didChangeDependencies
 flutter: addPostFrameCallback
 flutter: 0:00:00.000000
+```
+
+## App 生命周期
+
+|    名称    |                         说明                          |
+| :--------: | :---------------------------------------------------: |
+|  resumed   |             应用程序可见且响应用户输入。              |
+|  inactive  |      应用程序处于非激活状态，无法响应用户输入。       |
+|   pause    |    应用程序不可见且无法响应用户输入，运行在后台。     |
+|  detached  | 应用程序仍寄存在 Flutter 引擎上，但与平台 View 分离。 |
+| suspending |          应用被挂起，此状态 IOS 永远不会回调          |
+
+```dart
+import "package:flutter/material.dart";
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+//实现WidgetsBindingObserver观察者
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addObserver(this); //添加观察者
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("App生命周期"),
+        ),
+        body: Column(
+          children: <Widget>[
+            const Text("首页"),
+          ],
+        ),
+      ),
+    );
+  }
+
+  //  生命周期变化时回调
+  //  resumed:应用可见并可响应用户操作,app进入前台
+  //  inactive:用户可见，但不可响应用户操作，比如来了个电话,前后台切换的过渡状态
+  //  paused:已经暂停了，用户不可见、不可操作，app进入后台
+  //  suspending：应用被挂起，此状态IOS永远不会回调
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print("didChangeAppLifecycleState: $state");
+  }
+
+  //当前系统改变了一些访问性活动的回调
+  @override
+  void didChangeAccessibilityFeatures() {
+    super.didChangeAccessibilityFeatures();
+    print("didChangeAccessibilityFeatures");
+  }
+
+  //低内存回调
+  @override
+  void didHaveMemoryPressure() {
+    super.didHaveMemoryPressure();
+    print("didHaveMemoryPressure");
+  }
+
+  //用户本地设置变化时调用，如系统语言改变
+  @override
+  void didChangeLocales(List<Locale>? locale) {
+    super.didChangeLocales(locale);
+    print("didChangeLocales");
+  }
+
+  //应用尺寸改变时回调，例如旋转
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    Size? size = WidgetsBinding.instance?.window.physicalSize;
+    print("didChangeMetrics  ：宽：${size?.width} 高：${size?.height}");
+  }
+
+  //系统切换主题时回调
+  @override
+  void didChangePlatformBrightness() {
+    super.didChangePlatformBrightness();
+    print("didChangePlatformBrightness");
+  }
+
+  ///文字系数变化
+  @override
+  void didChangeTextScaleFactor() {
+    super.didChangeTextScaleFactor();
+    print(
+        "didChangeTextScaleFactor  ：${WidgetsBinding.instance?.window.textScaleFactor}");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance?.removeObserver(this); //销毁观察者
+  }
+}
 ```
