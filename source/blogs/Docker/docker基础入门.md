@@ -5,9 +5,88 @@ tags: docker
 abstract:
 ---
 
-## mac 安装 docker
+## 安装
 
+### mac 安装 docker
 
+1. 安装 brew：
+
+```shell
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+```
+
+```shell
+brew install --cask --appdir=/Applications docker
+```
+
+2. 设置
+
+```json5
+{
+  "registry-mirrors": [
+    "http://hub-mirror.c.163.com",
+    "https://registry.docker-cn.com",
+  ],
+}
+```
+
+### linux 安装 docker
+
+1. 卸载
+
+```bash
+sudo yum remove docker \
+  docker-client \
+  docker-client-latest \
+  docker-common \
+  docker-latest \
+  docker-latest-logrotate \
+  docker-logrotate \
+  docker-engine
+```
+
+2. 设置 `yum` 工具包
+
+```bash
+yum install -y yum-utils
+```
+
+3. 设置镜像仓库
+
+- 官方仓库（不推荐）
+
+```bash
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+- 阿里镜像仓库（推荐）
+
+```bash
+sudo yum-config-manager \
+    --add-repo \
+    http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+```
+
+4. 安装 docker
+
+```bash
+# 安装docker-ce（社区版-免费的）
+yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+5. 启动 docker
+
+```bash
+systemctl start docker
+```
+
+6. 查看版本
+
+```bash
+docker version
+```
 
 ## 常用命令
 
