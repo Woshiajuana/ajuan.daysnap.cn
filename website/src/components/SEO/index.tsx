@@ -15,7 +15,7 @@ export function SEO(props: SEOProps) {
   return (
     <Head>
       <title>
-        {title} - {websiteMetadata.title}
+        {title ? `${title} - ${websiteMetadata.title}` : websiteMetadata.title}
       </title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={websiteMetadata.description} />
