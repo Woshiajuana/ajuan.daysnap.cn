@@ -24,7 +24,7 @@ function NavbarLink({ children, href }: { children: any; href: string }) {
       {children}
       {active ? (
         <motion.div
-          className="absolute inset-0 bg-gray-400/20 dark:bg-neutral-800 rounded-md z-[-1] bg-primary/10"
+          className="absolute inset-0 dark:bg-neutral-800 rounded-md z-[-1] bg-primary/10"
           layoutId="navbar"
           transition={{
             type: 'spring',

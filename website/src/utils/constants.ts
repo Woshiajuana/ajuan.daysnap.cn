@@ -1,6 +1,6 @@
 export const websiteMetadata = {
   title: 'Ajuan',
-  avatar: '/avatar.jpeg',
+  avatar: '/img/avatar.jpeg',
   name: 'zhigang.chen',
   job: '前端技术爱好者',
   introduce: `

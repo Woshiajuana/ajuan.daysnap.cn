@@ -17,6 +17,7 @@ export function PaginationButton(props: PaginationButtonProps) {
       ? 'cursor-not-allowed text-placeholder-color hover:text-placeholder-color'
       : 'text-regular-color hover:text-primary-color',
   )
+
   return disabled ? (
     <button disabled={disabled} className={classes}>
       {children}

@@ -8,17 +8,24 @@ export interface SEOProps {
 }
 
 export function SEO(props: SEOProps) {
-  const { title, children } = props
+  const { title: titleProp, children } = props
 
   const router = useRouter()
 
+  const title = titleProp
+    ? `${titleProp} - ${websiteMetadata.title}`
+    : websiteMetadata.title
+
+  const share = `${websiteMetadata.siteUrl}${websiteMetadata.avatar}`
+
   return (
     <Head>
-      <title>
-        {title ? `${title} - ${websiteMetadata.title}` : websiteMetadata.title}
-      </title>
+      <title>{title}</title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={websiteMetadata.description} />
+      <meta property="og:title" content={title} />
+      <meta itemProp="image" content={share} />
+      <meta property="og:description" content={websiteMetadata.description} />
       <meta
         property="og:url"
         content={`${websiteMetadata.siteUrl}${router.asPath}`}
