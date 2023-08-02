@@ -8,8 +8,7 @@
     "next-start": "cross-env BASE_URL=https://ajuan.daysnap.cn/ next start",
     "lint": "next lint",
     "stop": "pm2 stop ajuan-website",
-    "start": "pm2 start npm --watch --name ajuan-website -- run next-start",
-    "restart": "pm2 restart ajuan-website"
+    "start": "pm2 delete -s ajuan-website || : && pm2 start npm --watch --name ajuan-website -- run next-start"
   },
   "dependencies": {
     "@algolia/client-search": "^4.19.1",

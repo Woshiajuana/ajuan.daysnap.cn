@@ -58,7 +58,7 @@ jobs:
           target: "/web/ajuan/" # 目标目录
           strip_components: 2
 
-      # 安装依赖、重启后端服务
+      # 安装依赖、重启后端服务 npm i --force
       - name: Server Reload
         uses: appleboy/ssh-action@master
         with: 
@@ -67,8 +67,8 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             cd /web/ajuan
-            npm i --force
-            npm run restart
+            pnpm i
+            npm run start
   
       # algolia
       - name: Get the content of algolia.json as config
