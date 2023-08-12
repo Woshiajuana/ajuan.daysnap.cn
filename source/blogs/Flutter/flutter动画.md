@@ -179,3 +179,306 @@ Tween(end: 1.0)
 // 相等
 Tween(begin: 1.0, end: 1.0),
 ```
+
+配合 `Transform` 进行各种动画
+
+- `Transform.scale`
+
+```dart
+TweenAnimationBuilder(
+  duration: Duration(seconds: 1),
+  tween: Tween(begin: 0.0, end: 1.0),
+  builder: (BuildContext context, value, Widget child) {
+    return Container(
+      width: 300,
+      height: 300,
+      color: Colors.blue,
+      child: Center(
+        child: Transform.scale(
+          scale: value,
+          child: Text('哈哈')
+        ),
+      ),
+    );
+  },
+)
+```
+
+- `Transform.translate`
+
+```dart
+TweenAnimationBuilder(
+  duration: Duration(seconds: 1),
+  tween: Tween(begin: Offset(0.0, 0.0), end: Offset(10.0, 10.0)),
+  builder: (BuildContext context, value, Widget child) {
+    return Container(
+      width: 300,
+      height: 300,
+      color: Colors.blue,
+      child: Center(
+        child: Transform.translate(
+          offset: value,
+          child: Text('哈哈')
+        ),
+      ),
+    );
+  },
+)
+```
+
+- `Transform.rotate`
+
+### 案列 - 翻滚计数器
+
+```dart
+class AnimatedCounter extends StatelessWidget {
+  final Duration duration;
+  final int value;
+
+  AnimatedCounter({
+    @required this.duration,
+    @required this.value,
+  })
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder(
+      duration: duration,
+      tween: Tween(end: value.toDouble()),
+      builder: (BuildContext context, value, Widget child) {
+        final whole = value ~/ 1;
+        final decimal = value - whole;
+        return Stack(
+          children: [
+            Positioned(
+              top: -100 * decimal,
+              child: Opacity(
+                opacity: 1.0 - decimal,
+                child: Text(
+                  "$whole",
+                  style: TextStyle(fontSize: 100),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 100 - 100 * decimal,
+              child: Opacity(
+                opacity: decimal,
+                child: Text(
+                  "${whole + 1}",
+                  style: TextStyle(fontSize: 100),
+                ),
+              ),
+            ),
+          ],
+        );
+      }
+    );
+  }
+}
+```
+
+## 显示动画
+
+需要自己控制、可以一直执行、反复执行
+
+### 可以一直执行
+
+- `SlideTransition` 位移
+- `FadeTransition`
+- `ScaleTransition`
+- `RotationTransition`
+
+```dart
+AnimationController _controller = AnimationController(
+  duration: Duration(seconds: 1),
+  vsync: this,
+);
+
+_controller.forward();
+```
+
+```dart
+RotationTransition(
+  turns: _controller,
+  child: Container({
+    height: 300,
+    width: 300,
+    color: Colors.blue,
+  }),
+)
+```
+
+- `SingleTickerProviderStateMixin`
+
+这个是屏幕刷新会提供一个 `ticker` 回调，可以打印下
+
+```dart
+_controller.addListener(() {
+  print("${_controller.value}");
+});
+```
+
+### 动画控制器
+
+`AnimationController`
+
+初始化
+
+```dart
+AnimationController _controller = AnimationController(
+  duration: Duration(seconds: 1),
+  vsync: this,
+  lowerBound: 0.0, // 默认值
+  upperBound: 1.0, // 默认值
+);
+```
+
+监听变化值
+
+```dart
+_controller.addListener(() {
+  print("${_controller.value}");
+});
+```
+
+操作
+
+```dart
+_controller.forward();
+_controller.repeat(); // 0 ~ 1  0 ~ 1 ...
+_controller.repeat(reverse: true); // 0 ~ 1 1 ~ 0 ...
+_controller.stop();
+_controller.reset();
+```
+
+### 控制器串联补间(Tween)和曲线
+
+```dart
+SlideTransition(
+  position: _controller.drive(
+    Tween(begin: Offset(0, 0), end: Offset(0.1, 0.1)),
+  ),
+  child: Container(
+    width: 300,
+    height: 300,
+    color: Colors.blue,
+  ),
+)
+```
+
+另一种写法
+
+```dart
+SlideTransition(
+  position: Tween(
+    begin: Offset(0, 0),
+    end: Offset(0.1, 0.1)，
+  ).animate(_controller),
+  child: Container(
+    width: 300,
+    height: 300,
+    color: Colors.blue,
+  ),
+)
+```
+
+串联多个 `Tween`
+
+```dart
+SlideTransition(
+  position: Tween(
+    begin: Offset(0, 0),
+    end: Offset(0.1, 0.1)，
+  ).chain(
+    CurveTween(curve: Curves.elasticInOut)
+  ).animate(_controller),
+  child: Container(
+    width: 300,
+    height: 300,
+    color: Colors.blue,
+  ),
+)
+```
+
+```dart
+SlideTransition(
+  position: Tween(
+    begin: Offset(0, 0),
+    end: Offset(0.1, 0.1)，
+  ).chain(
+    CurveTween(curve: Curves.elasticInOut)
+  ).chain(
+    CurveTween(curve: Interval(0.8, 1.0))
+  ).animate(_controller),
+  child: Container(
+    width: 300,
+    height: 300,
+    color: Colors.blue,
+  ),
+)
+```
+
+### 交错动画
+
+主要是利用 `Interval(0.8, 1.0)` 来改变动画执行时间
+
+### 自定义动画
+
+`AnimatedBuilder`
+
+```dart
+AnimatedBuilder(
+  animation: _controller,
+  builder: (BuildContext context, Widget child) {
+    return Opacity(
+      opacity: _controller.value,
+      child: Container(
+        width: 300,
+        height: 300,
+        color: Colors.blue,
+      ),
+    );
+  },
+)
+```
+
+`child` 优化
+
+```dart
+AnimatedBuilder(
+  animation: _controller,
+  builder: (BuildContext context, Widget child) {
+    return Opacity(
+      opacity: _controller.value,
+      child: child,
+    );
+  },
+  child: Container(
+    width: 300,
+    height: Tween(begin: 100.0, end: 200.0).evaluate(_controller),
+    color: Colors.blue,
+  ),
+)
+```
+
+再次优化
+
+```dart
+final Animation heightAnimation = Tween(begin: 100.0, end: 200.0).animate(_controller);
+
+AnimatedBuilder(
+  animation: _controller,
+  builder: (BuildContext context, Widget child) {
+    return Opacity(
+      opacity: _controller.value,
+      child: child,
+    );
+  },
+  child: Container(
+    width: 300,
+    height: heightAnimation.value,
+    color: Colors.blue,
+  ),
+)
+```
