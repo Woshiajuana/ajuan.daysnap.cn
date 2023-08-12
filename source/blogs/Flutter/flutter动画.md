@@ -482,3 +482,82 @@ AnimatedBuilder(
   ),
 )
 ```
+
+## 动画机制和原理
+
+- `ticker`
+
+```dart
+Ticker _ticker = Ticker((elapsed) {
+  print("Tick: $elapsed");
+});
+
+_ticker.start();
+```
+
+## 主动画(Hero 动画)
+
+不同页面里的组件，切换时产生动画
+
+```
+// A 页面
+Hero(
+  tag: path,
+  child: Image.asset(path),
+)
+
+// B 页面
+Hero(
+  tag: path,
+  child: Image.asset(path),
+)
+```
+
+## CustomPainter
+
+直接操作底层绘制动画
+
+```dart
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(widget.title),
+    ),
+    body: Center(
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.blue,
+        child: CustomPaint(
+          painter: MyPainter(),
+        ),
+      ),
+    ),
+  );
+}
+
+class MyPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    print(size);
+    canvas.drawCircle(size.center(Offset.zero), 60.0, Paint());
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+```
+
+## 其他
+
+### 小技巧
+
+- `flutter` 支持可以让全部动画放慢
+
+```
+import 'package:flutter/scheduler.dart' show timeDilation;
+
+// 放慢5倍
+timeDilation = 5.0
+```
