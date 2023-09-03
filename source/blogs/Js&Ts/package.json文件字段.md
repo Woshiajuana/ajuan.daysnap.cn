@@ -5,3 +5,5 @@ updateTime: 2023-09-05 14:33
 tags: npm package.json
 abstract: 本文主要记录下 package.json 文件字段的意思。
 ---
+
+optionalDependencies
