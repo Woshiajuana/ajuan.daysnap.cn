@@ -27,3 +27,9 @@ Widget build(BuildContext context) {
 dart pub global activate dartdoc
 dart pub global run dartdoc
 ```
+
+## 随机颜色
+
+```dart
+Color color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
+```
