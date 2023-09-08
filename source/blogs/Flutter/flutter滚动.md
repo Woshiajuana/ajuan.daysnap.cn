@@ -202,9 +202,9 @@ NotificationListener(
   - `true` 阻止
   - `false` 不组织
 
-## 支持滑动删除的 Dismissible
+### 支持滑动删除的 Dismissible
 
-```
+```dart
 ListView.builder(
   itemCount: 200,
   itemBuilder: (_, index) {
@@ -215,7 +215,25 @@ ListView.builder(
         // 处理删除的业务逻辑
       },
       confirmDismiss: (direction) async {
-        return false
+        return showDialog(
+          context: context,
+          builder: (_) {
+            return AlertDialog(
+              title: Text("Are you sure?"),
+              content: Text("Do you want to delete this item?"),
+              actions: [
+                FlatButton(
+                  child: Text("Cancel"),
+                  onPressed: () => Navigator.of(context).pop(false),
+                ),
+                FlatButton(
+                  child: Text("Delete"),
+                  onPressed: () => Navigator.of(context).pop(true),
+                ),
+              ],
+            );
+          },
+        );
       },
       child: Container(
         height: 50,
@@ -229,3 +247,119 @@ ListView.builder(
 - `key`： 因为支持滑动删除，所以 `key`是必须要给的，不然就不知道具体删除哪一项。
 - `onDismissed`：回调事件
 - `confirmDismiss`：确认是否删除这一项
+
+## GridView 二维网格列表
+
+- `SliverGridDelegateWithFixedCrossAxisCount` 交叉轴固定个数
+
+```dart
+GridView.builder(
+  itemCount: 200,
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 4,
+    childAspectRatio: 16 / 9,
+  ),
+  itemBuilder: (_, index) => Container(
+    color: Colors.blue[index % 8 * 100],
+  ),
+)
+```
+
+```dart
+GridView.count(
+  crossAxisCount: 4,
+  children: [],
+)
+```
+
+- `SliverGridDelegateWithMaxCrossAxisExtent` 交叉轴固定宽度
+
+```dart
+GridView.builder(
+  itemCount: 200,
+  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+    maxCrossAxisExtent: 120,
+    childAspectRatio: 16 / 9,
+  ),
+  itemBuilder: (_, index) => Container(
+    color: Colors.blue[index % 8 * 100],
+  ),
+)
+```
+
+```dart
+GridView.extent(
+  maxCrossAxisExtent: 120,
+  children: [],
+)
+```
+
+## 其他滚动 Widget
+
+### ListWheelScrollView
+
+3D 滚动的转轮
+
+```dart
+ListWheelScrollView(
+  children: List.generate(
+    10,
+    (index) => Container(
+      color: Colors.blue,
+    ),
+    offAxisFraction: 1.5,
+    diameterRatio: 0.8,
+    overAndUnderCenterOpacity: 0.8,
+    magnification: 2.5,
+    useMagnifier: true,
+    itemExtent: 100,
+    physics: FixedExtentScrollPhysics(),
+    onSelectedItemChanged: (index) => {
+      // 停在哪个位置 index
+    }
+  ),
+)
+```
+
+### PageView
+
+```dart
+PageView(
+  pageSnapping: true,
+  scrollDirection: Axis.vertical,
+  children: [
+    Container(color: Colors.blue),
+    Container(color: Colors.orange),
+  ],
+)
+```
+
+### ReorderableListView
+
+拖拽排序列表组件
+
+```dart
+ReorderableListView(
+  children: List.generate(
+    20,
+    (index) => Text("$index", key: UniqueKey()),
+  ),
+  onRecorder: (int oldIndex, int newIndex) => {
+    print("moved from $oldIndex to $newIndex");
+  },
+)
+```
+
+### SingleChildScrollView
+
+单个子滚动视图
+
+```dart
+SingleChildScrollView(
+  child: Column(
+    children: [
+      //
+    ],
+  ),
+)
+```
