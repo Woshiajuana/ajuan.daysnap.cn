@@ -181,3 +181,35 @@ Stream<DateTime> getTime() async* {
   }
 }
 ```
+
+### StreamTransformer
+
+```dart
+class TallyTransformer implements StreamTransformer {
+  int sum = 0;
+  StreamController _controller = StreamController();
+
+  @override
+  Stream bind(Stream stream) {
+    stream.listen((event) {
+      sum += event;
+      _controller.add(sum);
+    })
+    return _controller.stream;
+  }
+
+  @override
+  StreamTransformer<RS, RT> cast<RS, RT>() => StreamTransformer.castFrom(this);
+}
+
+// 使用
+StreamBuilder(
+  stream: _scoreController.stream.transform(TallyTransformer()),
+  builder: (context, snapshot) {
+    if (snapshot.hasData) {
+      return Text("Score: ${snapshot.data}");
+    }
+    return Text("Score: 0");
+  },
+)
+```
