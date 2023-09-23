@@ -460,5 +460,20 @@ CircleAvatar(child: Image.network('https://xxx.xxx'))
 CircleAvatar(child: Text('M'))
 ```
 
-
 ### ClipOval
+
+圆形
+
+### Material
+
+阴影
+
+```dart
+Material(
+  shape: CircleBorder(),
+  elevation: 4.0,
+  child: ClipOval(
+    child: Image.network('xxx'),
+  ),
+)
+```
