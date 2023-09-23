@@ -446,3 +446,19 @@ class _InputPageState extends State<InputPage> {
   }
 }
 ```
+
+## 组件
+
+### CircleAvatar
+
+头像
+
+```dart
+// 有图
+CircleAvatar(child: Image.network('https://xxx.xxx'))
+// 没图
+CircleAvatar(child: Text('M'))
+```
+
+
+### ClipOval
