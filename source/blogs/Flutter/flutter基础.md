@@ -447,6 +447,14 @@ class _InputPageState extends State<InputPage> {
 }
 ```
 
+## typedef
+
+```dart
+typedef CarList = List<Car>;
+
+CarList list = []
+```
+
 ## 组件
 
 ### CircleAvatar

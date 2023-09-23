@@ -12,6 +12,10 @@ abstract: Flutter进阶
 
 ## 如何访问和修改外部状态
 
+- 子组件想获取父组件的数据，直接传递数据
+- 子组件想修改父组件数据，`callback` 回调
+- 父组件控制子组件通过 `Controller` 控制器
+
 ## 所谓【控制器】到底是什么
 
 ## 详解 ChangeNotifier 机制
