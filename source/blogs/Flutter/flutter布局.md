@@ -191,6 +191,7 @@ class MyDelegate extends MultiChildLayoutDelegate {
           maxHeight: 100,
         ),
       );
+      layoutChild(1, BoxConstraints.tight(Size(100, 4)));
       positionChild(1, Offset(0, 0));
     }
 
@@ -211,3 +212,110 @@ class MyDelegate extends MultiChildLayoutDelegate {
 ```
 
 ## 自己动手写个 RenderObject
+
+```dart
+ShadowBox(
+  child: FlutterLogo(
+    size: 200,
+  ),
+)
+
+class ShadowBox extends SingleChildRenderObjectWidget {
+  final double distance;
+
+  ShadowBox({ Widget child, this.distance }) : super(child: child);
+
+  @override
+  RenderObject createRenderObject(BuildContext context) {
+    return RenderShadowBox(distance);
+  }
+
+  // 有值更新的时候会触发这个回调
+  @override
+  void updateRenderObject(BuildContext context, covariant RenderShadowBox renderObject) {
+    renderObject.distance = distance;
+  }
+}
+
+class RenderShadowBox extends RenderBox with RenderObjectWithChildMixin {
+  double distance;
+
+  RenderShadowBox(this.distance);
+
+  @override
+  void performLayout() {
+    child.layout(constraints);
+    size = Size(300, 300);
+  }
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    context.paintChild(child, offset);
+    // context.paintChild(child, offset + Offset(120, 120));
+
+    // 绘制
+    // context.canvas.drawLine();
+
+    // 绘制半透明
+    context.pushOpacity(offset, 127, (context, offset) {
+      context.paintChild(child, offset + Offset(distance, distance));
+    });
+  }
+}
+```
+
+父级想使用子级的大小
+
+```dart
+@override
+  void performLayout() {
+    child.layout(constraints, parentUseSize: true);
+    size = (child as RenderBox).size;
+  }
+```
+
+注意：如果父级没有使用子级的大小 `parentUseSize` 为 false，则数据改变重新绘制的时候，到这一级就不会接着向上传递尺寸了，这种称之为 `relayout boundary`
+
+`RenderBox` 还有一个高级的 `RenderProxyBox`，会默认处理绘制组件，可以让开发者只改的想要变动的地方
+
+```dart
+class RenderShadowBox extends RenderProxyBox {
+  double distance;
+
+  RenderShadowBox(this.distance);
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    context.paintChild(child, offset);
+    // context.paintChild(child, offset + Offset(120, 120));
+
+    // 绘制
+    // context.canvas.drawLine();
+
+    // 绘制半透明
+    context.pushOpacity(offset, 127, (context, offset) {
+      context.paintChild(child, offset + Offset(distance, distance));
+    });
+  }
+}
+```
+
+超出边界警告是怎么实现的
+
+```dart
+class RenderShadowBox extends RenderProxyBox with DebugOverflowIndicatorMixin {
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    //...
+    paintOverflowIndictor(
+      context,
+      offset,
+      offset & size,
+      // Rect.fromLTWH(0, 0, size.width, size.height),
+      offset & child.size,
+      // Rect.fromLTWH(0, 0, child.size.width, child.size.height),
+    );
+  }
+}
+```
