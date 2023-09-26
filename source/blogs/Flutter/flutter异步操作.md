@@ -7,10 +7,14 @@ abstract: flutter异步操作
 
 ## 事件循环(Event Loop)
 
+![一图概况](/assets/images/WX20230908-111034@2x.png)
+
 - 计算密集型
 - IO 密集型
 
 异步队列
+
+![一图概况](/assets/images/WX20230908-112005@2x.png)
 
 - `Event Queue`
 - `Microtask Queue`

@@ -41,15 +41,15 @@ void main(List<String> args) {
 ```dart
 class Singleton {
   static Singleton _instance;
-  
+
   // 私有的命名构造函数
   Singleton._internal();
-  
+
   static Singleton getInstance() {
     if (_instance == null) {
       _instance = Singleton._internal();
     }
-    
+
     return _instance;
   }
 }
@@ -64,27 +64,27 @@ class Singleton {
     if (_instance == null) {
       _instance = Singleton._internal();
     }
-    
+
     return _instance;
   }
-  
+
   Singleton._internal();
 }
 ```
 
 终极版本
+
 ```dart
 class Singleton {
   Singleton._internal();
-  
+
   factory Singleton() => _instance;
-  
+
   static late final Singleton _instance = Singleton._internal();
 }
 ```
- 
-被标记为 late 的变量 _instance 的初始化操作将会延迟到字段首次被访问时执行，而不是在类加载时就初始化。这样，Dart 语言特有的单例模式的实现方式就这么产生了。
 
+被标记为 late 的变量 \_instance 的初始化操作将会延迟到字段首次被访问时执行，而不是在类加载时就初始化。这样，Dart 语言特有的单例模式的实现方式就这么产生了。
 
 ## 导入第三方库
 
@@ -101,18 +101,17 @@ dependencies:
 dart pub get
 ```
 
-导入github上的包
+导入 github 上的包
 
 ```yml
 dependencies:
-  # 包名 
+  # 包名
   uuid:
     git:
       url: https://github.com/username/dart-name
       ref: master
 ```
 
-
 ## 参考文档
 
-1. https://flutter.cn/community/tutorials/singleton-pattern-in-flutter-n-dart 
+1. https://flutter.cn/community/tutorials/singleton-pattern-in-flutter-n-dart

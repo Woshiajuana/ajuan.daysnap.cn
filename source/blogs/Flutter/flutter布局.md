@@ -7,6 +7,8 @@ abstract: flutter 布局
 
 ## 约束、尺寸、位置
 
+![一图概况](/assets/images/WX20230917-230202@2x.png)
+
 - 向下传递约束
 - 向上传递尺寸
 

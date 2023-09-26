@@ -298,6 +298,8 @@ GridView.extent(
 
 ### ListWheelScrollView
 
+![效果](/assets/images/WX20230908-102653@2x.png)
+
 3D 滚动的转轮
 
 ```dart
