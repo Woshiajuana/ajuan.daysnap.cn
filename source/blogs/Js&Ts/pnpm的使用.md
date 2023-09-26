@@ -41,7 +41,9 @@ packages:
   - "!**/test/**"
 ```
 
-- 显式添加 `-w` 参数表示你知道是要把这依赖安装在全局的
+- -w, --workspace-root
+
+显式添加 `-w` 参数表示你知道是要把这依赖安装在全局的
 
 ```bash
 pnpm install lodash -w
@@ -56,3 +58,7 @@ pnpm add axios --filter project-1
 # 把 axios 安装到所有子工程下
 pnpm install axios -r
 ```
+
+- -C <path>, --dir <path>
+
+将 <path> 设置为 pnpm 的运行目录，而不是当前目录。
