@@ -149,8 +149,13 @@ class MyColor extends InheritedWidget {
   // 如果值有变化的时候  需不需要通知使用的组件重绘
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-    return true;
+    return oldWidget.color != color;
   }
+
+  static MyColor of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<MyColor>()!;
+  }
+
 }
 ```
 
@@ -176,7 +181,9 @@ class Foo extends StatelessWidget{
   @override
   Widget build(BuildContext context){
 
-    final myColor = context.dependOnInheritedWidgetOfExactType<MyColor>()
+    // final myColor = context.dependOnInheritedWidgetOfExactType<MyColor>()
+
+    final myColor = MyColor.of(context).color;
 
     return Container(
       width: 100,
