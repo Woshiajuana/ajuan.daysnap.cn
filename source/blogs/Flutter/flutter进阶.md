@@ -176,7 +176,7 @@ MyColor(
 )
 
 class Foo extends StatelessWidget{
-  const Foo({Key? key}) : super(key: key);
+  const  Foo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
@@ -192,7 +192,39 @@ class Foo extends StatelessWidget{
     );
   }
 }
+```
 
+## InheritedModel
+
+跟 InheritedWidget 大同小异
+
+```dart
+class MyColor extends InheritedModel {
+  final Color color = Colors.red;
+
+  const MyColor({super.key, required super.child});
+
+  // 如果值有变化的时候  需不需要通知使用的组件重绘
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    return oldWidget.color != color;
+  }
+
+  @override
+  bool updateShouldNotifyDependent(covariant InheritedModel oldWidget, Set dependencies) {
+    if (dependencies.contains('color')) {
+      // ...
+      // return;
+    }
+    // ...
+  }
+}
 ```
 
 ## 实例
+
+```dart
+class ChangeNotifierProvider<T extends Listenable> extends StatefulWidget {
+
+}
+```
