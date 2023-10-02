@@ -33,3 +33,31 @@ dart pub global run dartdoc
 ```dart
 Color color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
 ```
+
+## 优雅的使用新版 enum 功能
+
+```dart
+enum PortType {
+  usbA('USB-A'),
+  usbC('USB-C'),
+  lightning('LIGHTNING'),
+  unknown('UNKNOWN');
+
+  final String name;
+  const PortType(this.name);
+
+  static PortType fromString(String name) {
+    return values.firstWhere(
+      (v) => v.name == name,
+      orElse: () => PortType.unknown,
+    );
+  }
+
+  static bool isUSB (PortType type) =>
+    type == PortType.usbA || type == PortType.usbC;
+}
+
+extension on PortType {
+  bool get isUSB => name.startsWith('USB');
+}
+```
