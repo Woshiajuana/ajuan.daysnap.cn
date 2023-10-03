@@ -61,3 +61,33 @@ extension on PortType {
   bool get isUSB => name.startsWith('USB');
 }
 ```
+
+使用
+
+```dart
+final p = PortType.fromString('USB-A');
+
+print('is it usb? ${p.isUSB}');
+```
+
+还可以换成这种思路
+
+```dart
+enum PortType {
+  usbA('USB-A', true),
+  usbC('USB-C', true),
+  lightning('LIGHTNING'),
+  unknown('UNKNOWN');
+
+  final String name;
+  final bool isUSB;
+  const PortType(this.name, [this.isUSB = false]);
+
+  static PortType fromString(String name) {
+    return values.firstWhere(
+      (v) => v.name == name,
+      orElse: () => PortType.unknown,
+    );
+  }
+}
+```
