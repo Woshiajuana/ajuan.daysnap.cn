@@ -91,3 +91,13 @@ enum PortType {
   }
 }
 ```
+
+## 软键盘弹窗不影响界面
+
+```dart
+Scaffold(
+  extendBody: true, // 扩展到Scaffold的底部
+  resizeToAvoidBottomInset: false, // 不允许键盘事件影响界面
+  // ...
+)
+```
