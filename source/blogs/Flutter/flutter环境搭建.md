@@ -133,7 +133,7 @@ fvm remove 3.7.6
 fvm list
 
 # 查看可安装版本
-fvm release
+fvm releases
 
 # 检测环境
 fvm doctor
