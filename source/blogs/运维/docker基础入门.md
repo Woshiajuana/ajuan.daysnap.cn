@@ -156,6 +156,7 @@ docker logs -f --tail 10 mysql
 `–link=[]`： 添加链接到另一个容器；
 `–expose=[]`： 开放一个端口或一组端口；
 `–volume , -v`： 绑定一个卷
+`--appendonly yes`：运行 Docker 容器时启用附加模式（append-only mode），这意味着对容器内的文件进行写操作时，只能追加数据而不能覆盖或删除原有的数据。这种模式有助于确保容器数据的持久性和一致性。
 
 ## 创建 redis 服务
 
