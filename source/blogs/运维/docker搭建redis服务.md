@@ -1,7 +1,7 @@
 ---
 title: docker搭建redis服务
 createTime: 2023-06-19 22:29
-tags: docker
+tags: 运维 docker
 abstract:
 ---
 
@@ -19,7 +19,16 @@ docker pull redis
 - 挂载 `redis` 的持久化文件(为了数据的持久化)
 
 ```bash
-docker run --restart=always --log-opt max-size=100m --log-opt max-file=2 -p 6379:6379 --name myredis -v /home/redis/myredis/myredis.conf:/etc/redis/redis.conf -v /home/redis/myredis/data:/data -d redis redis-server /etc/redis/redis.conf  --appendonly yes  --requirepass 000415
+docker run --restart=always \
+--log-opt max-size=100m \
+--log-opt max-file=2 \
+-p 6379:6379 \
+--name myredis \
+-v /home/redis/myredis/myredis.conf:/etc/redis/redis.conf \
+-v /home/redis/myredis/data:/data \
+-d redis redis-server /etc/redis/redis.conf \
+--appendonly yes \
+--requirepass 000415
 ```
 
 参数解释：
