@@ -1,5 +1,5 @@
 ---
-title: Daysnap全站
+title: code.daysnap.cn
 createTime: 2023-12-26 22:28
 tags: 实战
 coverUrl: /assets/images/WX20231227-135442@2x.png
