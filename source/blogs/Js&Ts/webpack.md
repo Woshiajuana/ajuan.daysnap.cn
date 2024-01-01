@@ -215,6 +215,84 @@ module.exports = (source) => {
 
 拷贝静态文件到输出目录
 
+#### mini-css-extract-plugin
+
+提取 `css` 样式到一个文件中
+
+```js
+// webpack.config.js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+module.exports = {
+  module: {
+    rules: [
+      // ...
+      {
+        test: /.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin()],
+};
+```
+
+#### optimize-css-assets-webpack-plugin
+
+压缩 `css` 文件
+
+```
+// webpack.config.js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+
+module.exports = {
+  module: {
+    rules: [
+      // ...
+      {
+        test: /.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new OptimizeCssAssetsWebpackPlugin(),
+  ],
+};
+```
+
+推荐是在 `optimization.minimizer` 中，当开启压缩才工作
+
+```js
+// webpack.config.js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+
+module.exports = {
+  module: {
+    rules: [
+      // ...
+      {
+        test: /.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+  },
+  optimization: {
+    // 推荐 压缩类的 都放这里
+    minimizer: [
+      new OptimizeCssAssetsWebpackPlugin(),
+      // 当这边重新 minimizer ，webpack 内置的压缩插件会被覆盖，需要添加回来
+      new TerserWebpackPlugin(),
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin()],
+};
+```
+
 ### 开发一个插件
 
 插件是一个函数或者是一个包含 `apply` 方法的对象，通过在生命周期的钩子中挂载函数实现扩展。
@@ -309,9 +387,178 @@ const webpack = require('webpack')
 ![参考](/assets/images/WX20240101-141855@2x.png)
 
 `js` 文件还需要手动配置
- 
+
 ```js
-module.hot.accept('./editor', () => {
+module.hot.accept("./editor", () => {
   // editor 模块更新，需要在这里处理热替换逻辑
-})
+});
+```
+
+处理资源文件
+
+```js
+module.hot.accept("./better.png", () => {
+  // ...
+});
+```
+
+## DefinePlugin
+
+为代码注入全局成员，全局注入一个 `process.env.NODE_ENV` 的变量
+
+```js
+// webpack.config.js
+const webpack = require("webpack");
+
+module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      // BASE_URL: '"https://www.baidu.com"'
+      BASE_URL: JSON.stringify("https://www.baidu.com"),
+    }),
+  ],
+};
+```
+
+## Tree Shaking
+
+去除未引用代码(`dead-code`)，生产模式下自动开启。
+
+实际手动配置原理：
+
+```js
+// webpack.config.js
+{
+  optimization: {
+    usedExports: true, // 使用才会导出，标记没有导出的代码
+    minimize: true, // 负责删除没有导出使用的代码
+    sideEffects: true,
+  },
+
+  module: {
+    rules: [
+      {
+        test: /.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              // 如果使用了 babel，则需要关闭插件 modules 模块转换功能，不然 Tree Shaking 可能不会起效果，新版本的 babel-loader 以及 @babel/preset-env 内部已经根据webpack的版本自动禁用了 modules
+              ['@babel/preset-env', {modules: false}]
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+### sideEffects
+
+副作用：模块执行时，除了导出成员之外所做的事情
+
+```js
+// webpack.config.js
+{
+  optimization: {
+    // 生产模式下 默认打开
+    sideEffects: true,
+  },
+}
+
+// package.json 声明副作用文件
+{
+  "slideEffects": [
+    //...
+    "*.css"
+  ]
+}
+```
+
+## optimization
+
+```js
+// webpack.config.js
+{
+  optimization: {
+    usedExports: true, // 使用才会导出，标记没有导出的代码
+    minimize: true, // 负责删除没有导出使用的代码
+
+    // 尽可能将所有模块合并输出到一个函数中，这样既提升运行效率，又减少代码体积。这个又叫做 `Scope Hoisting` 作用域提升
+    concatenateModules: true,
+  }
+}
+```
+
+## Code Splitting 分包/代码分割
+
+```js
+{
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    }
+  }
+}
+```
+
+### 多入口打包
+
+### 动态导入
+
+动态导入的模块会被自动分包
+
+```js
+import(/* webpackChunkName: 'posts' */ "./posts/posts").then(
+  ({ default: posts }) => {
+    posts();
+  }
+);
+```
+
+相同的 `webpackChunkName` 会被打包到一起
+
+## 文件 Hash
+
+三种方式
+
+- `hash` ：项目级别的
+
+```js
+{
+  output: {
+    filename: "[name]-[hash].bundle.js";
+  }
+}
+```
+
+- `chunkhash`：`chunk` 级别的
+
+```js
+{
+  output: {
+    filename: "[name]-[chunkhash].bundle.js";
+  }
+}
+```
+
+- `contenthash`：文件级别的，推荐
+
+```js
+{
+  output: {
+    filename: "[name]-[contenthash].bundle.js";
+  }
+}
+```
+
+修改长度
+
+```js
+{
+  output: {
+    filename: "[name]-[contenthash:8].bundle.js";
+  }
+}
 ```
