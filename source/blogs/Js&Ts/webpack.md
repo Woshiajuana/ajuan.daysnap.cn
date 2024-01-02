@@ -23,13 +23,106 @@ webpack 的核心，专注实现资源模块加载
 
 #### css-loader
 
+- 可以处理 `url`
+
+```css
+.bg {
+  width: 100px;
+  height: 100px;
+  background: url(img/1.png);
+}
+```
+
+- 可以处理 `@import`
+
+```css
+@import "reset.css";
+.bg {
+  // ...
+}
+```
+
+实现原理就是，遇到背景图的时候会转换成 `require` 语法引入图片
+
 #### style-loader
+
+#### postcss-loader
+
+- `postcss`：利用 `javascript` 来转换 `css`
+- `postcss-cli`：可以在终端中使用 `postcss`
+- `autoprefixer`：给 `css` 添加兼容前缀
+- `postcss-preset-env`：不同插件的集合，即可以处理前缀、又可以处理 `css` 新特性。他里面包含了 `autoprefixer` 插件
+
+```css
+/*css 新特性*/
+.color {
+  /*前6位是颜色值，后2位是透明度*/
+  color: #12345688;
+}
+```
+
+配置
+
+```js
+// webpack.config.js
+{
+  test: /\.css$/,
+  exclude: /node_modules/,
+  use: [
+    {
+      loader: MiniCssExtractPlugin.loader,
+    },
+    {
+      loader: 'css-loader',
+      options: {
+        // https://webpack.docschina.org/loaders/css-loader#importloaders
+        // https://stackoverflow.com/questions/52544620/what-is-exactly-the-importloaders-option-of-css-loader-in-webpack-4
+        importLoaders: 1,
+      },
+    },
+    'postcss-loader',
+  ],
+}
+```
+
+对应的配置文件
+
+```js
+// postcss.config.js
+module.exports = {
+  plugins: ["postcss-preset-env"],
+};
+```
 
 #### file-loader
 
 原理是把静态资源复制到输出文件夹，然后返回对应的访问路径。
 
 - 适用于大文件，提交加载速度
+
+```js
+// webpack.config.js
+{
+  module: {
+    // ...
+    rules: [
+      // ...
+      {
+        test: /\.(png|svg|gif|jpe?g)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "img/[name].[contenthash:8].[ext]",
+              // outputPath: 'img',
+            },
+          },
+        ],
+      },
+    ];
+  }
+}
+```
 
 #### url-loader
 
@@ -133,6 +226,44 @@ data:image/png;base64,iVxdasdad...
 }
 ```
 
+#### asset module type
+
+`webpack5` 内置的一个模块，支持处理图片等静态资源文件。
+
+- `asset` 判断走最优的模式，需要配置 `parser`
+- `asset/resource`：原理是把静态资源复制到输出文件夹，然后返回对应的访问路径。
+- `asset/inline`：`Data URLs` 的形式引入资源文件
+- `asset/source`：`raw-loader`
+
+```js
+// webpack.config.js
+{
+  // ...
+  output: {
+    // ...
+    // 这里是全局配置
+    // assetModuleFilename: 'img/[name].[contenthash:8][ext]'
+  },
+  module: {
+    rules: [
+      // ...
+      {
+        test: /.png$/,
+        type: 'asset',
+        generator: {
+          filename: 'assets/img/[name].[contenthash:10][ext]',
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 30 * 1024,
+          }
+        }
+      },
+    ];
+  }
+}
+```
+
 ### 开发一个 loader
 
 ```js
@@ -214,6 +345,28 @@ module.exports = (source) => {
 #### copy-webpack-plugin
 
 拷贝静态文件到输出目录
+
+```js
+// webpack.config.js
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+module.exports = {
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "public",
+          // to: 'dist', 可以去掉 默认会找 output.path
+          globOptions: {
+            // index.html 资源 实际会被 html-webpack-plugin 输出到 output 中，如果这里不忽略，会导致重复报错
+            ignore: ["**/index.html"],
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
 
 #### mini-css-extract-plugin
 
@@ -320,6 +473,65 @@ class MyPlugin {
 ## webpack-dev-server
 
 高度集成的开发工具
+
+可以借助 `webpack-cli` 启动 `webpack-dev-server`
+
+```json
+// package.json
+{
+  "script": {
+    "serve": "webpack serve"
+  }
+}
+```
+
+也可以直接启动
+
+```json
+// package.json
+{
+  "script": {
+    "serve": "webpack-dev-server"
+  }
+}
+```
+
+具体配置
+
+```js
+// webpack.config.js
+const webpack = require('webpack')
+
+{
+  // ...
+  devServer: {
+    contentBase: './public',
+  },
+}
+```
+
+## webpack-dev-middleware
+
+可以对打包开发做自由度很高的定制
+
+```js
+const express = require("express");
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const webpack = require("webpack");
+
+const app = express();
+
+// 获取配置文件
+const config = require("./webpack.config.js");
+const compiler = webpack(config);
+
+app.use(webpackDevMiddleware(compiler));
+
+// 开启端口上的服务
+app.listen(3000, () => {
+  console.log("服务运行在 3000 端口上");
+});
+```
 
 ## Source Map
 
@@ -562,3 +774,12 @@ import(/* webpackChunkName: 'posts' */ "./posts/posts").then(
   }
 }
 ```
+
+## 占位符
+
+- `[ext]`：扩展名
+- `[name]`：文件名
+- `[hash]`：hash
+- `[chunkhash]`：文件内容 `chunkhash`
+- `[contenthash]`：文件内容 `contenthash`
+- `[path]`：文件路径
