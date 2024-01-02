@@ -505,7 +505,29 @@ const webpack = require('webpack')
 {
   // ...
   devServer: {
-    contentBase: './public',
+    hot: false, // 热更新 默认 false
+    // 在构建失败时不刷新页面作为回退，使用 hot: 'only'：
+    hotOnly: false, // 默认 false
+    port: 8080, // 端口
+    contentBase: path.resolve(__dirname, 'public'),
+    watchContentBase: true,
+    open: false,
+    compress: true, // 压缩 默认false
+
+    // 任意的 404 响应都会被替代为 index.html。主要是为了支持 `history` 路由
+    historyApiFallback: true,
+
+    // 代理
+    proxy: {
+      '/api': {
+        target: 'https://api.github.com',
+        pathRewrite: {
+          "^/api": "",
+        },
+        // 防止服务端校验来源 `Host`
+        changeOrigin: true,
+      },
+    }
   },
 }
 ```
