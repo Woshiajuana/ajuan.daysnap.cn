@@ -614,6 +614,108 @@ module.hot.accept("./better.png", () => {
 });
 ```
 
+### react 组件热更新
+
+1. 安装依赖
+
+```sh
+npm install -D @pmmmwh/react-refresh-webpack-plugin react-refresh
+```
+
+2. 配置 `webpack.config.js`
+
+```js
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+
+module.exports = {
+  target: "web",
+  devServer: {
+    hot: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  { targets: 'chrome 91' }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+  plugins: [new ReactRefreshWebpackPlugin()],
+};
+```
+
+3. 配置 `babel.config.js`
+
+```js
+module.exports = {
+  presets: ["@babel/preset-env", "@babel/preset-react"],
+  plugins: ["react-refresh/babel"],
+};
+```
+
+### vue2 组件热更新
+
+1. 安装依赖
+
+```sh
+npm install vue-loader -D
+```
+
+2. `vue-loader` 对于 `vue` 组件热更新开箱即用
+
+```js
+// webpack.config.js
+module.exports = {
+  target: "web",
+  devServer: {
+    hot: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue?$/,
+        use: ["babel-loader", "vue-loader"],
+      },
+    ],
+  },
+};
+```
+
+3. 如果 `vue-loader` 是 15+，则需要手动引入下 `plugin`
+
+```js
+// webpack.config.js
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
+
+module.exports = {
+  target: "web",
+  devServer: {
+    hot: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue?$/,
+        use: ["babel-loader", "vue-loader"],
+      },
+    ],
+  },
+  plugins: [new VueLoaderPlugin()],
+};
+```
+
 ## DefinePlugin
 
 为代码注入全局成员，全局注入一个 `process.env.NODE_ENV` 的变量

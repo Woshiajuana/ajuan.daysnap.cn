@@ -70,6 +70,17 @@ npx babel src --out-dir build --presets=@babel/preset-env
 lasted
 ```
 
+### `@babel/preset-react`
+
+处理 `jsx` 语法
+
+```js
+// babel.config.js
+module.exports = {
+  presets: ["@babel/preset-env", "@babel/preset-react"],
+};
+```
+
 ## polyfill 配置
 
 ```js
