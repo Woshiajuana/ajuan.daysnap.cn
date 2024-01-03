@@ -557,7 +557,9 @@ app.listen(3000, () => {
 
 ## Source Map
 
-解决了源代码与运行代码不一致所产生的问题
+> `[inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map`
+
+解决了源代码与运行代码不一致所产生的问题，在调试的时候可以定位到源代码中的信息。
 
 ```js
 // webpack.config.js
@@ -693,6 +695,9 @@ module.exports = {
 
 ```sh
 npm install vue-loader -D
+
+# 解析模板语法
+npm install vue-template-compiler -D
 ```
 
 2. `vue-loader` 对于 `vue` 组件热更新开箱即用

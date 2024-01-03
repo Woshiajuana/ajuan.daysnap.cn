@@ -70,6 +70,19 @@ npx babel src --out-dir build --presets=@babel/preset-env
 lasted
 ```
 
+### `@babel/preset-typescript`
+
+处理 `ts` 语法
+
+```json
+// package.json
+{
+  "script": {
+    "check": "tsc --noEmit"
+  }
+}
+```
+
 ### `@babel/preset-react`
 
 处理 `jsx` 语法
