@@ -390,6 +390,10 @@ module.exports = {
 };
 ```
 
+#### webpack-bundle-analyzer
+
+使用交互式可缩放树状图可视化 webpack 输出文件的大小
+
 #### optimize-css-assets-webpack-plugin
 
 压缩 `css` 文件
