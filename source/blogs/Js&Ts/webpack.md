@@ -454,6 +454,8 @@ module.exports = {
 
 插件是一个函数或者是一个包含 `apply` 方法的对象，通过在生命周期的钩子中挂载函数实现扩展。
 
+清除注释的插件
+
 ```js
 class MyPlugin {
   apply(compiler) {
@@ -469,6 +471,33 @@ class MyPlugin {
           };
         }
       }
+    });
+  }
+}
+```
+
+分析文件大小的插件
+
+```js
+class AnalyzeWebpackPlugin {
+  apply(compiler) {
+    compiler.hooks.emit.tap("AnalyzeWebpackPlugin", (compilation) => {
+      const assets = Object.entries(compilation.assets);
+
+      let content = `| 资源名称 | 资源大小 | 
+      | --- | --- |`;
+      assets.forEach(([filename, file]) => {
+        content += `\n| ${filename} | ${file.size()} |`;
+      });
+
+      compilation.assets["analyze.md"] = {
+        source() {
+          return content;
+        },
+        size() {
+          return content.length;
+        },
+      };
     });
   }
 }
