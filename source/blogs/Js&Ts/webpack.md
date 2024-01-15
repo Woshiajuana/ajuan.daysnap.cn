@@ -152,7 +152,7 @@ data:image/png;base64,iVxdasdad...
     rules: [
       // ...
       {
-        test: /.png$/,
+        test: /\.png$/,
         use: {
           loader: "url-loader",
           options: {
@@ -181,7 +181,7 @@ data:image/png;base64,iVxdasdad...
     rules: [
       // . ..
       {
-        test: /.html$/,
+        test: /\.html$/,
         use: {
           loader: "html-loader",
           options: {
@@ -213,7 +213,7 @@ data:image/png;base64,iVxdasdad...
     rules: [
       // ...
       {
-        test: /.js$/,
+        test: /\.js$/,
         use: {
           loader: "babel-loader",
           options: {
@@ -248,7 +248,7 @@ data:image/png;base64,iVxdasdad...
     rules: [
       // ...
       {
-        test: /.png$/,
+        test: /\.png$/,
         type: 'asset',
         generator: {
           filename: 'assets/img/[name].[contenthash:10][ext]',
@@ -287,7 +287,7 @@ module.exports = (source) => {
     rules: [
       // ...
       {
-        test: /.md$/,
+        test: /\.md$/,
         use: "./markdown-loader",
       },
     ];
@@ -314,7 +314,7 @@ module.exports = (source) => {
     rules: [
       // ...
       {
-        test: /.md$/,
+        test: /\.md$/,
         use: ["html-loader", "./markdown-loader"],
       },
     ];
@@ -381,7 +381,7 @@ module.exports = {
     rules: [
       // ...
       {
-        test: /.css$/,
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
@@ -408,7 +408,7 @@ module.exports = {
     rules: [
       // ...
       {
-        test: /.css$/,
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
@@ -433,7 +433,7 @@ module.exports = {
     rules: [
       // ...
       {
-        test: /.css$/,
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
@@ -812,7 +812,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.js$/,
+        test: /\.js$/,
         use: {
           loader: 'babel-loader',
           options: {
