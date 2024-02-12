@@ -59,6 +59,9 @@ pnpm add axios --filter project-1
 
 # 把 axios 安装到所有子工程下
 pnpm install axios -r
+
+# 更新所有工程下的包
+pnpm up @daysnap/utils --latest -r
 ```
 
 - -C <path>, --dir <path>
