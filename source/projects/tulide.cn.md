@@ -2,7 +2,7 @@
 title: tulide.daysnap.cn
 createTime: 2024-06-06 14:28
 tags: 图立得
-coverUrl: /assets/images/WX20240606-142745@2x.png
+coverUrl: /assets/images/WX20240606-143935@2x.png
 abstract: 图立得让图片处理更简单~
 ---
 
